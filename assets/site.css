@@ -1111,3 +1111,89 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 @media (max-width:720px){.ms-split,.ms-split.wine{grid-template-columns:1fr}.ms-split-img{min-height:9rem;order:-1}.ms-pizza .ms-split-img{clip-path:none}.ms-areas{grid-template-columns:1fr}.ms-areas-grid{grid-template-columns:1fr 1fr}.ms-feats-grid,.ms-stats2-grid{grid-template-columns:1fr}.ms-feat,.ms-stat2{aspect-ratio:16/7}.ms-band{padding:1.2rem}.ms-pizza .ms-grid .ms-ph{width:60%}}
 @media (prefers-reduced-motion:reduce){.ms-marq span{animation:none}}
 .badge-row img[alt="Microsoft Partner"],.badge-row img[alt="Oracle NetSuite Solution Partner"]{filter:brightness(1.25) drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+
+/* v11: per-rubro flow in the demo + money strip */
+.flowdemo .flowmap .node.src text{fill:#fff}
+.money{margin-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem}
+.money .eyebrow{color:var(--sun);margin-bottom:.9rem}
+.money-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.money-grid div{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;align-items:start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:1rem 1.1rem}
+.money-grid .mn{grid-row:span 2;width:2rem;height:2rem;border-radius:50%;background:var(--sun);color:var(--ink);font:800 .95rem var(--f-display);display:grid;place-items:center}
+.money-grid b{color:#fff}.money-grid span:last-child{color:var(--on-night-2);font-size:.9rem}
+@media (max-width:720px){.money-grid{grid-template-columns:1fr}}
+
+/* v11: premium themes v2 (Protass Law, Tend, Berry Bros & Rudd) */
+/* Law: dark editorial, serif, monochrome photo */
+.ms-law{--acc:#B08D57;--fd:"Cormorant Garamond",Georgia,serif;--r:2px;--rc:2px;--hero-bg:#0E1114;--hero-fg:#fff;--paper2:#F4F1EB}
+.ms-law .ms-nav{--nav-bg:#0E1114;--nav-fg:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+.ms-law .ms-logo{font:600 1.1rem var(--fd);letter-spacing:.12em;text-transform:uppercase}
+.ms-law .ms-btn{background:transparent;border:1px solid #B08D57;color:#fff}
+.ms-law .ms-hero{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);grid-template-rows:auto auto;min-height:21rem}
+.ms-law .ms-hero-img{filter:grayscale(1) contrast(1.1);opacity:.85;mask:linear-gradient(90deg,transparent,#000 30%);-webkit-mask:linear-gradient(90deg,transparent,#000 30%)}
+.ms-law .ms-copy small{color:#B08D57;letter-spacing:.14em}
+.ms-law .ms-copy h3{font:600 clamp(1.7rem,3vw,2.5rem)/1.05 var(--fd);letter-spacing:0}
+.ms-law .mcta{background:#B08D57;color:#fff;border-radius:2px}
+.ms-law .ms-ghost{color:#fff}
+.ms-law .ms-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12)}
+.ms-law .ms-results div{padding:.8rem 1.2rem;display:grid;gap:.1rem;border-right:1px solid rgba(255,255,255,.1)}
+.ms-law .ms-results b{font:600 1rem var(--fd);color:#B08D57;letter-spacing:.02em}.ms-law .ms-results span{font-size:.7rem;opacity:.75}
+.ms-law .ms-stats{display:none}
+.ms-creds{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;align-items:center;padding:1rem 1.6rem;background:#F4F1EB;border-bottom:1px solid #E4DBCB;font-size:.72rem;color:#5a554c;letter-spacing:.04em;text-transform:uppercase}
+.ms-creds small{font:600 .62rem var(--ff);letter-spacing:.14em;color:#B08D57}
+.ms-law .ms-items{--items-bg:#F4F1EB}
+.ms-law .ms-items-hd h4,.ms-law .ms-areas-hd h4{font:600 1.35rem var(--fd)}
+.ms-law .ms-card{--card-bg:#fff;--card-line:#E4DBCB}.ms-law .ms-card .ms-ph{filter:grayscale(1)}
+.ms-law .ms-card-b b{font:600 1rem var(--fd)}
+.ms-law .ms-band{background:#0E1114}.ms-law .ms-band h4{font:600 1.35rem var(--fd)}
+@media (max-width:720px){.ms-law .ms-hero{grid-template-columns:1fr}.ms-law .ms-results{grid-template-columns:1fr}}
+/* Dental: Tend-like light, sage, arches */
+.ms-dental{--acc:#2F5D57;--fd:"Cormorant Garamond",Georgia,serif;--r:999px;--rc:18px;--hero-bg:#F5F1E6;--hero-fg:#1F3330;--paper2:#FBF9F3}
+.ms-dental .ms-nav{--nav-bg:#F5F1E6;--nav-fg:#1F3330;border-bottom:0}
+.ms-dental .ms-logo{font:700 1.15rem var(--fd);color:#2F5D57}
+.ms-dental .ms-btn{background:#2F5D57;color:#fff}
+.ms-dental .ms-hero{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-rows:auto auto;min-height:20rem}
+.ms-dental .ms-hero-img{mask:none;-webkit-mask:none;opacity:1;border-radius:999px 999px 0 0;margin:1.4rem 1.6rem 0 0;align-self:end;min-height:14rem}
+.ms-dental .ms-copy small{color:#2F5D57}
+.ms-dental .ms-copy h3{font:600 clamp(1.6rem,3vw,2.3rem)/1.08 var(--fd);color:#2F5D57;letter-spacing:0}
+.ms-dental .ms-copy p{color:#3f524f}
+.ms-dental .mcta{background:#2F5D57;color:#fff}
+.ms-dental .ms-ghost{color:#2F5D57}
+.ms-dental .ms-chips{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 1.6rem 1.4rem}
+.ms-dental .ms-chips span{background:#E6EFE9;color:#1F3330;font:500 .74rem var(--ff);padding:.55rem .9rem;border-radius:12px}
+.ms-dental .ms-info{display:none}
+.ms-dental .ms-items{--items-bg:#FBF9F3}
+.ms-dental .ms-items-hd h4{font:600 1.35rem var(--fd);color:#2F5D57}
+.ms-dental .ms-card{--card-bg:#fff;--card-line:#E2E8E1}.ms-dental .ms-card .ms-ph{border-radius:18px 18px 0 0}
+.ms-dental .ms-pills span{background:#E6EFE9;color:#1F3330}
+.ms-dental .ms-card-b em{color:#2F5D57}
+.ms-why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4rem;padding:1.6rem;background:#fff}
+.ms-why-copy small{font:600 .66rem var(--ff);letter-spacing:.1em;text-transform:uppercase;color:#2F5D57}
+.ms-why-copy h4{font:600 1.35rem/1.15 var(--fd);color:#2F5D57;margin:.3rem 0 .3rem}
+.ms-why-copy p{font-size:.82rem;color:#3f524f;margin:0 0 .7rem}
+.ms-checks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.4rem;font-size:.76rem}
+.ms-checks li{display:flex;gap:.45rem;align-items:center;background:#F5F1E6;border-radius:999px;padding:.45rem .8rem}
+.ms-checks li::before{content:"";width:.9rem;height:.9rem;border-radius:50%;background:#E0893A;flex:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");background-size:60%;background-position:center;background-repeat:no-repeat}
+.ms-quote{background:#5C7F78;color:#fff;border-radius:22px;padding:1.5rem;display:grid;gap:.6rem;align-content:center;text-align:center}
+.ms-quote p{font:500 1.05rem/1.4 var(--fd);margin:0}.ms-quote span{color:#F5C542;letter-spacing:.1em}.ms-quote b{font-size:.78rem;font-weight:600}
+@media (max-width:720px){.ms-dental .ms-hero{grid-template-columns:1fr}.ms-dental .ms-hero-img{margin:0 1.6rem;order:-1;border-radius:0 0 999px 999px;min-height:10rem}.ms-why{grid-template-columns:1fr}.ms-checks{grid-template-columns:1fr}}
+/* Wine: BBR calm cream, centered serif titles, white cards, amber accents */
+.ms-wine{--paper2:#F3F0EA}
+.ms-wine .ms-items{--items-bg:#F3F0EA;text-align:center}
+.ms-wine .ms-items-hd{justify-content:center;flex-direction:column;align-items:center;gap:.2rem}
+.ms-wine .ms-items-hd h4{font:600 1.5rem var(--fd);text-transform:none;letter-spacing:0;color:#2b2520}
+.ms-wine .ms-card{--card-bg:#fff;--card-line:#E8E2D6;text-align:left}
+.ms-wine .ms-ph{aspect-ratio:4/5}
+.ms-wine .ms-card-b b{color:#2b2520;font:600 1.05rem var(--fd);text-transform:none;letter-spacing:0}
+.ms-wine .ms-card-b em{color:#B8860B}
+.ms-ranges{padding:1.6rem;background:#fff;text-align:center}
+.ms-ranges h4{font:600 1.5rem var(--fd);color:#2b2520;margin:0 0 1rem}
+.ms-ranges-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.ms-ranges-grid div{background:#F3F0EA;padding:0 0 1rem;display:grid;gap:.3rem;justify-items:center}
+.ms-ranges-grid .ms-ph{width:100%;aspect-ratio:16/10}
+.ms-ranges-grid b{font:600 1.05rem var(--fd);color:#2b2520;margin-top:.5rem}
+.ms-ranges-grid span{font-size:.76rem;color:#6b6358;padding:0 1rem}
+.ms-ranges-grid em{font:600 .68rem var(--ff);letter-spacing:.1em;text-transform:uppercase;background:#E0A100;color:#2b2520;padding:.5rem .9rem;border-radius:3px;font-style:normal;margin-top:.4rem}
+.ms-wine .ms-marq{background:#F3F0EA}
+@media (max-width:720px){.ms-ranges-grid{grid-template-columns:1fr}}
+.ms-results,.ms-chips{grid-column:1/-1}
+@media (min-width:721px){.ms-law .ms-copy,.ms-dental .ms-copy{grid-column:1;grid-row:1}.ms-law .ms-hero-img,.ms-dental .ms-hero-img{grid-column:2;grid-row:1;order:0}}
