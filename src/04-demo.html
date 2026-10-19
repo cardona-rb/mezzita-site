@@ -1,0 +1,72 @@
+<!--{"title":"Demo · Cómprale algo a nuestro sistema","desc":"Compra dentro del teléfono como lo haría tu cliente y mira, al lado, lo que ve el negocio: el pedido entra pagado, la caja del día suma sola. Restaurante, vinoteca, clínica, hotel o estudio jurídico.","path":"/demo/","nav":"demo","scripts":["chat.js","demo.js"],"head":"<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;900&family=Gilda+Display&family=Sora:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap\">"}-->
+<section class="wrap page-head">
+  <div class="sec-head row" style="margin:0;align-items:end">
+    <div class="hero-copy" style="max-width:40rem">
+      <p class="callout"><span class="pill">Demo en vivo</span> Dos pantallas, una venta</p>
+      <h1 style="font-size:var(--step-4)">Cómprale algo a nuestro sistema.</h1>
+      <p class="lede">Primero ves la página web del negocio, como la ve tu cliente. Luego, a la izquierda eres el cliente: todo pasa dentro del chat. A la derecha eres el dueño: mira cómo entra el pedido ya pagado y cómo suma la caja sin que nadie revise una captura.</p>
+    </div>
+    <div class="tabs" role="group" aria-label="Rubro de la demo">
+      <button type="button" data-rubro="restaurante" aria-pressed="true">Restaurante</button>
+      <button type="button" data-rubro="vinoteca" aria-pressed="false">Vinoteca</button>
+      <button type="button" data-rubro="clinica" aria-pressed="false">Clínica dental</button>
+      <button type="button" data-rubro="hotel" aria-pressed="false">Hotel</button>
+      <button type="button" data-rubro="estudio" aria-pressed="false">Estudio jurídico</button>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:0">
+  <div class="demoweb">
+    <p class="step"><span class="pill" style="margin-right:.5rem">Paso 1</span> Tu cliente llega a tu página web desde Google, un anuncio o Instagram</p>
+    <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span id="m-url">pizzerialaesquina.bo</span></div>
+      <div class="mocksite" id="mocksite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:clamp(3rem,6vw,5rem)">
+  <p class="step demoweb-step"><span class="pill" style="margin-right:.5rem">Paso 2</span> Toca «Pedir por WhatsApp» y la conversación sigue aquí</p>
+  <div class="demo-stage">
+    <div class="demo-side">
+      <p class="side-label">Tu cliente</p>
+      <div class="phone" data-mode="live">
+        <div class="screen">
+          <div class="chat-hd"><span class="av" id="d-av">LE</span><div><b id="d-name">Pizzería La Esquina</b><small>responde al instante</small></div></div>
+          <div class="chat" id="d-chat"><span class="day">Hoy</span></div>
+          <div class="chat-in"><span>Escribe un mensaje</span><i aria-hidden="true"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-side owner">
+      <p class="side-label">Tú, el dueño</p>
+      <div class="owner-panel glass-dark">
+        <div class="owner-hd"><div><b id="o-biz">Pizzería La Esquina</b><small id="o-desc"></small></div><span class="live-dot" aria-label="En vivo"></span></div>
+        <div class="owner-kpis">
+          <div><b class="num" id="o-total">0 Bs</b><span>cobrado hoy</span></div>
+          <div><b class="num" id="o-n">0</b><span>pedidos pagados</span></div>
+          <div><b class="num" id="o-zero">0</b><span>capturas revisadas</span></div>
+        </div>
+        <div class="o-com" id="o-com" hidden><label for="o-pct">Si estos pedidos hubieran entrado por una app de delivery con comisión del</label><span class="o-pct-wrap"><input id="o-pct" type="number" inputmode="numeric" min="0" max="60" value="25"><b>%</b></span><span>te habría costado <b class="num" id="o-saved">0 Bs</b>. Pon la comisión que te cobran a ti.</span></div>
+        <div class="owner-live" id="o-live"><p class="o-empty">Cuando tu cliente pague, el pedido aparece aquí. Sin preguntar, sin revisar comprobantes.</p></div>
+        <div class="owner-controls">
+          <div class="field"><label for="d-deliv" id="d-deliv-label">Entrega</label><select id="d-deliv"></select></div>
+          <div class="cta-row">
+            <button type="button" class="btn btn-light" id="d-pay">Cobrar con QR</button>
+            <a class="btn btn-ghost-dark" id="d-send" href="https://wa.me/59171868545" target="_blank" rel="noopener">Mandarlo a WhatsApp de verdad</a>
+            <button type="button" class="link-dark" id="d-reset">Empezar de nuevo</button>
+          </div>
+          <p class="friction" style="color:var(--on-night-2)">Es una demo: no se cobra nada. Con Vende y Cobra 24/7 el pago entra de verdad por QR o tarjeta con CUCU.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec night"><div class="wrap split">
+  <div class="sec-head" style="margin:0"><p class="eyebrow">¿Te gustó?</p><h2>Esto, con tus productos, en 7 días hábiles.</h2></div>
+  <div style="display:grid;gap:1rem">
+    <p class="lede">Con Vende y Cobra 24/7 tus clientes arman el pedido solos, pagan dentro del chat y a ti te llega listo para despachar.</p>
+    <div class="cta-row"><a class="btn btn-light" data-wa="Hola, probé la demo y quiero un catálogo así para mi negocio (plan Vende y Cobra 24/7). Rubro: ___ Ciudad: ___" href="https://wa.me/59171868545">Quiero esto para mi negocio</a><a class="link" href="/planes/#vende">Ver el plan</a></div>
+  </div>
+</div></section>

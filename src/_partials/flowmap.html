@@ -1,0 +1,59 @@
+<div class="flowmap-wrap"><svg class="flowmap" viewBox="0 0 1200 440" role="img" aria-label="Cómo fluyen los clientes: desde Google, anuncios y redes hacia tu página web, de ahí a WhatsApp, y de WhatsApp al pago por QR y a la reseña">
+  <defs>
+    <path id="p1" d="M250 90 C 360 90, 380 220, 490 220"/>
+    <path id="p2" d="M250 220 L 490 220"/>
+    <path id="p3" d="M250 350 C 360 350, 380 220, 490 220"/>
+    <path id="p4" d="M710 220 L 870 220"/>
+    <path id="p5" d="M1010 220 C 1060 220, 1060 130, 1110 130"/>
+    <path id="p6" d="M1010 220 C 1060 220, 1060 310, 1110 310"/>
+    <path id="pback" d="M1150 345 C 1150 420, 600 430, 600 300"/>
+  </defs>
+  <g class="wires">
+    <use href="#p1"/><use href="#p2"/><use href="#p3"/><use href="#p4"/><use href="#p5"/><use href="#p6"/>
+    <use href="#pback" class="dashed"/>
+  </g>
+  <g class="movers">
+    <circle r="5" cx="-40" cy="-40"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40"><animateMotion dur="2.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40"><animateMotion dur="3.4s" begin="1.6s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40"><animateMotion dur="2.2s" begin="0.4s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40"><animateMotion dur="2.2s" begin="1.9s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40" class="paid"><animateMotion dur="2s" begin="1.2s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle>
+    <circle r="5" cx="-40" cy="-40" class="star"><animateMotion dur="2.4s" begin="2.4s" repeatCount="indefinite"><mpath href="#p6"/></animateMotion></circle>
+    <circle r="4" cx="-40" cy="-40" class="back"><animateMotion dur="5s" begin="3s" repeatCount="indefinite"><mpath href="#pback"/></animateMotion></circle>
+  </g>
+  <g class="node src" transform="translate(40,50)">
+    <rect width="210" height="80" rx="14"/>
+    <circle class="pulse" cx="22" cy="40" r="6"/><circle class="dot" cx="22" cy="40" r="6"/>
+    <text x="44" y="36" class="t">Google Maps</text><text x="44" y="58" class="s">buscan «cerca de mí»</text>
+  </g>
+  <g class="node src" transform="translate(40,180)">
+    <rect width="210" height="80" rx="14"/>
+    <circle class="pulse" cx="22" cy="40" r="6"/><circle class="dot" cx="22" cy="40" r="6"/>
+    <text x="44" y="36" class="t">Anuncios</text><text x="44" y="58" class="s">Meta · TikTok · Google</text>
+  </g>
+  <g class="node src" transform="translate(40,310)">
+    <rect width="210" height="80" rx="14"/>
+    <circle class="pulse" cx="22" cy="40" r="6"/><circle class="dot" cx="22" cy="40" r="6"/>
+    <text x="44" y="36" class="t">Redes sociales</text><text x="44" y="58" class="s">Instagram · Facebook</text>
+  </g>
+  <g class="node hub" transform="translate(490,160)">
+    <rect width="220" height="120" rx="18"/>
+    <circle class="pulse big" cx="110" cy="38" r="8"/><circle class="dot" cx="110" cy="38" r="8"/>
+    <text x="110" y="76" class="t c">Tu página web</text><text x="110" y="98" class="s c">rápida, con botón de WhatsApp</text>
+  </g>
+  <g class="node hub wa" transform="translate(870,160)">
+    <rect width="140" height="120" rx="18"/>
+    <circle class="pulse big" cx="70" cy="38" r="8"/><circle class="dot" cx="70" cy="38" r="8"/>
+    <text x="70" y="76" class="t c">WhatsApp</text><text x="70" y="98" class="s c">pedido armado</text>
+  </g>
+  <g class="node out" transform="translate(1110,95)">
+    <rect width="80" height="70" rx="14"/>
+    <text x="40" y="30" class="t c">Pago QR</text><text x="40" y="52" class="s c">entra cobrado</text>
+  </g>
+  <g class="node out" transform="translate(1110,275)">
+    <rect width="80" height="70" rx="14"/>
+    <text x="40" y="30" class="t c">Reseña</text><text x="40" y="52" class="s c">y vuelve</text>
+  </g>
+  <text x="600" y="420" class="s c back-label">los que ya compraron vuelven por la web o directo al chat</text>
+</svg></div>
