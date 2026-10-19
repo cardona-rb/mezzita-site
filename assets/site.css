@@ -1293,3 +1293,34 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 @media (prefers-reduced-motion:reduce){.btn-pulse{animation:none}.btn-primary:hover::after,.btn-sun:hover::after{animation:none}.btn-primary:hover,.btn-sun:hover,.btn-light:hover{transform:none}}
 .night .btn-sun,.glass-dark .btn-sun,.flowdemo .btn-sun,.post-cta.night-card .btn-sun{box-shadow:.3rem .3rem 0 rgba(244,243,238,.9);border-color:var(--ink)}
 .night .btn-sun:hover,.glass-dark .btn-sun:hover,.flowdemo .btn-sun:hover,.post-cta.night-card .btn-sun:hover{box-shadow:.5rem .5rem 0 rgba(244,243,238,.9)}
+
+/* v18: verde WhatsApp en todo botón que abre WhatsApp; botón flotante rediseñado; barra fija en móvil */
+:root{--wa:#25D366;--wa-deep:#128C7E;--wa-ink:#0B3D2E}
+.btn[data-wa]{background:linear-gradient(180deg,#3CE37A,var(--wa) 50%,#1DB954);color:#07331F;border-color:var(--wa-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.3rem .3rem 0 var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.25)}
+.btn[data-wa]:hover{background:linear-gradient(180deg,#4BEB86,#2FDB70 50%,#25D366);transform:translate(-2px,-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.5rem .5rem 0 var(--ink)}
+.btn[data-wa]:active{transform:translate(1px,1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),.15rem .15rem 0 var(--ink)}
+.btn[data-wa]::after{content:"";position:absolute;top:-40%;bottom:-40%;left:-30%;width:28%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg) translateX(-200%);pointer-events:none}
+.btn[data-wa]:hover::after{animation:sheen .9s var(--ease) 1}
+.night .btn[data-wa],.glass-dark .btn[data-wa],.flowdemo .btn[data-wa],.post-cta.night-card .btn[data-wa]{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.3rem .3rem 0 rgba(244,243,238,.9)}
+.night .btn[data-wa]:hover,.glass-dark .btn[data-wa]:hover,.flowdemo .btn[data-wa]:hover,.post-cta.night-card .btn[data-wa]:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.5rem .5rem 0 rgba(244,243,238,.9)}
+.btn-pulse{animation:ctapulse-wa 2.6s ease-out infinite}
+@keyframes ctapulse-wa{0%{outline:0 solid rgba(37,211,102,.55);outline-offset:0}60%{outline:10px solid rgba(37,211,102,0);outline-offset:10px}100%{outline:0 solid rgba(37,211,102,0);outline-offset:0}}
+.hd .hd-cta[data-wa]{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.2rem .2rem 0 var(--ink)}
+/* flotante */
+.wa-float{background:linear-gradient(180deg,#3CE37A,var(--wa) 50%,#1DB954)!important;color:#07331F!important;border:1.5px solid var(--wa-ink)!important;border-radius:16px!important;padding:.85rem 1.15rem .85rem 1rem!important;font-weight:700!important;box-shadow:.3rem .3rem 0 var(--ink),0 18px 40px -18px rgba(37,211,102,.7)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease)!important}
+.wa-float svg{width:24px!important;height:24px!important;filter:drop-shadow(0 1px 0 rgba(255,255,255,.3))}
+.wa-float:hover{transform:translate(-2px,-2px);box-shadow:.5rem .5rem 0 var(--ink),0 22px 44px -18px rgba(37,211,102,.8)!important}
+.wa-float::before{content:"";position:absolute;inset:-6px;border-radius:22px;border:2px solid rgba(37,211,102,.6);animation:waring 2.4s ease-out infinite;pointer-events:none}
+@keyframes waring{0%{transform:scale(.96);opacity:.9}70%{transform:scale(1.18);opacity:0}100%{transform:scale(1.18);opacity:0}}
+.wa-float::after{background:var(--blue)!important;border:2px solid #fff!important}
+/* barra fija en móvil */
+.mbar{display:none}
+@media (max-width:640px){
+  .wa-float{display:none!important}
+  body{padding-bottom:calc(5.4rem + env(safe-area-inset-bottom,0px))}
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;gap:.25rem;justify-items:center;padding:.6rem max(12px,env(safe-area-inset-left,0px)) calc(.6rem + env(safe-area-inset-bottom,0px));background:rgba(244,243,238,.94);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-top:1px solid var(--line-2);box-shadow:0 -12px 30px -20px rgba(21,23,28,.35)}
+  .mbar .btn{width:100%;font-size:1.02rem;padding:.95rem 1rem;justify-content:center}
+  .mbar .btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),.25rem .25rem 0 var(--ink)}
+  .mbar-sub{font-size:.72rem;color:var(--ink-2)}
+}
+@media (prefers-reduced-motion:reduce){.wa-float::before{animation:none;opacity:0}.btn[data-wa]:hover::after{animation:none}}

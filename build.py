@@ -98,7 +98,8 @@ def layout(meta, body):
 <div><h4>Socios</h4><p class="muted">Cobros y facturación con CUCU.</p><a class="ft-levi" href="https://levisoft.pro" target="_blank" rel="noopener"><span class="muted">Ingeniería de</span><img src="/assets/logos/levisoft-logo-light.webp" alt="Levisoft" width="1825" height="393" loading="lazy"></a></div>
 <p class="legal">© <span data-year>2026</span> Outperform Partners · NIT en trámite de publicación · Tarija, Bolivia. Los resultados dependen de cada negocio, su rubro y su ciudad. Las garantías aplican según las condiciones escritas en tu contrato.</p>
 </div></footer>
-<a class="wa-float" data-wa="Hola, vengo de la web de Outperform." href="https://wa.me/59171868545" aria-label="Escribir por WhatsApp">{WA_ICON}<span>WhatsApp</span></a>
+<a class="wa-float" data-wa="Hola, vengo de la web de Outperform." href="https://wa.me/59171868545" aria-label="Escribir por WhatsApp">{WA_ICON}<span>Escríbenos por WhatsApp</span></a>
+<div class="mbar"><a class="btn" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a><span class="mbar-sub">Te responde una persona · sin compromiso</span></div>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/backdrop.js" defer></script>
 {scripts}
