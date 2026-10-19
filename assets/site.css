@@ -1226,3 +1226,30 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 @media (max-width:640px){.deliver li{grid-template-columns:auto minmax(0,1fr)}.deliver .dtag{grid-column:2}}
 .pcard-plain{border:1px solid var(--line-2);border-radius:18px;padding:1.4rem;background:rgba(255,255,255,.6);display:grid;gap:.8rem;align-content:start}
 .plain{margin:0;padding-left:1.1rem;display:grid;gap:.45rem;color:var(--ink-2)}
+
+
+/* v14: credenciales heredadas de Levisoft, distribución del sitio original (ratings a la izquierda, certificación y partners a la derecha), paleta clara con tinta azul marino y acento naranja Levisoft */
+.levi-cred{--lnavy:#282943;--lorange:#EC612A;--lgrey:#6F7180}
+.levi-cred-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;background:#fff;border:1px solid var(--line-2);border-radius:26px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 30px 60px -45px rgba(21,23,28,.35)}
+.rating-card{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--lnavy);border-radius:18px;overflow:hidden;background:#fff}
+.rc-cell{display:grid;justify-items:center;align-content:center;gap:.7rem;padding:clamp(1.6rem,3vw,2.6rem) 1.2rem;text-align:center;color:var(--lnavy)}
+.rc-cell+.rc-cell{border-left:1.5px solid var(--lnavy)}
+.rc-num{font:800 clamp(2.4rem,4.5vw,3.4rem)/1 var(--f-display);letter-spacing:-.04em}
+.stars{display:inline-flex;gap:.25rem;color:var(--lorange)}
+.stars svg{width:1.45rem;height:1.45rem}
+.rc-cell p{font-size:.88rem;color:var(--lgrey);margin:0;max-width:14rem;line-height:1.4}
+.rc-icons{display:inline-flex;gap:.7rem;align-items:center}
+.rc-icons img{height:1.4rem;width:auto}
+.levi-cred-copy{display:grid;gap:.9rem;color:var(--lnavy)}
+.levi-cred-copy .eyebrow{color:var(--lorange)}
+.levi-cred-copy h2{font-size:var(--step-3);letter-spacing:-.03em;line-height:1.08}
+.levi-cred-copy .hl{color:var(--lorange)}
+.lc-label{font-size:.95rem;color:var(--lgrey);margin:.4rem 0 0}
+.lc-mit{height:3.2rem;width:auto;max-width:16rem;object-fit:contain;object-position:left}
+.lc-partners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem 1.2rem}
+.lc-partners span{display:grid;place-items:center;min-height:5rem;padding:.6rem .9rem;border:1px solid var(--line);border-radius:12px;background:#fff;transition:border-color var(--t) ease,transform var(--t) var(--ease)}
+.lc-partners span:hover{border-color:var(--lnavy);transform:translateY(-2px)}
+.lc-partners img{max-height:3.4rem;max-width:100%;width:auto;object-fit:contain}
+.lc-foot{font-size:.92rem;color:var(--lgrey);margin-top:.4rem}
+@media (max-width:900px){.levi-cred-grid{grid-template-columns:1fr}.lc-partners{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.rating-card{grid-template-columns:1fr}.rc-cell+.rc-cell{border-left:0;border-top:1.5px solid var(--lnavy)}}
