@@ -1254,3 +1254,15 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 .lc-foot{font-size:.92rem;color:var(--ink-2);margin-top:.4rem;padding-left:.9rem;border-left:3px solid var(--sun)}
 @media (max-width:900px){.levi-cred-grid{grid-template-columns:1fr}.lc-partners{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.rating-card{grid-template-columns:1fr}.rc-cell+.rc-cell{border-left:0;border-top:2px solid var(--ink)}}
+
+/* flowmap: legibilidad en móvil */
+.flowmap-wrap{position:relative}
+@media (max-width:720px){
+  .flowmap{min-width:980px}
+  .flowmap .t{font-size:21px}
+  .flowmap .s{font-size:14px}
+  .flowmap .node.out .t{font-size:15px}.flowmap .node.out .s{font-size:12px}
+  .flowmap .back-label{font-size:13.5px}
+}
+.flowmap-hint{display:none;font:500 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--on-night-2);margin:.4rem 0 .2rem}
+@media (max-width:720px){.flowmap-hint{display:block}}
