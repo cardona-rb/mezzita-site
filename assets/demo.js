@@ -19,6 +19,8 @@
       CAT:[{sku:"CS-001",n:"Primera consulta",d:"45 min · orientación y pasos a seguir",c:"Consultas",p:150,v:["Mañana 9:00 a 12:00","Tarde 14:30 a 18:30"],s:99},{sku:"CS-002",n:"Revisión de contrato",d:"Hasta 10 páginas · informe en 48 h",c:"Consultas",p:350,s:99},{sku:"EM-001",n:"Constitución de empresa",d:"S.R.L. o unipersonal · trámite completo",c:"Empresas",p:2200,po:1900,s:99},{sku:"EM-002",n:"Registro de marca",d:"Búsqueda + solicitud ante SENAPI",c:"Empresas",p:1400,s:99},{sku:"LA-001",n:"Asesoría laboral mensual",d:"Contratos, finiquitos y consultas",c:"Laboral",p:900,s:99},{sku:"CI-001",n:"Redacción de contrato",d:"Alquiler, compraventa o servicios",c:"Civil",p:400,v:["Alquiler","Compraventa","Servicios"],s:99}]}
   };
   var $ = function(id){ return document.getElementById(id); };
+  var ROOT = (function(){ var l = document.querySelector('link[href$="site.css"]'); return l ? l.getAttribute('href').replace(/assets\/site\.css$/, '') : '/'; })();
+  function asset(u){ return u ? ROOT + String(u).replace(/^\//, '') : ''; }
   var esc = C.esc, fmt = C.fmt;
   var phoneEl = document.querySelector('.phone[data-mode="live"]');
   var chat = new C.Chat(phoneEl);
@@ -51,9 +53,9 @@
     if(W.booking) extra = '<div class="ms-book"><div><small>Llegada</small><b>Vie 24 oct</b></div><div><small>Salida</small><b>Dom 26 oct</b></div><div><small>Huéspedes</small><b>2 adultos</b></div><button type="button" class="mcta ms-book-cta" data-web-cta>Consultar disponibilidad</button></div>';
     if(W.stats) extra = '<div class="ms-stats">' + W.stats.map(function(st){ return '<div><b>' + esc(st[0]) + '</b><span>' + esc(st[1]) + '</span></div>'; }).join('') + '</div>';
     if(W.info) extra = '<div class="ms-info">' + W.info.map(function(i){ return '<div><b>' + esc(i[0]) + '</b><span>' + esc(i[1]) + '</span></div>'; }).join('') + '</div>';
-    var hero = '<section class="ms-hero" style="--hero:url(' + (W.hero || '') + ')"><div class="ms-hero-img" aria-hidden="true"></div>' + copy + extra + '</section>';
+    var hero = '<section class="ms-hero" style="--hero:url(' + asset(W.hero) + ')"><div class="ms-hero-img" aria-hidden="true"></div>' + copy + extra + '</section>';
     var cards = '<section class="ms-items"><div class="ms-items-hd"><h4>' + esc(W.itemsTitle || 'Destacados') + '</h4><span>Pide o reserva por WhatsApp y paga con QR</span></div><div class="ms-grid">' +
-      items.map(function(i, k){ return '<article class="ms-card"><div class="ms-ph" style="background-image:url(' + ((W.photos || [])[k] || '') + ')"></div><div class="ms-card-b"><b>' + esc(i.n) + '</b><span>' + esc(i.d || '') + '</span><em>' + fmt(i.po || i.p) + (R.verbo === 'Reserva' ? ' / noche' : '') + '</em></div></article>'; }).join('') + '</div></section>';
+      items.map(function(i, k){ return '<article class="ms-card"><div class="ms-ph" style="background-image:url(' + asset((W.photos || [])[k]) + ')"></div><div class="ms-card-b"><b>' + esc(i.n) + '</b><span>' + esc(i.d || '') + '</span><em>' + fmt(i.po || i.p) + (R.verbo === 'Reserva' ? ' / noche' : '') + '</em></div></article>'; }).join('') + '</div></section>';
     el.innerHTML = top + nav + hero + cards;
   }
   function fromWeb(){

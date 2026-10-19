@@ -23,9 +23,15 @@ jobs:
         with:
           python-version: "3.12"
       - name: Build static site
-        run: python3 build.py
-      - name: Custom domain
-        run: echo "outperform.business" > dist/CNAME
+        run: |
+          set -a; . ./deploy.env; set +a
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            SITE_URL="https://$CUSTOM_DOMAIN" SITE_BASE="" python3 build.py
+            echo "$CUSTOM_DOMAIN" > dist/CNAME
+          else
+            SITE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io" SITE_BASE="/${GITHUB_REPOSITORY#*/}" python3 build.py
+          fi
+          touch dist/.nojekyll
       - uses: actions/configure-pages@v5
         with:
           enablement: true

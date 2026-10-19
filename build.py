@@ -10,7 +10,8 @@ import json, os, re, shutil, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, ASSETS = os.path.join(ROOT, "src"), os.path.join(ROOT, "assets")
-SITE = "https://outperform.business"
+SITE = os.environ.get("SITE_URL", "https://outperform.business").rstrip("/")
+BASE = os.environ.get("SITE_BASE", "").rstrip("/")  # p. ej. /outperform-site cuando se sirve en GitHub Pages sin dominio propio
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -37,7 +38,7 @@ def layout(meta, body):
         '<a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if meta.get("nav") == key else "", label)
         for key, href, label in NAV) + '<a href="/blog/">Blog</a>'
     scripts = "".join('<script src="/assets/%s" defer></script>' % s for s in meta.get("scripts", []))
-    canonical = SITE + meta["path"]
+    canonical = SITE + BASE + meta["path"]
     robots = '<meta name="robots" content="noindex">' if meta.get("noindex") else ""
     theme = "#F4F3EE"
     return f"""<!doctype html>
@@ -56,7 +57,19 @@ def layout(meta, body):
 <meta property="og:type" content="{meta.get("og_type","website")}">
 <meta property="og:url" content="{canonical}">
 <meta name="theme-color" content="{theme}">
+<meta property="og:site_name" content="Outperform Partners">
+<meta property="og:image" content="{SITE}{BASE}/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Outperform Partners: los clientes están ahí. Google Maps, página web y pedidos por WhatsApp en Bolivia.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{meta["title"]}">
+<meta name="twitter:description" content="{meta["desc"]}">
+<meta name="twitter:image" content="{SITE}{BASE}/assets/og.jpg">
+<link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
 {FONTS}
 <link rel="stylesheet" href="/assets/site.css">
 {meta.get("head","")}
@@ -336,9 +349,16 @@ def build():
         d = os.path.join(ROOT, target)
         shutil.rmtree(d, ignore_errors=True)
         shutil.copytree(ASSETS, os.path.join(d, "assets"))
+        if target == "dist" and BASE:
+            mf = os.path.join(d, "assets", "site.webmanifest")
+            open(mf, "w").write(open(mf).read().replace('"/assets/', f'"{BASE}/assets/').replace('"start_url":"/"', f'"start_url":"{BASE}/"'))
         for meta, body in pages:
             body = re.sub(r"<table(?![^>]*class=\"nowrap\")", '<div class="tscroll"><table', body).replace("</table>", "</table></div>")
             html = layout(meta, body)
+            if target == "dist" and BASE:
+                html = re.sub(r'(href|src|content)="/(?!/)', lambda m: f'{m.group(1)}="{BASE}/', html)
+                html = re.sub(r'url\(/(?!/)', f'url({BASE}/', html)
+                html = html.replace(f'{SITE}{BASE}{BASE}/', f'{SITE}{BASE}/')
             if target == "preview":
                 html = relativize(html, meta["path"])
                 html = html.replace('<a class="wa-float"', '<div class="bgpick" role="group" aria-label="Fondo (solo vista previa)"><span>Fondo</span><button type="button" data-bg="sonar">Sonar</button><button type="button" data-bg="dots">Peces</button><button type="button" data-bg="code">Peces de código</button><button type="button" data-bg="water">Agua</button><button type="button" data-bg="none">Ninguno</button></div>\n<a class="wa-float"', 1)
@@ -348,10 +368,10 @@ def build():
             f = os.path.join(d, out_file(meta["path"]))
             os.makedirs(os.path.dirname(f), exist_ok=True)
             open(f, "w", encoding="utf8").write(html)
-    urls = "".join(f"<url><loc>{SITE}{m['path']}</loc></url>" for m, _ in pages if not m.get("noindex"))
+    urls = "".join(f"<url><loc>{SITE}{BASE}{m['path']}</loc></url>" for m, _ in pages if not m.get("noindex"))
     open(os.path.join(ROOT, "dist", "sitemap.xml"), "w").write(
         f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
-    open(os.path.join(ROOT, "dist", "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
+    open(os.path.join(ROOT, "dist", "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n")
     print("ok:", ", ".join(m["path"] for m, _ in pages))
 
 
