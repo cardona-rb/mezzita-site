@@ -86,6 +86,7 @@
   function renderFlow(){
     var box = $('flowdemo'); if(!box) return; var F = R.flow; if(!F){ box.innerHTML = ''; return; }
     if($('f-title')) $('f-title').textContent = F.title;
+    if($('f-calc')) $('f-calc').href = ROOT + 'calculadora/?rubro=' + key;
     function node(cls, x, y, w, h, t, sub, center){
       var cx = center ? w / 2 : 44, anchor = center ? ' c' : '';
       var dot = center ? '<circle class="pulse big" cx="' + (w / 2) + '" cy="38" r="8"/><circle class="dot" cx="' + (w / 2) + '" cy="38" r="8"/>' : '<circle class="pulse" cx="22" cy="40" r="6"/><circle class="dot" cx="22" cy="40" r="6"/>';

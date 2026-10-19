@@ -1,4 +1,12 @@
-# outperform.business: v9 notes (Oct 19, 2026)
+# outperform.business: v13 notes (Oct 20, 2026)
+
+## v10 to v13 (summary)
+- v10: tinted-glass panels for the client logo band and the partner badges; demo mock sites with premium sections per theme.
+- v11: seven more portfolio sites with real captures (Intiva Health, Robledo, Tevebaugh, Alchemy Peppers, CG Smile, Martin Bionics, City Bouldering); Revolve left out (unreachable, and scope unclear).
+- v12: per-rubro animated client-flow diagram and "Dónde aparece el dinero" strip in the demo (Paso 3); law, dental and wine mock sites redesigned after Protass Law, Tend and Berry Bros & Rudd.
+- v13: `/calculadora/` (loss calculator per rubro, sliders, result in Bs/month, payback days vs the suggested plan, WhatsApp CTA carrying the numbers; all client-side, no data sent), `/empezar/` (what-to-deliver checklist) with `assets/docs/checklist-outperform.pdf`, and `assets/docs/contrato-modelo-outperform.pdf` (4-page model contract mirroring /terminos/ and /garantias/, watermarked MODELO, needs a Bolivian lawyer's review before first signature). Linked from footer, demo, planes, garantías and home.
+- Deploy: GitHub Pages from `cardona-rb/outperform-site`, branch `gh-pages` built by Actions; `deploy.env` switches to the custom domain.
+
 
 ## 0000. v9
 - Portfolio screenshots replaced by the 14 images the live site uses (`/portfolio/*.webp`, 800x500) → `assets/work/*.webp`. Tarija Tech Week, Tarija Wine Tower and the six phone captures keep the Playwright captures (the live site has no image for them).
