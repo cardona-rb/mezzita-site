@@ -361,7 +361,6 @@ def build():
                 html = html.replace(f'{SITE}{BASE}{BASE}/', f'{SITE}{BASE}/')
             if target == "preview":
                 html = relativize(html, meta["path"])
-                html = html.replace('<a class="wa-float"', '<div class="bgpick" role="group" aria-label="Fondo (solo vista previa)"><span>Fondo</span><button type="button" data-bg="sonar">Sonar</button><button type="button" data-bg="dots">Peces</button><button type="button" data-bg="code">Peces de código</button><button type="button" data-bg="water">Agua</button><button type="button" data-bg="none">Ninguno</button></div>\n<a class="wa-float"', 1)
                 if meta["path"] == "/":
                     # la página principal de la vista previa se publica sin esqueleto propio
                     html = re.sub(r'<!doctype html>|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">|<meta name="viewport"[^>]*>', "", html)
