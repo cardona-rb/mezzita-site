@@ -351,7 +351,8 @@ def build():
         shutil.copytree(ASSETS, os.path.join(d, "assets"))
         if target == "dist" and BASE:
             mf = os.path.join(d, "assets", "site.webmanifest")
-            open(mf, "w").write(open(mf).read().replace('"/assets/', f'"{BASE}/assets/').replace('"start_url":"/"', f'"start_url":"{BASE}/"'))
+            txt = open(mf, encoding="utf8").read()
+            open(mf, "w", encoding="utf8").write(txt.replace('"/assets/', f'"{BASE}/assets/').replace('"start_url":"/"', f'"start_url":"{BASE}/"'))
         for meta, body in pages:
             body = re.sub(r"<table(?![^>]*class=\"nowrap\")", '<div class="tscroll"><table', body).replace("</table>", "</table></div>")
             html = layout(meta, body)
