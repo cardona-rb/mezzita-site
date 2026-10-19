@@ -222,7 +222,7 @@ def render_post(meta, body, all_posts):
     cta_html = (f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p>'
                 f'<h2>Esto, hecho para tu negocio, en 7 días hábiles.</h2>'
                 f'<p>Ficha de Google, página web y WhatsApp que vende. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
-                f'<div class="cta-row"><a class="btn btn-light" data-wa="{esc(cta_msg)}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>'
+                f'<div class="cta-row"><a class="btn btn-sun" data-wa="{esc(cta_msg)}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>'
                 f'<a class="link-dark" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a></div></aside>')
     toc = re.findall(r"<h2(?: id=\"([^\"]*)\")?>(.*?)</h2>", body)
     # ids a los h2 para el índice
@@ -290,7 +290,7 @@ def render_rubro_index(rubro, posts):
             f'<nav class="rubro-tabs" aria-label="Rubros">{tabs}</nav></div></section>'
             f'<section class="sec" style="padding-top:1.5rem"><div class="wrap"><div class="pgrid">{"".join(post_card(p) for p in mine)}</div>'
             f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p><h2>Esto, hecho para tu negocio, en 7 días hábiles.</h2></div>'
-            f'<div class="cta-row"><a class="btn btn-light" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a><a class="link-dark" href="/planes/">Ver planes</a></div></aside></div></section>')
+            f'<div class="cta-row"><a class="btn btn-sun" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a><a class="link-dark" href="/planes/">Ver planes</a></div></aside></div></section>')
     meta = {"title": f"Guías para {label.lower()} en Bolivia | Blog Outperform", "desc": f"Guías prácticas para {label.lower()} en Bolivia: Google Maps, página web, WhatsApp, cobros por QR y reseñas. Con datos locales y fuentes.", "path": f"/blog/{rubro}/", "nav": "blog",
             "head": jsonld({"@context": "https://schema.org", "@type": "CollectionPage", "name": f"Guías para {label.lower()} en Bolivia", "url": SITE + f"/blog/{rubro}/", "inLanguage": "es-BO"})}
     return meta, body
