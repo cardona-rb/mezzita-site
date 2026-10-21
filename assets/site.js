@@ -90,3 +90,10 @@
   document.querySelectorAll('[data-year]').forEach(function(n){ n.textContent = new Date().getFullYear(); });
   setupHeader();
 })();
+/* pestañas de los diagramas de flujo */
+document.addEventListener('click', function(e){
+  var t = e.target.closest('[data-flow]'); if(!t) return;
+  var k = t.getAttribute('data-flow'), box = t.closest('.flows-tabs').parentNode;
+  box.querySelectorAll('[data-flow]').forEach(function(b){ b.setAttribute('aria-pressed', b === t ? 'true' : 'false'); });
+  box.querySelectorAll('.fc').forEach(function(f){ if(f.id === 'fc-' + k) f.setAttribute('data-on', ''); else f.removeAttribute('data-on'); });
+});

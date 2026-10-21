@@ -1,10 +1,10 @@
-<!--{"title":"Demo · Pide desde la mesa como lo haría tu cliente","desc":"Escanea el QR de la mesa, arma el pedido y paga con QR como lo haría tu cliente. Al lado, lo que ve el dueño: el pedido entra a cocina pagado y la caja suma sola. Pizzería, heladería, restaurante, bar y café, franquicia.","path":"/demo/","nav":"demo","scripts":["chat.js","demo.js"],"head":"<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;900&family=Sora:wght@500;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Gilda+Display&display=swap\">"}-->
+<!--{"title":"Demo · Pide en el menú web como lo haría tu cliente","desc":"Arma el pedido en el menú web, elige mesa, recojo o delivery y paga con QR como lo haría tu cliente. Al lado, el Panel de pedidos y caja del dueño: el pedido entra pagado y la caja suma sola. Pizzería, heladería, restaurante, bar y café, franquicia.","path":"/demo/","nav":"demo","scripts":["order.js","demo.js"],"head":"<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;900&family=Sora:wght@500;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Gilda+Display&display=swap\">"}-->
 <section class="wrap page-head">
   <div class="sec-head row" style="margin:0;align-items:end">
     <div class="hero-copy" style="max-width:42rem">
       <p class="callout"><span class="pill">Demo en vivo</span> Tú eres el cliente en la mesa 12</p>
-      <h1 style="font-size:var(--step-4)">Pide desde la mesa. Mira cómo llega a cocina.</h1>
-      <p class="lede">Primero ves el menú web del negocio, como lo ve tu cliente al escanear el QR de la mesa o al entrar desde Google. Luego, a la izquierda, armas el pedido dentro del chat y pagas con QR o eliges pagar en caja. A la derecha eres el dueño: el pedido entra a cocina con su mesa, y la caja suma sin revisar capturas.</p>
+      <h1 style="font-size:var(--step-4)">Pide en el menú web. Mira cómo llega a tu caja.</h1>
+      <p class="lede">Primero ves la página del negocio, como la ve tu cliente al escanear el QR de la mesa o al entrar desde Google. Luego, a la izquierda, eres el cliente en su celular: armas el pedido en el menú web, eliges mesa, recojo o delivery, y pagas con QR o al final con el mesero. A la derecha eres el dueño: el pedido entra a tu Panel de pedidos y caja con su mesa o dirección, y la caja suma sin revisar capturas.</p>
     </div>
     <div class="tabs food-tabs" role="group" aria-label="Tipo de negocio de la demo">
       <button type="button" data-rubro="pizzeria" aria-pressed="true"><i class="fi" aria-hidden="true">{{icon:pizza}}</i>Pizzería</button>
@@ -18,7 +18,7 @@
 
 <section class="wrap" style="padding-bottom:0">
   <div class="demoweb">
-    <p class="step"><span class="pill" style="margin-right:.5rem">Paso 1</span> Tu cliente escanea el QR de la mesa, o llega a tu menú web desde Google o Instagram</p>
+    <p class="step"><span class="pill" style="margin-right:.5rem">Paso 1</span> Tu cliente escanea el QR de la mesa, o llega a tu página desde Google o Instagram</p>
     <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span id="m-url">pizzerialaesquina.bo</span></div>
       <div class="mocksite" id="mocksite"></div>
     </div>
@@ -26,20 +26,16 @@
 </section>
 
 <section class="wrap" style="padding-bottom:clamp(3rem,6vw,5rem)">
-  <p class="step demoweb-step"><span class="pill" style="margin-right:.5rem">Paso 2</span> Toca «Estoy en una mesa» o «Pedir por WhatsApp» y el pedido se arma aquí</p>
+  <p class="step demoweb-step"><span class="pill" style="margin-right:.5rem">Paso 2</span> Toca «Estoy en una mesa» o «Pedir para llevar o delivery» y el menú se abre en su celular</p>
   <div class="demo-stage">
     <div class="demo-side">
-      <p class="side-label">Tu cliente · mesa 12</p>
+      <p class="side-label">Tu cliente · en su celular</p>
       <div class="phone" data-mode="live">
-        <div class="screen">
-          <div class="chat-hd"><span class="av" id="d-av">LE</span><div><b id="d-name">Pizzería La Esquina</b><small>responde al instante</small></div></div>
-          <div class="chat" id="d-chat"><span class="day">Hoy</span></div>
-          <div class="chat-in"><span>Escribe un mensaje</span><i aria-hidden="true"></i></div>
-        </div>
+        <div class="screen"></div>
       </div>
     </div>
     <div class="demo-side owner">
-      <p class="side-label">Tú, el dueño · cocina y caja</p>
+      <p class="side-label">Tú, el dueño · Panel de pedidos y caja</p>
       <div class="owner-panel glass-dark">
         <div class="owner-hd"><div><b id="o-biz">Pizzería La Esquina</b><small id="o-desc"></small></div><span class="live-dot" aria-label="En vivo"></span></div>
         <div class="owner-kpis">
@@ -55,13 +51,13 @@
         </div>
         <div class="owner-live" id="o-live"><p class="o-empty">Cuando tu cliente pague, el pedido aparece aquí con su mesa o su dirección. Sin preguntar, sin revisar comprobantes.</p></div>
         <div class="owner-controls">
-          <div class="field"><label for="d-deliv" id="d-deliv-label">¿Dónde está tu cliente y cómo paga?</label><select id="d-deliv"></select></div>
+          <div class="field"><label for="d-deliv" id="d-deliv-label">¿Dónde está tu cliente y cómo paga? (también lo elige él en su celular)</label><select id="d-deliv"></select></div>
           <div class="cta-row">
             <button type="button" class="btn btn-sun" id="d-pay">Cobrar con QR</button>
-            <a class="btn btn-ghost-dark" id="d-send" href="https://wa.me/59171868545" target="_blank" rel="noopener">Mandarlo a WhatsApp de verdad</a>
+            <a class="btn btn-ghost-dark" id="d-send" href="https://wa.me/59171868545" target="_blank" rel="noopener">Mandarnos este pedido de prueba</a>
             <button type="button" class="link-dark" id="d-reset">Empezar de nuevo</button>
           </div>
-          <p class="friction" style="color:var(--on-night-2)">Es una demo: no se cobra nada. En tu local el pago entra de verdad por QR bancario con CUCU, y lo que se paga en efectivo no lleva comisión.</p>
+          <p class="friction" style="color:var(--on-night-2)">Es una demo: no se cobra nada. En tu local el pago entra de verdad por QR bancario con CUCU; lo que el mesero cobra en efectivo o con tu propio QR no lleva comisión ni devolución. Los avisos por WhatsApp al cliente van en el plan Con avisos.</p>
         </div>
       </div>
     </div>
@@ -74,15 +70,16 @@
     <div class="sec-head row" style="margin-bottom:1.2rem"><div><p class="eyebrow" id="f-eyebrow">El camino del cliente</p><h2 id="f-title" style="font-size:var(--step-3)">De «¿qué pedimos?» a «ya está en el horno», sin mesero y sin app.</h2></div></div>
     <div id="flowdemo"></div>
     <div class="money" id="f-money"></div>
+    <div style="margin:2rem 0 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12)"><p class="eyebrow">Paso a paso, con decisiones</p>{{include:flows}}</div>
     <div class="cta-row" style="margin-top:1.4rem"><a class="btn btn-sun" id="f-calc" href="/calculadora/?rubro=pizzeria">Calcula cuánto cuesta y cuánto te devuelve</a><a class="link-dark" href="/empezar/">Qué necesitas entregar</a></div>
   </div>
 </section>
 
 <section class="sec night"><div class="wrap split">
-  <div class="sec-head" style="margin:0"><p class="eyebrow">¿Te gustó?</p><h2>Esto, con tu carta y tus mesas, en 7 días hábiles.</h2></div>
+  <div class="sec-head" style="margin:0"><p class="eyebrow">¿Te gustó?</p><h2>Esto, con tu carta, tu dominio y tus mesas, en 7 días hábiles.</h2></div>
   <div style="display:grid;gap:1rem">
-    <p class="lede">Nos mandas tu carta y tus fotos por WhatsApp. Te devolvemos tu menú web, el QR de cada mesa listo para imprimir y la cocina conectada. Instalación de 2.900 Bs (2.000 Bs para los primeros 50 locales), 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Nada sobre el efectivo.</p>
-    <div class="cta-row"><a class="btn btn-primary btn-lg btn-pulse" data-wa="Hola, probé la demo y quiero el QR en mis mesas. Mi local: ___ Ciudad: ___ Cantidad de mesas: ___" href="https://wa.me/59171868545">Quiero el QR en mis mesas</a><a class="link" href="/planes/">Ver la oferta completa</a></div>
+    <p class="lede">Nos mandas tu carta y tus fotos. Te devolvemos tu menú web, el QR de cada mesa listo para imprimir y tu Panel de pedidos y caja activo. Instalación de 2.900 Bs (2.000 Bs para los primeros 50 locales), 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Nada sobre el efectivo.</p>
+    <div class="cta-row"><a class="btn btn-primary btn-lg btn-pulse" data-wa="Hola, probé la demo y quiero mi menú web con QR en las mesas. Mi local: ___ Ciudad: ___ Mesas: ___" href="https://wa.me/59171868545">Quiero mi menú web con QR</a><a class="link" href="/planes/">Ver la oferta completa</a></div>
 <p class="cta-sub"><span class="ok">✓</span>Te responde una persona · Sin compromiso · Pagas con QR</p>
   </div>
 </div></section>
