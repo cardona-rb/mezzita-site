@@ -18,12 +18,14 @@
     }
     return '<div class="qr" aria-hidden="true">' + cells + '</div>';
   }
+  var ROOT = (function(){ var l = document.querySelector('link[href$="site.css"]'); return l ? l.getAttribute('href').replace(/assets\/site\.css$/, '') : '/'; })();
+  function asset(u){ return u ? ROOT + String(u).replace(/^\//, '') : ''; }
   function now(){ var d = new Date(); return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(); }
 
   /* Order(el, opts): el = .phone .screen; opts = {R, mode:'live'|'auto', onChange(state), onPaid(order)} */
   function Order(screen, opts){
     this.el = screen; this.o = opts || {}; this.R = this.o.R; this.mode = this.o.mode || 'live';
-    this.cart = {}; this.view = 'menu'; this.cat = null; this.canal = 0; this.id = String(Date.now()).slice(-6); this.wa = false; this.timers = [];
+    this.cart = {}; this.view = (this.R.web && this.R.web.ph) ? 'land' : 'menu'; this.cat = null; this.canal = 0; this.id = String(Date.now()).slice(-6); this.wa = false; this.timers = [];
     var self = this;
     screen.addEventListener('click', function(e){ if(self.mode !== 'live') return; var t = e.target.closest('[data-a]'); if(!t) return; self.action(t.getAttribute('data-a'), t); });
     screen.addEventListener('change', function(e){ if(e.target.matches('[data-canal]')){ self.canal = +e.target.value; self.render(); if(self.o.onChange) self.o.onChange(self.state()); } if(e.target.matches('[data-wa-opt]')){ self.wa = e.target.checked; } });
@@ -41,7 +43,7 @@
     this.render(); if(this.o.onChange) this.o.onChange(this.state());
   };
   Order.prototype.remove = function(k){ if(this.cart[k]){ this.cart[k].q--; if(this.cart[k].q <= 0) delete this.cart[k]; } this.render(); if(this.o.onChange) this.o.onChange(this.state()); };
-  Order.prototype.reset = function(R){ if(R) this.R = R; this.cart = {}; this.view = 'menu'; this.cat = null; this.canal = 0; this.id = String(Date.now()).slice(-6); this.wa = false; this.timers.forEach(clearTimeout); this.timers = []; this.render(); };
+  Order.prototype.reset = function(R){ if(R) this.R = R; this.cart = {}; this.view = (this.R.web && this.R.web.ph) ? 'land' : 'menu'; this.cat = null; this.canal = 0; this.id = String(Date.now()).slice(-6); this.wa = false; this.timers.forEach(clearTimeout); this.timers = []; this.render(); };
   Order.prototype.action = function(a, t){
     var self = this;
     if(a === 'cat'){ this.cat = t.getAttribute('data-cat'); this.render(); }
@@ -51,6 +53,7 @@
     else if(a === 'rm'){ this.remove(t.getAttribute('data-k')); }
     else if(a === 'pay'){ this.pay(); }
     else if(a === 'again'){ this.reset(); }
+    else if(a === 'start'){ this.view = 'menu'; this.render(); }
   };
   Order.prototype.pay = function(){
     var self = this; if(!this.lines().length) return;
@@ -65,13 +68,18 @@
     var R = this.R, W = R.web || {}, d = this.deliv(), self = this;
     var mesa = !!d.mesa, cash = !!d.cash;
     var hd = '<div class="ws-hd"><div class="ws-url"><i></i>' + esc(W.url || 'tumenu.bo') + '</div><div class="ws-brand"><b>' + esc(R.nombre) + '</b><span class="ws-chip' + (mesa ? ' mesa' : '') + '">' + (mesa ? 'Mesa 12' : esc(d.n.split(' ·')[0])) + '</span></div></div>';
-    var body = '';
-    if(this.view === 'menu'){
+    var body = '', P = W.ph || [];
+    if(this.view === 'land'){
+      var feat = R.CAT.filter(function(i){ return i.s !== 0; }).slice(0, 3);
+      body += '<div class="ws-land"><div class="ws-lh" style="--img:url(' + asset(P[0]) + ')"><div class="ws-lph"></div><small>' + esc(W.eyebrow || '') + '</small><h3>' + esc(W.tag || R.nombre) + '</h3><button type="button" class="ws-go" data-a="start">' + (mesa ? 'Pedir desde la mesa 12' : 'Ver el menú y pedir') + ' →</button></div>' +
+        '<div class="ws-lf"><b>' + esc(W.itemsTitle || 'Lo más pedido') + '</b><div class="ws-lgrid">' + feat.map(function(i, k){ return '<div class="ws-lcard" data-a="start"><span class="ws-lph2" style="background-image:url(' + asset(P[k + 1] || P[0]) + ')"></span><b>' + esc(i.n) + '</b><em>' + fmt(i.po || i.p) + '</em></div>'; }).join('') + '</div></div>' +
+        '<div class="ws-lbadge">' + esc(W.badge || '') + '</div></div>';
+    } else if(this.view === 'menu'){
       var cats = this.cats(), cur = this.cat || cats[0];
       var items = R.CAT.filter(function(i){ return i.c === cur; });
       body += '<div class="ws-cats">' + cats.map(function(c){ return '<button type="button" data-a="cat" data-cat="' + esc(c) + '" aria-pressed="' + (c === cur) + '">' + esc(c) + '</button>'; }).join('') + '</div>';
       body += '<div class="ws-list">' + items.map(function(i, k){
-        return '<div class="ws-item' + (i.s === 0 ? ' out' : '') + '"><div class="ws-ph" style="--tint:' + TINTS[k % TINTS.length] + '"></div><div class="ws-it"><b>' + esc(i.n) + '</b>' + (i.d ? '<small>' + esc(i.d) + '</small>' : '') +
+        return '<div class="ws-item' + (i.s === 0 ? ' out' : '') + '"><div class="ws-ph" style="--tint:' + TINTS[k % TINTS.length] + (P.length ? ';background-image:url(' + asset(P[(k % (P.length - 1)) + 1]) + ')' : '') + '"></div><div class="ws-it"><b>' + esc(i.n) + '</b>' + (i.d ? '<small>' + esc(i.d) + '</small>' : '') +
           (i.v ? '<select aria-label="Opción">' + i.v.map(function(x){ return '<option>' + esc(x) + '</option>'; }).join('') + '</select>' : '') +
           '<span class="ws-pr">' + fmt(i.po || i.p) + (i.po ? ' <s>' + fmt(i.p) + '</s>' : '') + '</span></div><button type="button" class="ws-add" data-a="add" data-sku="' + esc(i.sku) + '"' + (i.s === 0 ? ' disabled' : '') + ' aria-label="Agregar">' + (i.s === 0 ? '×' : '+') + '</button></div>';
       }).join('') + '</div>';
@@ -98,27 +106,28 @@
         '<div class="ws-review">¿Qué tal estuvo? <b>Deja tu reseña en Google ★</b></div>' +
         (this.mode === 'live' ? '<button type="button" class="ws-back" data-a="again">Pedir otra cosa</button>' : '') + '</div>';
     }
-    this.el.innerHTML = '<div class="ws">' + hd + body + '</div>';
+    this.el.innerHTML = '<div class="ws th-' + (W.theme || 'plain') + (this.view === 'land' ? ' landing' : '') + '">' + (this.view === 'land' ? '<div class="ws-hd slim"><div class="ws-url"><i></i>' + esc(W.url || '') + '</div></div>' : hd) + body + '</div>';
   };
 
   window.OPOrder = {Order: Order, qrHTML: qrHTML, fmt: fmt, esc: esc, now: now};
 
   /* Inicio: reproducción automática en bucle */
   document.querySelectorAll('.phone[data-mode="auto"] .screen').forEach(function(screen){
-    var R = {nombre: 'Pizzería La Esquina', cierre: 'Ya está en cocina. Sale en 15 minutos a la mesa 12.', web: {url: 'pizzerialaesquina.bo'},
+    var R = {nombre: 'Pizzería La Esquina', cierre: 'Ya está en cocina. Sale en 15 minutos a la mesa 12.', web: {url: 'pizzerialaesquina.bo', theme: 'pizza', eyebrow: 'Horno de leña desde 2014', tag: 'La mejor pizza de Santa Cruz, en tu mesa.', itemsTitle: 'Lo más pedido', badge: '4,9 ★ · 212 reseñas en Google', ph: ['/assets/demo/pizza-hero.webp', '/assets/demo/pizza-1.webp', '/assets/demo/pizza-2.webp', '/assets/demo/pizza-3.webp', '/assets/demo/pizza-4.webp']},
       delivery: [{n: 'Mesa 12 · pago con QR ahora', c: 0, mesa: true}, {n: 'Mesa 12 · pago en caja', c: 0, mesa: true, cash: true}, {n: 'Delivery Equipetrol', c: 5}],
       CAT: [{sku: 'PZ-002', n: 'Pizza Tarijeña', d: 'Jamón serrano, queso, aceitunas', c: 'Pizzas', p: 72, po: 65, v: ['Mediana', 'Familiar'], s: 30}, {sku: 'PZ-001', n: 'Pizza Margarita', d: 'Mozzarella, tomate, albahaca', c: 'Pizzas', p: 55, s: 30}, {sku: 'BE-001', n: 'Limonada 1 L', d: 'Con hierbabuena', c: 'Bebidas', p: 25, s: 40}, {sku: 'PO-001', n: 'Tiramisú', d: '', c: 'Postres', p: 22, s: 15}]};
     var ord = new Order(screen, {R: R, mode: 'auto'});
     if(reduce){ ord.add('PZ-002', 'Familiar'); ord.add('BE-001'); ord.add('BE-001'); ord.view = 'done'; ord.render(); return; }
     var steps = [
       function(){ ord.reset(); },
+      function(){ ord.view = 'menu'; ord.render(); },
       function(){ ord.add('PZ-002', 'Familiar'); },
       function(){ ord.add('BE-001'); },
       function(){ ord.add('BE-001'); },
       function(){ ord.view = 'cart'; ord.render(); },
       function(){ ord.view = 'pay'; ord.render(); },
       function(){ ord.view = 'done'; ord.render(); }
-    ], waits = [1400, 1100, 900, 1300, 2600, 2600, 5200];
+    ], waits = [3200, 1400, 1100, 900, 1300, 2600, 2600, 5200];
     var i = 0, timer, started = false;
     function next(){ steps[i](); timer = setTimeout(next, waits[i]); i = (i + 1) % steps.length; }
     function start(){ if(started) return; started = true; timer = setTimeout(next, 500); }

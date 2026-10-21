@@ -72,7 +72,7 @@
   function fromWeb(mesa){
     var stage = document.querySelector('.demo-stage');
     if(stage) stage.scrollIntoView({behavior: 'smooth', block: 'start'});
-    ord.reset(); ord.canal = mesa ? 0 : Math.min(2, R.delivery.length - 1); ord.render(); syncCanal();
+    ord.reset(); ord.canal = mesa ? 0 : Math.min(2, R.delivery.length - 1); ord.view = 'menu'; ord.render(); syncCanal();
     if(phoneEl){ phoneEl.classList.remove('nudge'); void phoneEl.offsetWidth; phoneEl.classList.add('nudge'); }
   }
   function renderFlow(){
