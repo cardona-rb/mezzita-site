@@ -124,10 +124,18 @@ def include(html):
 
 BLOG = os.path.join(SRC, "blog")
 RUBROS = {
-    "restaurantes": ("Restaurantes, bares y cafés", "restaurante", "Pedidos en mesa y delivery, cobrados por QR", "/demo/?rubro=restaurante"),
+    "restaurantes": ("Restaurantes", "restaurante", "Pedidos en mesa y delivery, cobrados por QR", "/demo/?rubro=restaurante"),
+    "pizzerias": ("Pizzerías", "pizzeria", "Pedidos de noche sin app y sin comisión", "/demo/?rubro=pizzeria"),
+    "heladerias": ("Heladerías", "heladeria", "Cola corta y pedidos para recoger pagados", "/demo/?rubro=heladeria"),
+    "bares": ("Bares y cafés", "bar", "Rondas desde la mesa, cuentas que no se escapan", "/demo/?rubro=bar"),
+    "franquicias": ("Franquicias y sucursales", "franquicia", "Un menú, una caja, todas las sucursales", "/demo/?rubro=franquicia"),
     "general": ("Para todo negocio de comida", "", "Tu ficha de Google, revisada gratis", "/diagnostico/"),
 }
 RUBRO_ICON = {
+    "pizzerias": '<path d="M12 3l9 16H3z"/><path d="M5.6 15.5c4-2.4 8.8-2.4 12.8 0"/><circle cx="12" cy="10" r="1.2"/><circle cx="9.5" cy="14" r="1.2"/><circle cx="14.5" cy="14" r="1.2"/>',
+    "heladerias": '<path d="M7.5 10a4.5 4.5 0 1 1 9 0"/><path d="M6.5 10h11l-5.5 11z"/><path d="M9 13l3 6M15 13l-3 6"/>',
+    "bares": '<path d="M8 3h8l-1 7a3 3 0 0 1-6 0z"/><path d="M12 13v7M8 21h8"/><path d="M8.3 6h7.4"/>',
+    "franquicias": '<path d="M3 21h18"/><path d="M4 21V9l4-4h8l4 4v12"/><path d="M9 21v-5h6v5"/><path d="M8 12h2M14 12h2"/>',
     "restaurantes": '<path d="M7 3v8a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3M9 3v18"/><path d="M17 3c-2 2-2 6-2 8h4V3z"/><path d="M17 11v10"/>',
     "general": '<path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/>',
 }

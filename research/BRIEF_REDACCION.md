@@ -15,7 +15,7 @@ Un archivo HTML en `src/blog/<rubro>/<slug>.html`. El sistema de build agrega so
 - `desc` 140 a 160 caracteres.
 - `date`: usa la fecha que te asignen para cada post (escalonadas).
 - `faq`: 3 a 5 preguntas reales (las que Google muestra como "Otras preguntas"). Van también al JSON-LD FAQPage, así que deben ser respuestas completas y veraces.
-- `sources`: 3 a 6 URLs REALES tomadas del archivo de investigación de tu rubro. No inventes URLs. Si una cifra está marcada UNVERIFIED/VERIFICAR en la investigación, NO la uses como número: escribe "según estimaciones del sector" o pide el dato al lector, sin cifra.
+- `sources`: 3 a 6 URLs REALES. Tómalas de `research/restaurantes.md` o encuéntralas con WebSearch (BCB, INE, ASFI, SIN/SIAT, prensa boliviana como El Deber, Los Tiempos, La Razón, Opinión, EJU, Unitel, Red Uno; estudios de Statista, Rappi/PedidosYa solo si la URL es real y la viste en un resultado de búsqueda). No inventes URLs ni cifras. Si una cifra está marcada UNVERIFIED/VERIFICAR en la investigación, NO la uses como número: escribe "según estimaciones del sector" o pide el dato al lector, sin cifra.
 
 ## Cuerpo (prosa HTML)
 - 1.100 a 1.600 palabras. Español neutro (nada de "vos", "laburo", "plata" en sentido argentino; se dice "dinero", "trabajo", "celular", "negocio").
@@ -27,12 +27,12 @@ Un archivo HTML en `src/blog/<rubro>/<slug>.html`. El sistema de build agrega so
 - Una `<p class="nota">` cuando el tema sea legal o tributario: "Esto es una guía práctica, no asesoría legal/contable. Confírmalo con tu abogado/contador."
 - Enlaces internos obligatorios, integrados en frases naturales (no "haz clic aquí"):
   - 1 a `/diagnostico/` (la radiografía gratis de la ficha de Google),
-  - 1 a la demo del rubro (`/demo/?rubro=hotel|clinica|estudio|restaurante|vinoteca`),
+  - 1 a la demo del rubro (`/demo/?rubro=pizzeria|heladeria|restaurante|bar|franquicia`),
   - 1 a `/planes/`,
   - 2 a otros posts del mismo rubro usando la ruta `/blog/<rubro>/<slug>/` con los slugs del plan de investigación (escribe el enlace aunque ese post lo escriba otro redactor).
 - Enlaces externos solo a las fuentes (van en `sources`, y puedes repetir 1 o 2 en el cuerpo con `rel="noopener nofollow"`).
 - PROHIBIDO escribir un `#` suelto en el texto (Obsidian/Markdown lo lee como etiqueta). Si necesitas "número", escribe "número" o "N.º". El build falla si lo encuentra.
-- No menciones precios de Outperform salvo "desde 1.300 Bs de instalación" si viene al caso. No prometas posiciones en Google.
+- Outperform vende UN producto: «Pedidos con QR»: menú web con un QR por mesa, pedidos en mesa, delivery y recojo, cobro por QR bancario (CUCU), comandas a la cocina por WhatsApp, ficha de Google y placa de reseñas. Precio: 400 Bs al mes y 5 % solo sobre lo cobrado por QR (0 % en efectivo); instalación 2.900 Bs (2.000 Bs de lanzamiento). Menciónalo como máximo una vez por post, en una frase, y solo si viene al caso. No prometas posiciones en Google.
 - Específico de Bolivia en cada sección: ciudades, moneda (Bs), QR bancario, SIAT/SIN, bloqueos, turistas, etc. Si un dato es de otro país, dilo ("en México, según…").
 - Cierra con un H2 de conclusión corto ("Qué hacer esta semana" o similar) con 3 a 5 pasos accionables. No pongas CTA de venta al final: el sistema lo agrega.
 
@@ -40,7 +40,7 @@ Un archivo HTML en `src/blog/<rubro>/<slug>.html`. El sistema de build agrega so
 Que un dueño de negocio en Santa Cruz lo lea y piense "esto lo escribió alguien que conoce Bolivia". Mejor un dato real con fuente que tres adjetivos. Si la investigación no trae un dato, no lo inventes.
 
 ## Nombres de archivo
-`src/blog/<rubro>/<slug>.html` con el slug exacto del plan (ascii, guiones). Rubros válidos: `hoteles`, `clinicas`, `estudios`, `restaurantes`, `vinotecas`.
+`src/blog/<rubro>/<slug>.html` con el slug exacto del plan (ascii, guiones). Rubros válidos: `restaurantes`, `pizzerias`, `heladerias`, `bares`, `franquicias`, `general`. Para enlaces internos a otros posts puedes usar también los 15 posts existentes en `/blog/restaurantes/` (mira `ls src/blog/restaurantes`).
 
 ## Al terminar
 Ejecuta `cd /home/user/outperform-site && python3 build.py` y corrige cualquier error que señale (JSON inválido, `#` suelto). Reporta: lista de slugs escritos, palabras por post, y qué datos quedaron fuera por no estar verificados.

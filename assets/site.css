@@ -1315,3 +1315,5 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 .ms-band.franq{background:#DA291C}.ms-band.franq small{color:#FFC72C}.ms-band.franq h4{font-weight:900;text-transform:uppercase}
 @media (max-width:720px){.ms-helado .ms-hero,.ms-franq .ms-hero{grid-template-columns:1fr}.ms-helado .ms-hero-img{border-radius:0;margin:0;min-height:10rem;order:-1}.ms-franq .ms-hero-img{clip-path:none}.ms-menu-grid,.ms-hours-grid{grid-template-columns:1fr 1fr}.ms-stores-grid{grid-template-columns:1fr 1fr}.offer{grid-template-columns:1fr}.qrkit{grid-template-columns:1fr}}
 .seal2.alt .big{font-size:22px}.seal2.alt .inner{fill:var(--sun)}
+.cover.r-pizzerias{background:var(--blue);color:#fff}.cover.r-heladerias{background:#FFD6E0;color:var(--ink)}.cover.r-bares{background:var(--ink);color:var(--sun)}.cover.r-franquicias{background:var(--sun);color:var(--ink)}.cover.r-restaurantes{background:#8A3B1E;color:#fff}.cover.r-general{background:var(--surface);color:var(--blue)}
+.hubs{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
