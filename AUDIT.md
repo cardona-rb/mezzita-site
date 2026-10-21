@@ -8,3 +8,4 @@
 - PDFs regenerados (checklist, contrato modelo). OG e iconos regenerados en rojo.
 - Verificación Playwright: 31 URLs × 2 viewports sin errores de consola, sin desbordes, sin imágenes rotas.
 - Pendiente de confirmar: comisión propia de CUCU (se declara «aparte» en planes y contrato).
+- Blog ampliado a 76 guías: restaurantes 15, pizzerías 15, heladerías 15, bares y cafés 15, franquicias 15, general 1. Plan en research/PLAN_BLOGS_COMIDA.md. Verificación Playwright: 95 URLs × 2 viewports sin problemas.
