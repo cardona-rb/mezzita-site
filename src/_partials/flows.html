@@ -2,71 +2,49 @@
   <button type="button" data-flow="mesa" aria-pressed="true"><i class="fi" aria-hidden="true">{{icon:mesa}}</i>En la mesa</button>
   <button type="button" data-flow="delivery" aria-pressed="false"><i class="fi" aria-hidden="true">{{icon:moto}}</i>Para llevar y delivery</button>
 </div>
-<div class="fc" id="fc-mesa" data-on>
-  <div class="fc-step you">El cliente te encuentra en Google o Google Maps<small>o ya te conoce y entra al local</small></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step you">Se sienta y escanea el QR de la mesa</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-step sys">El QR identifica la mesa y abre tu menú web<small>sin instalar nada, en 2 segundos</small></div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>¿Cómo pide?</span></div>
-  <div class="fc-branch">
-    <div data-l="Desde el menú"><div class="fc-step you">Arma su pedido con variantes y notas, y lo envía</div></div>
-    <div data-l="Con ayuda"><div class="fc-step">Toca «Llamar al mesero» y el mesero carga el pedido</div></div>
-  </div>
-  <div class="fc-join"></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step sys">El pedido entra al Panel de pedidos y caja, asociado a la mesa<small>cocina lo ve al instante, con las notas del cliente</small></div>
-  <div class="fc-arrow"></div>
-  <div class="fc-step">Cocina prepara · el plato llega a la mesa</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>¿Cómo paga?</span></div>
-  <div class="fc-branch">
-    <div data-l="QR al pedir o al final"><div class="fc-step sys">Paga desde su celular con QR bancario<small>5 % de comisión, la mitad vuelve a ti</small></div></div>
-    <div data-l="Con el mesero"><div class="fc-step">Pide la cuenta y paga en efectivo o con el QR de tu local<small>0 % de comisión</small></div></div>
-  </div>
-  <div class="fc-join"></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step sys">El panel marca el pedido como pagado y cierra la mesa</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-step">Le pedimos su opinión y le damos el enlace directo a tu reseña de Google</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>¿Autoriza recibir ofertas?</span></div>
-  <div class="fc-branch">
-    <div data-l="Sí"><div class="fc-step sys">Queda en tu base de clientes<small>promociones por WhatsApp, solo con permiso</small><span class="fc-wa">↺ vuelve con la próxima promo</span></div></div>
-    <div data-l="No"><div class="fc-end">Fin de la visita, sin mensajes comerciales</div></div>
-  </div>
-</div>
-<div class="fc" id="fc-delivery">
-  <div class="fc-step you">El cliente te encuentra en Google, Instagram o por tu QR<small>y entra a tu menú web</small></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step you">Elige productos, variantes y notas, y arma su carrito</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>¿Recoger o delivery?</span></div>
-  <div class="fc-branch">
-    <div data-l="Recoger"><div class="fc-step you">Elige recojo en el local y deja su nombre</div></div>
-    <div data-l="Delivery"><div class="fc-step you">Indica su dirección; el menú suma el envío de su zona</div></div>
-  </div>
-  <div class="fc-join"></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step sys">Revisa el pedido y paga con QR bancario en el navegador<small>si el pago falla, puede reintentar; nada entra a cocina sin pagar</small></div>
-  <div class="fc-arrow"></div>
-  <div class="fc-step sys">El pedido entra pagado al Panel de pedidos y caja<small>con dirección o nombre, hora y notas</small></div>
-  <div class="fc-arrow"></div>
-  <div class="fc-step">Cocina prepara · el panel marca «en preparación» y «listo»<span class="fc-wa">WhatsApp: aviso de estado, solo si el cliente lo autorizó</span></div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>Modalidad elegida</span></div>
-  <div class="fc-branch">
-    <div data-l="Recoger"><div class="fc-step">Pedido listo · el cliente lo recoge sin fila</div></div>
-    <div data-l="Delivery"><div class="fc-step">Tu repartidor sale · el cliente recibe en su puerta</div></div>
-  </div>
-  <div class="fc-join"></div>
-  <div class="fc-arrow mover"></div>
-  <div class="fc-step">Le pedimos su opinión y le damos el enlace directo a tu reseña de Google</div>
-  <div class="fc-arrow"></div>
-  <div class="fc-dec"><span>¿Autoriza recibir ofertas?</span></div>
-  <div class="fc-branch">
-    <div data-l="Sí"><div class="fc-step sys">Queda en tu base de clientes<small>promociones por WhatsApp, solo con permiso</small><span class="fc-wa">↺ vuelve a pedir desde la promo</span></div></div>
-    <div data-l="No"><div class="fc-end">Fin del pedido, sin mensajes comerciales</div></div>
-  </div>
-</div>
+<div class="fl-legend" aria-hidden="true"><span class="who cliente">Tu cliente</span><span class="who sys">El sistema</span><span class="who local">Tu local</span><span class="who wa">WhatsApp, solo con permiso</span></div>
+
+<ol class="fl fc" id="fc-mesa" data-on>
+  <li class="fl-step" data-who="cliente"><span class="fl-n">1</span><div><span class="who cliente">Tu cliente</span><b>Te encuentra en Google Maps o ya te conoce, entra y se sienta</b></div></li>
+  <li class="fl-step" data-who="cliente"><span class="fl-n">2</span><div><span class="who cliente">Tu cliente</span><b>Escanea el QR de la mesa</b><small>Sin instalar nada. El QR ya sabe que es la mesa 12.</small></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">3</span><div><span class="who sys">El sistema</span><b>Abre tu menú web con fotos, variantes y promos</b><small>En 2 segundos, en cualquier celular.</small></div></li>
+  <li class="fl-dec"><span class="fl-n">4</span><div><b>¿Cómo pide?</b><div class="fl-opts">
+    <div><span class="who cliente">Desde el menú</span><p>Arma el pedido con variantes y notas («sin cebolla») y lo envía.</p></div>
+    <div><span class="who local">Con ayuda</span><p>Toca «Llamar al mesero» y el mesero carga el pedido por él.</p></div>
+  </div></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">5</span><div><span class="who sys">El sistema</span><b>El pedido entra al Panel de pedidos y caja, asociado a la mesa 12</b><small>Cocina lo ve al instante, con las notas. Marca «en preparación» y «listo».</small></div></li>
+  <li class="fl-step" data-who="local"><span class="fl-n">6</span><div><span class="who local">Tu local</span><b>Cocina prepara y el plato llega a la mesa</b></div></li>
+  <li class="fl-dec"><span class="fl-n">7</span><div><b>¿Cómo paga?</b><div class="fl-opts">
+    <div class="hi"><span class="who sys">QR, al pedir o al final</span><p>Paga desde su celular con QR bancario. Entra conciliado.</p><em>5 % de comisión · la mitad vuelve a ti</em></div>
+    <div><span class="who local">Con el mesero</span><p>Pide la cuenta y paga en efectivo o con el QR de tu propio banco.</p><em>0 % de comisión</em></div>
+  </div></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">8</span><div><span class="who sys">El sistema</span><b>Marca el pedido como pagado y cierra la mesa</b><small>El cierre del día ya está hecho, por forma de pago.</small></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">9</span><div><span class="who sys">El sistema</span><b>Le pide su opinión y le da el enlace directo a tu reseña de Google</b></div></li>
+  <li class="fl-dec"><span class="fl-n">10</span><div><b>¿Autoriza recibir ofertas?</b><div class="fl-opts">
+    <div class="hi"><span class="who wa">Sí</span><p>Queda en tu base de clientes. Recibe tus promociones por WhatsApp y vuelve con la próxima.</p><em>Plan Con avisos</em></div>
+    <div><span class="who end">No</span><p>Fin de la visita. Sin mensajes comerciales, nunca.</p></div>
+  </div></div></li>
+  <li class="fl-loop"><span>↺</span> El que dijo que sí vuelve directo a tu menú con la siguiente promo</li>
+</ol>
+
+<ol class="fl fc" id="fc-delivery">
+  <li class="fl-step" data-who="cliente"><span class="fl-n">1</span><div><span class="who cliente">Tu cliente</span><b>Te encuentra en Google, Instagram o por tu QR, y entra a tu menú web</b></div></li>
+  <li class="fl-step" data-who="cliente"><span class="fl-n">2</span><div><span class="who cliente">Tu cliente</span><b>Elige productos, variantes y notas, y arma su carrito</b></div></li>
+  <li class="fl-dec"><span class="fl-n">3</span><div><b>¿Recoger o delivery?</b><div class="fl-opts">
+    <div><span class="who cliente">Recoger</span><p>Elige recojo en el local y deja su nombre.</p></div>
+    <div><span class="who cliente">Delivery</span><p>Indica su dirección. El menú suma el envío de su zona.</p></div>
+  </div></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">4</span><div><span class="who sys">El sistema</span><b>Revisa el pedido y paga con QR bancario en el navegador</b><small>Si el pago falla, reintenta. Nada entra a cocina sin pagar.</small></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">5</span><div><span class="who sys">El sistema</span><b>El pedido entra pagado al Panel de pedidos y caja</b><small>Con nombre o dirección, hora, notas y forma de pago.</small></div></li>
+  <li class="fl-step" data-who="local"><span class="fl-n">6</span><div><span class="who local">Tu local</span><b>Cocina prepara y marca «en preparación» y «listo»</b><small class="wa-line"><span class="who wa">WhatsApp</span> El cliente recibe el aviso de estado, solo si lo autorizó.</small></div></li>
+  <li class="fl-dec"><span class="fl-n">7</span><div><b>Según lo que eligió</b><div class="fl-opts">
+    <div><span class="who cliente">Recoger</span><p>Pedido listo. El cliente lo recoge sin fila, con su nombre.</p></div>
+    <div><span class="who local">Delivery</span><p>Tu repartidor sale. El cliente lo recibe en su puerta.</p></div>
+  </div></div></li>
+  <li class="fl-step" data-who="sys"><span class="fl-n">8</span><div><span class="who sys">El sistema</span><b>Le pide su opinión y le da el enlace directo a tu reseña de Google</b></div></li>
+  <li class="fl-dec"><span class="fl-n">9</span><div><b>¿Autoriza recibir ofertas?</b><div class="fl-opts">
+    <div class="hi"><span class="who wa">Sí</span><p>Queda en tu base de clientes. Recibe tus promociones por WhatsApp y vuelve a pedir desde ahí.</p><em>Plan Con avisos</em></div>
+    <div><span class="who end">No</span><p>Fin del pedido. Sin mensajes comerciales, nunca.</p></div>
+  </div></div></li>
+  <li class="fl-loop"><span>↺</span> El que dijo que sí vuelve a pedir desde la promo, sin pasar por Google ni por una app</li>
+</ol>

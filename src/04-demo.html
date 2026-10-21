@@ -29,9 +29,11 @@
   <p class="step demoweb-step"><span class="pill" style="margin-right:.5rem">Paso 2</span> Toca «Estoy en una mesa» o «Pedir para llevar o delivery» y el menú se abre en su celular</p>
   <div class="demo-stage">
     <div class="demo-side">
-      <p class="side-label">Tu cliente · en su celular</p>
-      <div class="phone" data-mode="live">
-        <div class="screen"></div>
+      <p class="side-label">Tu cliente · en su celular · <b style="color:#fff">esta pantalla responde: tócala</b></p>
+      <div class="phone-wrap"><span class="try-tag" aria-hidden="true"><i></i><svg viewBox="0 0 24 24"><path d="M9 11V5a1.5 1.5 0 0 1 3 0v6"/><path d="M12 10a1.5 1.5 0 0 1 3 0v2"/><path d="M15 11a1.5 1.5 0 0 1 3 0v2"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V17a5 5 0 0 1-5 5h-3.5a5 5 0 0 1-4.2-2.3L5 15.4a1.6 1.6 0 0 1 2.6-1.8L9 15"/></svg>Demo interactiva: toca, pide y paga</span>
+        <div class="phone" data-mode="live">
+          <div class="screen"></div>
+        </div>
       </div>
     </div>
     <div class="demo-side owner">
@@ -70,7 +72,7 @@
     <div class="sec-head row" style="margin-bottom:1.2rem"><div><p class="eyebrow" id="f-eyebrow">El camino del cliente</p><h2 id="f-title" style="font-size:var(--step-3)">De «¿qué pedimos?» a «ya está en el horno», sin mesero y sin app.</h2></div></div>
     <div id="flowdemo"></div>
     <div class="money" id="f-money"></div>
-    <div style="margin:2rem 0 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12)"><p class="eyebrow">Paso a paso, con decisiones</p>{{include:flows}}</div>
+    <div style="margin:2rem 0 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12)"><div class="sec-head" style="margin-bottom:1rem"><p class="eyebrow">Paso a paso, con decisiones</p><h3 style="font-size:var(--step-2)">Quién hace qué en cada paso, y dónde entra el dinero.</h3></div>{{include:flows}}</div>
     <div class="cta-row" style="margin-top:1.4rem"><a class="btn btn-sun" id="f-calc" href="/calculadora/?rubro=pizzeria">Calcula cuánto cuesta y cuánto te devuelve</a><a class="link-dark" href="/empezar/">Qué necesitas entregar</a></div>
   </div>
 </section>
