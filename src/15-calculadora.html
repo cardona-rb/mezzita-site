@@ -1,16 +1,16 @@
-<!--{"title":"Calculadora: cuánto pierdes hoy sin responder y sin cobrar | Outperform","desc":"Pon tus números y mira cuánto dinero se te escapa cada mes por mensajes sin responder, comisiones de apps, ausencias o reservas por portales. Por rubro, en bolivianos.","path":"/calculadora/","nav":"","scripts":["calculadora.js"]}-->
+<!--{"title":"Calculadora: cuánto te cuesta Pedidos con QR y cuánto te devuelve | Outperform","desc":"Pon los números de tu local y mira cuánto pierdes hoy en comisiones de apps y mesas que esperan, cuánto te cuesta el sistema de pedidos con QR cada mes, cuánto te devolvemos y en cuántos meses recuperas la instalación. Pizzería, heladería, restaurante, bar o franquicia.","path":"/calculadora/","nav":"","scripts":["calculadora.js"]}-->
 <section class="page-head" style="padding-bottom:1rem"><div class="wrap">
   <div class="hero-copy" style="max-width:54rem">
     <p class="callout"><span class="pill">Gratis · 1 minuto</span> Con tus propios números, no con promedios</p>
-    <h1>¿Cuánto pierdes hoy sin <span class="sticker red">darte cuenta?</span></h1>
-    <p class="lede">Elige tu rubro, mueve los controles con lo que pasa en tu negocio y mira el número en bolivianos al mes. No pedimos tu correo. El cálculo ocurre en tu teléfono.</p>
+    <h1>¿Cuánto te cuesta y cuánto te <span class="sticker red">devuelve?</span></h1>
+    <p class="lede">Elige tu tipo de local, mueve los controles con lo que pasa en tu negocio y mira tres números: lo que pierdes hoy, lo que te cuesta el sistema cada mes y en cuántos meses recuperas la instalación. No pedimos tu correo. El cálculo ocurre en tu teléfono.</p>
   </div>
-  <div class="tabs" role="group" aria-label="Rubro" style="margin-top:1.4rem">
-    <button type="button" data-crubro="restaurante" aria-pressed="true">Restaurante</button>
-    <button type="button" data-crubro="hotel" aria-pressed="false">Hotel</button>
-    <button type="button" data-crubro="clinica" aria-pressed="false">Clínica</button>
-    <button type="button" data-crubro="estudio" aria-pressed="false">Estudio</button>
-    <button type="button" data-crubro="vinoteca" aria-pressed="false">Vinoteca</button>
+  <div class="tabs food-tabs" role="group" aria-label="Tipo de local" style="margin-top:1.4rem">
+    <button type="button" data-crubro="pizzeria" aria-pressed="true"><i class="fi" aria-hidden="true">{{icon:pizza}}</i>Pizzería</button>
+    <button type="button" data-crubro="heladeria" aria-pressed="false"><i class="fi" aria-hidden="true">{{icon:helado}}</i>Heladería</button>
+    <button type="button" data-crubro="restaurante" aria-pressed="false"><i class="fi" aria-hidden="true">{{icon:plato}}</i>Restaurante</button>
+    <button type="button" data-crubro="bar" aria-pressed="false"><i class="fi" aria-hidden="true">{{icon:copa}}</i>Bar y café</button>
+    <button type="button" data-crubro="franquicia" aria-pressed="false"><i class="fi" aria-hidden="true">{{icon:burger}}</i>Franquicia</button>
   </div>
 </div></section>
 
@@ -23,27 +23,29 @@
       <p class="fine" id="c-note"></p>
     </div>
     <div class="calc2-out glass-dark">
-      <p class="eyebrow" style="color:var(--sun)">Lo que se escapa cada mes</p>
+      <p class="eyebrow" style="color:var(--sun)">Lo que se escapa cada mes, hoy</p>
       <b class="c-big num" id="c-total">0 Bs</b>
       <p class="c-year">Unos <b class="num" id="c-year">0 Bs</b> al año.</p>
       <div class="c-break" id="c-break"></div>
       <div class="c-vs">
-        <div><small>Plan sugerido</small><b id="c-plan">Vende y Cobra 24/7</b><span id="c-plan-cost">1.560 Bs al mes</span></div>
-        <div><small>Se paga solo en</small><b class="num" id="c-days">0 días</b><span>de lo que hoy pierdes</span></div>
+        <div><small>Costo del sistema al mes</small><b class="num" id="c-cost">0 Bs</b><span id="c-cost-d">400 Bs + 5 % sobre QR</span></div>
+        <div><small>Te devolvemos</small><b class="num" id="c-back">0 Bs</b><span>al mes, hasta recuperar la instalación</span></div>
+        <div><small>Recuperas la instalación en</small><b class="num" id="c-months">—</b><span id="c-months-d">meses, con 2.000 Bs de lanzamiento</span></div>
+        <div><small>Te queda, neto, cada mes</small><b class="num" id="c-net">0 Bs</b><span>lo que dejas de perder menos lo que pagas</span></div>
       </div>
       <div class="cta-row">
-        <a class="btn btn-sun" id="c-wa" href="https://wa.me/59171868545" target="_blank" rel="noopener">Quiero recuperar esto</a>
+        <a class="btn btn-primary" id="c-wa" data-wa="" href="https://wa.me/59171868545" target="_blank" rel="noopener">Quiero esto en mi local</a>
         <a class="link-dark" href="/demo/" id="c-demo">Ver cómo funciona</a>
       </div>
-      <p class="fine" style="color:var(--on-night-2)">Es una estimación con los datos que tú pusiste. Sirve para decidir si vale la pena hablar, no como promesa de resultado.</p>
+      <p class="fine" style="color:var(--on-night-2)">Es una estimación con los datos que tú pusiste. Sirve para decidir si vale la pena hablar, no como promesa de resultado. No incluye la comisión propia de CUCU por pago con QR.</p>
     </div>
   </div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap">
   <div class="grid-3 howcalc">
-    <div><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"/></svg></span><b>Cómo calculamos</b><p>Multiplicamos lo que tú declaras: mensajes sin responder por el porcentaje que se pierde y por tu ticket; pedidos por app por tu comisión; citas por tu tasa de ausencias. Sin factores ocultos.</p></div>
-    <div><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><b>Qué no incluye</b><p>No contamos el tiempo que tú o tu equipo gastan respondiendo a mano, ni las reseñas que no se piden. Si lo contáramos, el número sería mayor.</p></div>
-    <div><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 17l-5.4 2.8 1.1-6.1L3.2 9.4l6.1-.8z"/></svg></span><b>Qué hacer con el número</b><p>Si es menor a la mensualidad del plan, no te conviene todavía y te lo diremos. Si es mayor, la cuenta se paga sola y lo demás es ganancia.</p></div>
+    <div><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"/></svg></span><b>Cómo calculamos lo que pierdes</b><p>Comisión de apps: pedidos por app, por tu ticket, por la comisión que te cobran. Mesas que esperan: cada mesa que no rota por falta de mesero en hora pico, por tu ticket. Pedidos no respondidos por WhatsApp, por los que se van a otro lado. Sin factores ocultos.</p></div>
+    <div><span class="gi" aria-hidden="true">{{icon:qr}}</span><b>Cómo calculamos el costo</b><p>400 Bs de mensualidad más 5 % de lo que tus clientes paguen por QR. De esa comisión te devolvemos la mitad durante 12 meses, hasta cubrir la instalación. Si no alcanzó, desde el mes 13 te devolvemos el 100 %.</p></div>
+    <div><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 17l-5.4 2.8 1.1-6.1L3.2 9.4l6.1-.8z"/></svg></span><b>Qué hacer con el número</b><p>Si lo que dejas de perder es menor que el costo del sistema, no te conviene todavía y te lo diremos. Si es mayor, la cuenta se paga sola y lo demás es ganancia.</p></div>
   </div>
 </div></section>

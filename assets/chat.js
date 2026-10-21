@@ -53,13 +53,13 @@
   document.querySelectorAll('.phone[data-mode="auto"]').forEach(function(el){
     var chat = new Chat(el);
     var SCRIPT = [
-      ['me', 'Hola, ¿tienen delivery a Equipetrol?', '23:41'],
-      ['them', 'Hola. Sí, 5 Bs a Equipetrol y Centro. Este es el menú de hoy:', '23:41'],
-      ['them', cardHTML({n:'Pizza Tarijeña', d:'Jamón serrano, queso, aceitunas · familiar', p:65}, TINTS[0]), '23:41'],
-      ['me', 'Una Tarijeña familiar y un pan de ajo', '23:43'],
-      ['them', summaryHTML([{q:1,n:'Pizza Tarijeña (familiar)',t:65},{q:1,n:'Pan de ajo',t:18}], {n:'Delivery Equipetrol', c:5}, 88, '<button type="button" class="act" tabindex="-1">Pagar con QR</button>'), '23:43'],
-      ['them', '<div>Escanea para pagar <b>88 Bs</b></div>' + qrHTML(88) + '<div style="font-size:.74rem;color:var(--ink-3)">Vence en 10 min</div>', '23:44'],
-      ['them', paidHTML(88, '482193') + '<div style="margin-top:.3rem">Sale en 25 minutos. Gracias, Carla.</div>', '23:47']
+      ['me', 'Hola, escaneé el QR de la mesa 12', '21:15'],
+      ['them', 'Hola, mesa 12. Este es el menú de hoy. Toca y arma tu pedido:', '21:15'],
+      ['them', cardHTML({n:'Pizza Tarijeña', d:'Jamón serrano, queso, aceitunas · familiar', p:65}, TINTS[0]), '21:15'],
+      ['me', 'Una Tarijeña familiar sin aceitunas y dos limonadas', '21:17'],
+      ['them', summaryHTML([{q:1,n:'Pizza Tarijeña (fam., sin aceitunas)',t:65},{q:2,n:'Limonada 1 L',t:50}], {n:'Mesa 12', c:0}, 115, '<button type="button" class="act" tabindex="-1">Pagar con QR</button> <span style="font-size:.74rem;color:var(--ink-3)">o pagas en caja</span>'), '21:17'],
+      ['them', '<div>Escanea para pagar <b>115 Bs</b></div>' + qrHTML(115) + '<div style="font-size:.74rem;color:var(--ink-3)">Vence en 10 min</div>', '21:18'],
+      ['them', paidHTML(115, '482193') + '<div style="margin-top:.3rem">Ya está en cocina. Sale en 15 minutos a la mesa 12. Gracias, Carla.</div>', '21:19']
     ];
     var i = 0, timer, started = false;
     function next(){

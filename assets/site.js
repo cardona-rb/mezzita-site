@@ -87,21 +87,6 @@
     nav.addEventListener('mouseleave', function(){ lens.style.opacity = '0'; shown = false; });
   }
 
-  /* ---------------------------------------------------------- Calculadora */
-  function setupCalc(){
-    var calc = document.getElementById('calc'); if(!calc) return;
-    var fmt = function(n){ return Math.round(n).toLocaleString('es-BO') + ' Bs'; };
-    var run = function(){
-      var ticket = Math.max(0, +document.getElementById('c-ticket').value || 0);
-      var lost = Math.max(0, +document.getElementById('c-lost').value || 0);
-      document.getElementById('c-out').textContent = fmt(ticket * lost * 4.3);
-      var need = ticket > 0 ? Math.ceil(650 / ticket) : 0;
-      document.getElementById('c-vs').textContent = ticket > 0 ? 'El plan Visible cuesta 650 Bs al mes. Se paga con ' + need + (need === 1 ? ' cliente nuevo' : ' clientes nuevos') + ' al mes.' : 'Escribe cuánto deja en promedio un cliente.';
-    };
-    calc.addEventListener('input', run); run();
-  }
-
   document.querySelectorAll('[data-year]').forEach(function(n){ n.textContent = new Date().getFullYear(); });
   setupHeader();
-  setupCalc();
 })();

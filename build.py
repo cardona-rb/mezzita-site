@@ -91,7 +91,7 @@ def layout(meta, body):
 </main>
 <footer class="ft"><div class="wrap">
 <div><a class="logo" href="/">{LOGO}<span>Outperform <small>Partners</small></span></a>
-<p style="margin-top:.8rem;max-width:22rem">Google Maps, página web, WhatsApp y anuncios para hoteles, clínicas, estudios, restaurantes y vinotecas en Bolivia. Del equipo detrás de Levisoft.</p></div>
+<p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
 <div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/casos/">Casos</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
 <div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-outperform.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
 <div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Outperform." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
@@ -118,26 +118,43 @@ def include(html):
         if not os.path.exists(f):
             sys.exit(f"partial no encontrado: {m.group(1)}")
         return open(f, encoding="utf8").read()
-    return re.sub(r"\{\{include:([a-z0-9_-]+)\}\}", rep, html)
+    html = re.sub(r"\{\{include:([a-z0-9_-]+)\}\}", rep, html)
+    return re.sub(r"\{\{icon:([a-z]+)\}\}", lambda m: icon_svg(m.group(1)), html)
 
 
 BLOG = os.path.join(SRC, "blog")
 RUBROS = {
-    "hoteles": ("Hoteles y turismo", "hotel", "Reservas directas por WhatsApp", "/demo/?rubro=hotel"),
-    "clinicas": ("Clínicas y consultorios", "clinica", "Citas confirmadas por WhatsApp", "/demo/?rubro=clinica"),
-    "estudios": ("Estudios jurídicos y contables", "estudio", "Consultas agendadas por WhatsApp", "/demo/?rubro=estudio"),
-    "restaurantes": ("Restaurantes y bares", "restaurante", "Pedidos cobrados por WhatsApp", "/demo/?rubro=restaurante"),
-    "vinotecas": ("Vinotecas y bodegas", "vinoteca", "Catálogo con envíos por WhatsApp", "/demo/?rubro=vinoteca"),
-    "general": ("Para todo negocio", "", "Tu ficha de Google, revisada gratis", "/diagnostico/"),
+    "restaurantes": ("Restaurantes, bares y cafés", "restaurante", "Pedidos en mesa y delivery, cobrados por QR", "/demo/?rubro=restaurante"),
+    "general": ("Para todo negocio de comida", "", "Tu ficha de Google, revisada gratis", "/diagnostico/"),
 }
 RUBRO_ICON = {
-    "hoteles": '<path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/><path d="M8 11h.01M12 11h.01M16 11h.01"/>',
-    "clinicas": '<path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/>',
-    "estudios": '<path d="M12 3v18M5 7l7-2 7 2M3 13l2-6 2 6a2 2 0 0 1-4 0zM17 13l2-6 2 6a2 2 0 0 1-4 0z"/>',
     "restaurantes": '<path d="M7 3v8a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3M9 3v18"/><path d="M17 3c-2 2-2 6-2 8h4V3z"/><path d="M17 11v10"/>',
-    "vinotecas": '<path d="M8 3h8l-1 7a3 3 0 0 1-6 0z"/><path d="M12 13v6M9 21h6"/>',
     "general": '<path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/>',
 }
+# iconos de comida para {{icon:nombre}} (trazo, 24x24)
+ICONS = {
+    "pizza": '<path d="M12 3l9 16H3z"/><path d="M5.6 15.5c4-2.4 8.8-2.4 12.8 0"/><circle cx="12" cy="10" r="1.2"/><circle cx="9.5" cy="14" r="1.2"/><circle cx="14.5" cy="14" r="1.2"/>',
+    "helado": '<path d="M7.5 10a4.5 4.5 0 1 1 9 0"/><path d="M6.5 10h11l-5.5 11z"/><path d="M9 13l3 6M15 13l-3 6"/>',
+    "plato": '<path d="M3 17h18"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 8V6"/><path d="M4 20h16"/>',
+    "copa": '<path d="M8 3h8l-1 7a3 3 0 0 1-6 0z"/><path d="M12 13v7M8 21h8"/><path d="M8.3 6h7.4"/>',
+    "burger": '<path d="M4 10h16a8 8 0 0 0-16 0z"/><path d="M3 13h18"/><path d="M4 16h16l-1.5 4h-13z"/><path d="M8 7h.01M12 6h.01M16 7h.01"/>',
+    "cafe": '<path d="M4 8h12v6a5 5 0 0 1-10 0z"/><path d="M16 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M4 21h14"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/>',
+    "qr": '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3z"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14h1"/>',
+    "mesa": '<path d="M3 8h18"/><path d="M5 8l-1 11M19 8l1 11"/><path d="M12 8v11"/><path d="M8 19h8"/><path d="M9 5h6"/>',
+    "cocina": '<path d="M4 7h16v3H4z"/><path d="M6 10v10h12V10"/><path d="M9 14h6"/><path d="M8 4c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3M16 4c0 1.5 1 1.5 1 3"/>',
+    "moto": '<circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l3-7h3"/><path d="M12 17l-2-6H7"/><path d="M14 10h4l2 4"/>',
+    "campana": '<path d="M4 17h16"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 10V8"/><path d="M11 8h2"/>',
+    "tenedor": '<path d="M7 3v8a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3M9 3v18"/><path d="M17 3c-2 2-2 6-2 8h4V3z"/><path d="M17 11v10"/>',
+    "estrella": '<path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 17l-5.4 2.8 1.1-6.1L3.2 9.4l6.1-.8z"/>',
+    "whatsapp": '<path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.5-1.5-2-1-1 1a4 4 0 0 1-2.5-2.5l1-1-1-2z"/>',
+    "sucursales": '<path d="M3 21h18"/><path d="M4 21V9l4-4h8l4 4v12"/><path d="M9 21v-5h6v5"/><path d="M8 12h2M14 12h2"/>',
+}
+
+
+def icon_svg(name):
+    return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>'
+
+
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 
@@ -221,8 +238,8 @@ def render_post(meta, body, all_posts):
     rel_html = '<section class="related"><p class="eyebrow">Sigue leyendo</p><div class="pgrid">' + "".join(post_card(p) for p in related) + "</div></section>"
     cta_msg = f"Hola, leí «{h1}» en el blog de Outperform y quiero saber cómo aplicarlo a mi negocio. Rubro: ___ Ciudad: ___"
     cta_html = (f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p>'
-                f'<h2>Esto, hecho para tu negocio, en 7 días hábiles.</h2>'
-                f'<p>Ficha de Google, página web y WhatsApp que vende. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
+                f'<h2>Tu carta en un QR, en 7 días hábiles.</h2>'
+                f'<p>Menú web, QR en cada mesa, pedidos a cocina por WhatsApp y cobro por QR. 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
                 f'<div class="cta-row"><a class="btn btn-sun" data-wa="{esc(cta_msg)}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>'
                 f'<a class="link-dark" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a></div></aside>')
     toc = re.findall(r"<h2(?: id=\"([^\"]*)\")?>(.*?)</h2>", body)
@@ -276,7 +293,7 @@ def render_blog_index(posts):
             f'<section class="sec" style="padding-top:1.5rem"><div class="wrap"><div class="pgrid">{cards}</div>'
             f'<aside class="post-cta"><p class="eyebrow">Herramienta gratis</p><h2 style="font-size:var(--step-2)">¿Cómo está tu ficha de Google hoy? Revísala en 2 minutos.</h2>'
             f'<div class="cta-row"><a class="btn btn-primary" href="/diagnostico/">Hacer mi radiografía</a></div></aside></div></section>')
-    meta = {"title": "Blog · Guías para negocios en Bolivia | Outperform", "desc": "Guías prácticas por rubro para que tu negocio en Bolivia aparezca en Google Maps, tenga una web que trae clientes y venda por WhatsApp. Hoteles, clínicas, estudios, restaurantes y vinotecas.", "path": "/blog/", "nav": "blog"}
+    meta = {"title": "Blog · Guías para negocios en Bolivia | Outperform", "desc": "Guías prácticas para que tu restaurante, pizzería, heladería o bar en Bolivia aparezca en Google Maps, cobre por QR y venda por WhatsApp sin comisión de apps. Para restaurantes, pizzerías, heladerías, bares y cafés.", "path": "/blog/", "nav": "blog"}
     return meta, body
 
 
