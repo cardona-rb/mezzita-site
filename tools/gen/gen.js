@@ -72,6 +72,7 @@ const DOC_CSS = `@page{size:A4;margin:16mm 18mm}body{background:#fff;font-size:1
 h1{font-family:"Bricolage Grotesque";font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
 h2{color:var(--red);font-size:11pt;letter-spacing:.06em;text-transform:uppercase;margin:16px 0 6px;font-weight:700}
 b,strong{color:var(--ink)}ul{padding-left:18px}li{margin:3px 0}
+table td,table th{padding:7px 9px;vertical-align:top}
 .eyebrow{font-family:"Geist Mono";color:var(--red);font-size:9pt;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
 .ft{border-top:1px solid var(--line);margin-top:18px;padding-top:10px;font-size:9pt;color:var(--ink-3);display:flex;justify-content:space-between;gap:16px}`;
 
@@ -110,7 +111,7 @@ const CONTRATO = page(`
 <h1 style="font-size:21pt;margin-bottom:12px">Contrato de servicio «Pedidos con QR por Mezzita»</h1>
 <p style="background:#FFF6D6;border-left:4px solid var(--sun);padding:10px 14px;font-size:9.5pt">Este es el modelo que firmamos con cada local. Los datos entre líneas se completan con los tuyos. Si algo no está escrito aquí o en la página de precio y condiciones del día de tu contratación, no está incluido. Léelo con calma: lo escribimos para que se entienda sin abogado.</p>
 <h2>1. Partes</h2>
-<p><b>El proveedor:</b> Mezzita (en adelante, «Mezzita»), razón social ${blank(170)}, NIT ${blank(110)}, WhatsApp +591 71868545, mezzita.com.</p>
+<p><b>El proveedor:</b> Mezzita, razón social ${blank(170)}, NIT ${blank(110)}, WhatsApp +591 71868545, mezzita.com.</p>
 <p style="margin-top:8px"><b>El cliente:</b> ${blank(170)}, con NIT o CI ${blank(150)}, titular del local ${blank(150)}, en la ciudad de ${blank(150)}, con ${blank(50)} mesas.</p>
 <h2>2. Objeto</h2>
 <p>Mezzita entrega y mantiene para el local un sistema de pedidos con QR compuesto por:</p>
