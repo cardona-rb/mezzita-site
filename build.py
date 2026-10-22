@@ -78,6 +78,7 @@ def layout(meta, body):
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="{meta["desc"]}">
 <link rel="canonical" href="{canonical}">
+<meta name="msvalidate.01" content="02372BA47AB25FBF785C16B7ADBE0692">
 {robots}
 <meta property="og:title" content="{meta["title"]}">
 <meta property="og:description" content="{meta["desc"]}">
