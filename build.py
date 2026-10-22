@@ -6,7 +6,7 @@ Salidas:
   dist/     URLs limpias (/planes/) para subir a cualquier hosting estático.
   preview/  enlaces relativos a .../index.html para la vista previa.
 """
-import json, os, re, shutil, sys
+import datetime, json, os, re, shutil, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, ASSETS = os.path.join(ROOT, "src"), os.path.join(ROOT, "assets")
@@ -27,6 +27,35 @@ NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Planes
 WA_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>')
 
 WA_DEFAULT = "Hola, vengo de la web de Mezzita y quiero hablar con alguien del equipo."
+
+
+ORG = {"@context": "https://schema.org", "@type": "Organization", "@id": SITE + "/#org", "name": "Mezzita", "url": SITE + "/",
+       "logo": SITE + "/assets/icon-512.png", "image": SITE + "/assets/og.jpg",
+       "description": "Menú web propio con QR por mesa, delivery y recojo, cobro por QR bancario en el navegador y Panel de pedidos y caja para negocios de comida en Bolivia. Del equipo detrás de Levisoft.",
+       "areaServed": {"@type": "Country", "name": "Bolivia"},
+       "address": {"@type": "PostalAddress", "addressLocality": "Tarija", "addressCountry": "BO"},
+       "contactPoint": {"@type": "ContactPoint", "telephone": "+59171868545", "contactType": "sales", "availableLanguage": "es"}}
+WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "url": SITE + "/", "name": "Mezzita",
+           "inLanguage": "es-BO", "publisher": {"@id": SITE + "/#org"}}
+SERVICE = {"@context": "https://schema.org", "@type": "Service", "name": "Pedidos con QR",
+           "serviceType": "Menú web con pedidos y cobro por QR para restaurantes",
+           "provider": {"@id": SITE + "/#org"}, "areaServed": {"@type": "Country", "name": "Bolivia"},
+           "audience": {"@type": "BusinessAudience", "audienceType": "Pizzerías, heladerías, restaurantes, bares, cafés y franquicias"},
+           "offers": [
+               {"@type": "Offer", "name": "Mensualidad", "price": "400", "priceCurrency": "BOB",
+                "priceSpecification": {"@type": "UnitPriceSpecification", "price": "400", "priceCurrency": "BOB", "unitCode": "MON"}},
+               {"@type": "Offer", "name": "Instalación", "price": "2900", "priceCurrency": "BOB"},
+               {"@type": "Offer", "name": "Instalación de lanzamiento, primeros 50 locales", "price": "2000", "priceCurrency": "BOB"}]}
+
+
+def site_ld(meta):
+    """Datos estructurados comunes: la organización en todas las páginas; sitio y servicio en inicio y planes."""
+    blocks = [ORG]
+    if meta["path"] == "/":
+        blocks += [WEBSITE, SERVICE]
+    elif meta["path"] == "/planes/":
+        blocks.append(SERVICE)
+    return "".join(jsonld(b) for b in blocks)
 
 
 def layout(meta, body):
@@ -60,7 +89,7 @@ def layout(meta, body):
 <meta property="og:image" content="{SITE}{BASE}/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mezzita: los clientes están ahí. Google Maps, página web y pedidos por WhatsApp en Bolivia.">
+<meta property="og:image:alt" content="Mezzita: tu carta en un QR. Tu cliente pide y paga solo desde su celular.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{meta["title"]}">
 <meta name="twitter:description" content="{meta["desc"]}">
@@ -71,6 +100,7 @@ def layout(meta, body):
 <link rel="manifest" href="/assets/site.webmanifest">
 {FONTS}
 <link rel="stylesheet" href="/assets/site.css">
+{site_ld(meta)}
 {meta.get("head","")}
 </head>
 <body>
@@ -393,12 +423,35 @@ def build():
             f = os.path.join(d, out_file(meta["path"]))
             os.makedirs(os.path.dirname(f), exist_ok=True)
             open(f, "w", encoding="utf8").write(html)
-    urls = "".join(f"<url><loc>{SITE}{BASE}{m['path']}</loc></url>" for m, _ in pages if not m.get("noindex"))
+    today = datetime.date.today().isoformat()
+    lastmod = lambda m: min(m.get("updated", m.get("date", today)), today)  # nunca una fecha futura
+    urls = "".join(f"<url><loc>{SITE}{BASE}{m['path']}</loc><lastmod>{lastmod(m)}</lastmod></url>" for m, _ in pages if not m.get("noindex"))
     open(os.path.join(ROOT, "dist", "sitemap.xml"), "w").write(
         f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
     open(os.path.join(ROOT, "dist", "_redirects"), "w").write("/casos /experiencia/ 301\n/casos/ /experiencia/ 301\n")  # Cloudflare Pages
     open(os.path.join(ROOT, "dist", "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n")
+    open(os.path.join(ROOT, "dist", "llms.txt"), "w", encoding="utf8").write(llms_txt(pages))
     print("ok:", ", ".join(m["path"] for m, _ in pages))
+
+
+def llms_txt(pages):
+    """Resumen para buscadores y asistentes de IA (formato llmstxt.org)."""
+    main = [m for m, _ in pages if not m.get("noindex") and not m["path"].startswith("/blog/") and m["path"] != "/404.html"]
+    posts = [m for m, _ in pages if m["path"].startswith("/blog/") and m.get("rubro")]
+    line = lambda m: f"- [{m['title'].split(' · ')[0].split(' | ')[0]}]({SITE}{m['path']}): {m['desc']}"
+    out = ["# Mezzita", "",
+           "> Mezzita instala en negocios de comida de Bolivia un menú web propio donde el cliente pide y paga desde su celular: QR por mesa, delivery y recojo, cobro por QR bancario en el navegador y Panel de pedidos y caja. Es el equipo detrás de Levisoft, con diez años construyendo sitios y sistemas.", "",
+           "## Producto y precio", "",
+           "- Producto único: Pedidos con QR, para pizzerías, heladerías, restaurantes, bares, cafés y franquicias en Bolivia.",
+           "- Instalación: 2.900 Bs. Precio de lanzamiento: 2.000 Bs para los primeros 50 locales.",
+           "- Mensualidad: 400 Bs. Plan con avisos y promociones por WhatsApp (solo a clientes que dieron permiso): 600 Bs.",
+           "- Comisión: 5 % solo sobre lo cobrado por QR a través del sistema; 0 % sobre lo que cobra el mesero en efectivo o con el QR del local.",
+           "- Devolución: el 50 % de la comisión se descuenta de la factura siguiente hasta recuperar la instalación (12 meses; desde el mes 13, el 100 %).",
+           "- Opción solo delivery y recojo: 0 Bs al mes y 8 % por pedido cobrado por QR.",
+           "- Garantía: menú, QR, panel y cobro activos en 7 días hábiles o el primer mes es gratis.",
+           "- Contacto: WhatsApp +591 71868545.", "",
+           "## Páginas", ""] + [line(m) for m in main] + ["", "## Guías para negocios de comida en Bolivia", ""] + [line(m) for m in posts]
+    return "\n".join(out) + "\n"
 
 
 if __name__ == "__main__":
