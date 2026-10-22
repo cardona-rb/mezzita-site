@@ -23,7 +23,7 @@ LOGO = ('<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64
         '<rect x="17" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/><rect x="40.5" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/></svg>')
 
 NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Planes"),
-       ("demo", "/demo/", "Demo"), ("casos", "/casos/", "Casos"), ("diagnostico", "/diagnostico/", "Radiografía gratis")]
+       ("demo", "/demo/", "Demo"), ("experiencia", "/experiencia/", "Experiencia"), ("diagnostico", "/diagnostico/", "Radiografía gratis")]
 
 WA_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>')
 
@@ -92,7 +92,7 @@ def layout(meta, body):
 <footer class="ft"><div class="wrap">
 <div><a class="logo" href="/">{LOGO}<span>mezzita</span></a>
 <p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
-<div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/casos/">Casos</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
+<div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/experiencia/">Experiencia</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
 <div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-mezzita.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
 <div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Mezzita." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
 <div><h4>Socios</h4><p class="muted">Cobros y facturación con CUCU.</p><a class="ft-levi" href="https://levisoft.pro" target="_blank" rel="noopener"><span class="muted">Ingeniería de</span><img src="/assets/logos/levisoft-logo-light.webp" alt="Levisoft" width="1825" height="393" loading="lazy"></a></div>
@@ -397,6 +397,7 @@ def build():
     urls = "".join(f"<url><loc>{SITE}{BASE}{m['path']}</loc></url>" for m, _ in pages if not m.get("noindex"))
     open(os.path.join(ROOT, "dist", "sitemap.xml"), "w").write(
         f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
+    open(os.path.join(ROOT, "dist", "_redirects"), "w").write("/casos /experiencia/ 301\n/casos/ /experiencia/ 301\n")  # Cloudflare Pages
     open(os.path.join(ROOT, "dist", "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n")
     print("ok:", ", ".join(m["path"] for m, _ in pages))
 
