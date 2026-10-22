@@ -34,7 +34,8 @@ ORG = {"@context": "https://schema.org", "@type": "Organization", "@id": SITE + 
        "description": "Menú web propio con QR por mesa, delivery y recojo, cobro por QR bancario en el navegador y Panel de pedidos y caja para negocios de comida en Bolivia. Del equipo detrás de Levisoft.",
        "areaServed": {"@type": "Country", "name": "Bolivia"},
        "address": {"@type": "PostalAddress", "addressLocality": "Tarija", "addressCountry": "BO"},
-       "contactPoint": {"@type": "ContactPoint", "telephone": "+59171868545", "contactType": "sales", "availableLanguage": "es"}}
+       "email": "hola@mezzita.com",
+       "contactPoint": {"@type": "ContactPoint", "telephone": "+59162506518", "email": "hola@mezzita.com", "contactType": "sales", "availableLanguage": "es"}}
 WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "url": SITE + "/", "name": "Mezzita",
            "inLanguage": "es-BO", "publisher": {"@id": SITE + "/#org"}}
 SERVICE = {"@context": "https://schema.org", "@type": "Service", "name": "Pedidos con QR",
@@ -111,10 +112,10 @@ def layout(meta, body):
 <a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}</a>
 <div class="capsule" data-nav-capsule><div class="glass-layer" aria-hidden="true"></div>
 <nav class="nav" aria-label="Principal"><span class="nav-lens" data-nav-lens aria-hidden="true"></span>{nav}</nav></div>
-<a class="btn btn-primary hd-cta" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>
+<a class="btn btn-primary hd-cta" data-wa="{WA_DEFAULT}" href="https://wa.me/59162506518">Hablar por WhatsApp</a>
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Abrir menú"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
 </div>
-<nav class="mnav" id="mnav" aria-label="Menú móvil" hidden>{mnav}<a class="btn btn-primary" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a></nav>
+<nav class="mnav" id="mnav" aria-label="Menú móvil" hidden>{mnav}<a class="btn btn-primary" data-wa="{WA_DEFAULT}" href="https://wa.me/59162506518">Hablar por WhatsApp</a></nav>
 </header>
 <main id="main">
 {body}
@@ -124,12 +125,12 @@ def layout(meta, body):
 <p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
 <div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Precios</a><a href="/demo/">Demo de pedidos</a><a href="/experiencia/">Experiencia</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
 <div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-mezzita.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
-<div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Mezzita." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
+<div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Mezzita." href="https://wa.me/59162506518">WhatsApp +591 62506518</a><a href="mailto:hola@mezzita.com">hola@mezzita.com</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
 <div><h4>Socios</h4><p class="muted">Cobros y facturación con CUCU.</p><a class="ft-levi" href="https://levisoft.pro" target="_blank" rel="noopener"><span class="muted">Ingeniería de</span><img src="/assets/logos/levisoft-logo-light.webp" alt="Levisoft" width="1825" height="393" loading="lazy"></a></div>
 <p class="legal">© <span data-year>2026</span> Mezzita · NIT en trámite de publicación · Tarija, Bolivia. Los resultados dependen de cada negocio, su rubro y su ciudad. Las garantías aplican según las condiciones escritas en tu contrato.</p>
 </div></footer>
-<a class="wa-float" data-wa="Hola, vengo de la web de Mezzita." href="https://wa.me/59171868545" aria-label="Escribir por WhatsApp">{WA_ICON}<span>Escríbenos por WhatsApp</span></a>
-<div class="mbar"><a class="btn" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a><span class="mbar-sub">Te responde una persona · sin compromiso</span></div>
+<a class="wa-float" data-wa="Hola, vengo de la web de Mezzita." href="https://wa.me/59162506518" aria-label="Escribir por WhatsApp">{WA_ICON}<span>Escríbenos por WhatsApp</span></a>
+<div class="mbar"><a class="btn" data-wa="{WA_DEFAULT}" href="https://wa.me/59162506518">Hablar por WhatsApp</a><span class="mbar-sub">Te responde una persona · sin compromiso</span></div>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/backdrop.js" defer></script>
 {scripts}
@@ -278,7 +279,7 @@ def render_post(meta, body, all_posts):
     cta_html = (f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p>'
                 f'<h2>Tu carta en un QR, en 7 días hábiles.</h2>'
                 f'<p>Menú web, QR en cada mesa, pedidos a cocina por WhatsApp y cobro por QR. 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
-                f'<div class="cta-row"><a class="btn btn-sun" data-wa="{esc(cta_msg)}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>'
+                f'<div class="cta-row"><a class="btn btn-sun" data-wa="{esc(cta_msg)}" href="https://wa.me/59162506518">Hablar por WhatsApp</a>'
                 f'<a class="link-dark" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a></div></aside>')
     toc = re.findall(r"<h2(?: id=\"([^\"]*)\")?>(.*?)</h2>", body)
     # ids a los h2 para el índice
@@ -450,7 +451,7 @@ def llms_txt(pages):
            "- Devolución: el 50 % de la comisión se descuenta de la factura siguiente hasta recuperar la instalación (12 meses; desde el mes 13, el 100 %).",
            "- Opción solo delivery y recojo: 0 Bs al mes y 8 % por pedido cobrado por QR.",
            "- Garantía: menú, QR, panel y cobro activos en 7 días hábiles o el primer mes es gratis.",
-           "- Contacto: WhatsApp +591 71868545.", "",
+           "- Contacto: WhatsApp +591 62506518 y hola@mezzita.com.", "",
            "## Páginas", ""] + [line(m) for m in main] + ["", "## Guías para negocios de comida en Bolivia", ""] + [line(m) for m in posts]
     return "\n".join(out) + "\n"
 

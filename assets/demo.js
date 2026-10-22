@@ -130,7 +130,7 @@
     var st = ord.state(), d = st.deliv;
     return '*' + R.verbo + ' · ' + R.nombre + '* (demo)\n' + (st.lines.map(function(l){ return '• ' + l.q + ' × ' + l.n + ': ' + fmt(l.t); }).join('\n') || '(sin productos)') + '\n' + (d.mesa ? 'Mesa 12' : d.n) + (d.c ? ' (+' + fmt(d.c) + ')' : '') + '\n*Total: ' + fmt(st.total) + '*\n' + R.verbo + ' #' + st.id;
   }
-  function updateSend(){ var a = $('d-send'); if(!a) return; a.href = window.OP ? window.OP.waHref(message()) : 'https://wa.me/59171868545?text=' + encodeURIComponent(message()); }
+  function updateSend(){ var a = $('d-send'); if(!a) return; a.href = window.OP ? window.OP.waHref(message()) : 'https://wa.me/59162506518?text=' + encodeURIComponent(message()); }
   function updateCommission(){
     var box = $('o-com'); if(!box) return;
     var pct = Math.max(0, Math.min(60, +$('o-pct').value || 0));

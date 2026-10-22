@@ -3,7 +3,7 @@
 (function(){
   'use strict';
   document.documentElement.classList.add('js');
-  var WA_NUMBER = '59171868545';
+  var WA_NUMBER = '59162506518';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = !window.matchMedia || window.matchMedia('(hover: hover)').matches;
 

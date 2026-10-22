@@ -88,7 +88,7 @@ const CHECKLIST = page(`
 <div class="hd">${brand(19)}<small>Pedidos con QR · Checklist de inicio · v3 · octubre 2026</small></div>
 <p class="eyebrow">Qué necesitas entregar</p>
 <h1 style="font-size:26pt;margin:6px 0 8px">Seis cosas. Veinte minutos. Todo por WhatsApp.</h1>
-<p style="font-size:11pt">Nos mandas esto al +591 71868545 y desde ese momento corren los 7 días hábiles de la garantía «7 Días o No Pagas el Mes». No vamos a tu local: no hace falta.</p>
+<p style="font-size:11pt">Nos mandas esto al +591 62506518 y desde ese momento corren los 7 días hábiles de la garantía «7 Días o No Pagas el Mes». No vamos a tu local: no hace falta.</p>
 <div style="margin-top:12px">
 ${item(1, "Datos del local", "Nombre comercial exacto, dirección con referencia, horarios con feriados conocidos y cuántas mesas tienes.", "Un mensaje de texto alcanza · 3 min")}
 ${item(2, "Tu carta con precios", "Foto de la carta, planilla, captura de Instagram o audio. Con variantes («mediana, familiar») y lo que se pide sin algo («sin cebolla»). Nosotros la ordenamos.", "Si cambia, nos mandas la nueva y la actualizamos sin costo · 5 min")}
@@ -106,7 +106,7 @@ ${item(6, "Acceso a lo que ya existe", "Ficha de Google, dominio o página anter
 <div style="background:var(--red);color:#fff;border-radius:12px;padding:14px 18px;margin-top:16px;break-inside:avoid">
 <p style="font-weight:700;font-size:13pt;line-height:1.35">2.900 Bs de instalación (2.000 Bs de lanzamiento, primeros 50 locales) · 400 Bs al mes · 5 % solo sobre lo cobrado por QR</p>
 <p style="font-size:9.5pt;margin-top:4px">Lo que cobra el mesero, 0 %. La mitad de la comisión vuelve a ti hasta recuperar la instalación. Con avisos y promociones por WhatsApp: 600 Bs al mes. En línea en 7 días hábiles o tu primer mes es gratis.</p></div>
-<div class="ft"><span>mezzita.com · WhatsApp +591 71868545</span><span>Mezzita · del equipo detrás de Levisoft · Bolivia</span></div>`, DOC_CSS);
+<div class="ft"><span>mezzita.com · WhatsApp +591 62506518 · hola@mezzita.com</span><span>Mezzita · del equipo detrás de Levisoft · Bolivia</span></div>`, DOC_CSS);
 
 const blank = (w) => `<span style="display:inline-block;width:${w}px;border-bottom:1.5px solid var(--ink)"></span>`;
 const CONTRATO = page(`
@@ -114,7 +114,7 @@ const CONTRATO = page(`
 <h1 style="font-size:21pt;margin-bottom:12px">Contrato de servicio «Pedidos con QR por Mezzita»</h1>
 <p style="background:#FFF6D6;border-left:4px solid var(--sun);padding:10px 14px;font-size:9.5pt">Este es el modelo que firmamos con cada local. Los datos entre líneas se completan con los tuyos. Si algo no está escrito aquí o en la página de precio y condiciones del día de tu contratación, no está incluido. Léelo con calma: lo escribimos para que se entienda sin abogado.</p>
 <h2>1. Partes</h2>
-<p><b>El proveedor:</b> Mezzita, razón social ${blank(170)}, NIT ${blank(110)}, WhatsApp +591 71868545, mezzita.com.</p>
+<p><b>El proveedor:</b> Mezzita, razón social ${blank(170)}, NIT ${blank(110)}, WhatsApp +591 62506518, hola@mezzita.com, mezzita.com.</p>
 <p style="margin-top:8px"><b>El cliente:</b> ${blank(170)}, con NIT o CI ${blank(150)}, titular del local ${blank(150)}, en la ciudad de ${blank(150)}, con ${blank(50)} mesas.</p>
 <h2>2. Objeto</h2>
 <p>Mezzita entrega y mantiene para el local un sistema de pedidos con QR compuesto por:</p>
@@ -149,7 +149,7 @@ const CONTRATO = page(`
 <li>Mantener la cuenta de cobros activa y pagar la mensualidad por adelantado.</li>
 <li>Ofrecer en su carta solo productos cuya venta esté permitida.</li></ul>
 <h2>7. Duración y cancelación</h2>
-<p>El contrato es mes a mes, sin permanencia mínima. Cualquiera de las partes puede cancelar con 30 días de aviso por escrito (WhatsApp o correo). El plan anual se paga por adelantado y no es reembolsable, salvo aplicación de la garantía de la sección 5. Al cancelar, el cliente conserva la propiedad de su dominio, su ficha de Google, sus fotos y su base de clientes, que Mezzita entrega en formato exportable dentro de los 10 días hábiles siguientes.</p>
+<p>El contrato es mes a mes, sin permanencia mínima. Cualquiera de las partes puede cancelar con 30 días de aviso por escrito (WhatsApp o a hola@mezzita.com). El plan anual se paga por adelantado y no es reembolsable, salvo aplicación de la garantía de la sección 5. Al cancelar, el cliente conserva la propiedad de su dominio, su ficha de Google, sus fotos y su base de clientes, que Mezzita entrega en formato exportable dentro de los 10 días hábiles siguientes.</p>
 <h2>8. Datos y propiedad</h2>
 <p>Los datos de los clientes finales (nombre, teléfono, pedidos) son del cliente y se tratan según la política de privacidad publicada en mezzita.com/privacidad/. Mezzita los usa solo para operar el servicio y, en el plan Con avisos, para enviar avisos y campañas únicamente a los clientes finales que dieron su consentimiento al pedir. El software del sistema es de Mezzita y se licencia al cliente mientras el contrato esté vigente. El menú web lleva la mención «Pedidos con QR por Mezzita» en el pie.</p>
 <h2>9. Responsabilidad</h2>

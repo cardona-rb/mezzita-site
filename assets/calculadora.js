@@ -69,7 +69,7 @@
     $('c-net').style.color = net < 0 ? 'var(--sun)' : '#fff';
     var msg = 'Hola, usé la calculadora de Mezzita para mi ' + key + '. Hoy pierdo unos ' + fmt(total) + ' al mes. Con ' + v.pedidos + ' pedidos por día y ticket de ' + fmt(v.ticket) + ', el sistema me costaría ' + fmt(MENSUAL + com) + ' y me devolverían ' + fmt(back) + ' al mes. Quiero verlo con mis números. Ciudad: ___ Mesas: ___';
     $('c-wa').setAttribute('data-wa', msg);
-    $('c-wa').href = window.OP ? window.OP.waHref(msg) : 'https://wa.me/59171868545?text=' + encodeURIComponent(msg);
+    $('c-wa').href = window.OP ? window.OP.waHref(msg) : 'https://wa.me/59162506518?text=' + encodeURIComponent(msg);
   }
   document.addEventListener('click', function(e){ var t = e.target.closest('[data-crubro]'); if(t) load(t.getAttribute('data-crubro')); });
   document.addEventListener('input', function(e){ if(e.target.matches('.c-field input')) update(); });
