@@ -1,6 +1,6 @@
 # Estudios jurídicos, abogados independientes, estudios contables y consultoras (Bolivia) - Plan SEO
 
-Fecha de investigación: 2026-10-19. Autor: investigación para Outperform Partners.
+Fecha de investigación: 2026-10-19. Autor: investigación para Mezzita.
 Método y límites: WebSearch (estándar y extendido). WebFetch no pudo abrir ningún dominio en este entorno (error DNS), así que los datos vienen de los resultados de búsqueda, no de lectura de cada página. El apartado "quién rankea" está inferido de los resultados que devolvió el buscador (que es US-only y no es el SERP real de Google Bolivia). **Antes de escribir cada post, verifica el SERP en google.com.bo desde una IP boliviana.** Todo lo que no pude confirmar está marcado UNVERIFIED.
 
 Voz de todos los posts: neutral, "tú". CTAs permitidos: `/diagnostico/` (Radiografía gratis de ficha de Google), `/demo/?rubro=estudio` (Demo de consultas por WhatsApp), `/planes/`.
@@ -224,7 +224,7 @@ Convenciones: intención = informacional / comparativa / transaccional-local. To
   3. Qué debe tener la página de un estudio jurídico (áreas, equipo, matrícula, contacto)
   4. Qué no poner por motivos de ética
   5. Velocidad móvil y WhatsApp visible
-  6. Rangos de precio (usar rangos propios de Outperform; no inventar promedios de mercado)
+  6. Rangos de precio (usar rangos propios de Mezzita; no inventar promedios de mercado)
   7. Costos ocultos: dominio, hosting, mantenimiento
   8. Preguntas para hacerle a quien te cotiza
 - **Hechos locales:**
@@ -294,7 +294,7 @@ Convenciones: intención = informacional / comparativa / transaccional-local. To
   4. Formularios y WhatsApp para pedir presupuesto
   5. Contenido tributario útil (con fuentes oficiales)
   6. Seguridad y confidencialidad (no subir documentos por canales abiertos)
-  7. Rangos de precio (propios de Outperform; no inventar promedios de mercado)
+  7. Rangos de precio (propios de Mezzita; no inventar promedios de mercado)
   8. Cómo medir si la web te trae clientes
 - **Hechos locales:**
   - Independientes bajo RC-IVA desde 2023 (nueva demanda): https://www.ferrere.com/es/novedades/profesionales-independientes-son-incluidos-en-el-regimen-rc-iva/

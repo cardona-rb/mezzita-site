@@ -55,7 +55,7 @@ Date of research: 2026-10-19. Method: web search only. Direct page fetches (WebF
 - AKDCORP (https://akdcorpbolivia.com/chatbot/): USD 50 basic, USD 80 with AI, USD 150 multichannel.
 - DCG (Cochabamba): from USD 150 implementation + monthly maintenance (https://agenciadcg.com/inteligencia-artificial-negocios/).
 - OpenWhats: USD 14 license, unofficial WhatsApp Web tool (https://openwhats.com/crm-whatsapp-bolivia). AnswerForMe: from ~USD 29/month, template messages Bs 0.35-1.00 (https://answerforme.io/es/blog/whatsapp-business-empresas-bolivia-guia-2026).
-- Takeaway: chatbots are commoditized at USD 15-35/month. Outperform's differentiation must be the bundle (catalog + QR + Maps + ads), not the bot itself. Competitor price pages for GBP/catalog bundles not found (search gaps).
+- Takeaway: chatbots are commoditized at USD 15-35/month. Mezzita's differentiation must be the bundle (catalog + QR + Maps + ads), not the bot itself. Competitor price pages for GBP/catalog bundles not found (search gaps).
 
 ## 10. AI chat/voice agents
 - Linux Foundation (Dec 2025): 47% of LatAm companies implementing AI, 37% experimenting; 38% cite cost as major barrier; IDC puts it at 65%. A Mexico AWS report: chatbots 69% adoption but 72% basic use. Vendor claims such as "75% of companies with 10+ staff use conversational AI on WhatsApp" are **[UNVERIFIED]**. No voice-agent SMB adoption data for Bolivia. Verdict: real for FAQ/lead capture, hype for autonomous agents; low willingness to pay for SMBs.

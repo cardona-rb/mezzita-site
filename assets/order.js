@@ -1,4 +1,4 @@
-/* Outperform · el menú web dentro del teléfono.
+/* Mezzita · el menú web dentro del teléfono.
    Una pantalla de pedidos en el navegador (menú, carrito, pago, confirmación). En el inicio se reproduce
    sola en bucle. En la demo la manejas tú. WhatsApp aparece solo como aviso de seguimiento opcional. */
 (function(){

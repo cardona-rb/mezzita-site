@@ -1,4 +1,4 @@
-/* Outperform · fondo.
+/* Mezzita · fondo.
    Cuatro variantes, elegibles con ?bg= (o la clase del <html> que pone build.py):
      dots   · cardumen de peces hechos de puntos, apenas visibles, que se acercan al puntero
      code   · los mismos peces, escritos con glifos de "código de negocio"

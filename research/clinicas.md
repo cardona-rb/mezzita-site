@@ -1,6 +1,6 @@
 # Investigación SEO: clínicas dentales, consultorios y centros de salud privados en Bolivia
 
-Fecha de investigación: 2026-10-19. Autor: investigación para Outperform Partners.
+Fecha de investigación: 2026-10-19. Autor: investigación para Mezzita.
 Método: búsquedas en Google en español (WebSearch). Nota técnica: WebFetch no pudo abrir los dominios (error DNS en el entorno), así que todo se basa en resultados de búsqueda y snippets. Cada dato lleva URL; lo que no se pudo confirmar dice UNVERIFIED. Antes de publicar cada post, abrir las fuentes y verificar cifras y artículos de ley.
 
 ## Hechos Bolivia-específicos recopilados (con fuente)
@@ -22,7 +22,7 @@ Método: búsquedas en Google en español (WebSearch). Nota técnica: WebFetch n
 | Precios implante: no se halló ninguna cifra Bolivia fiable. Referencias de otros países (Colombia, Chile, Argentina US$250-450, España EUR 900-1.300) | https://www.iprofesional.com/actualidad/361267-cuanto-cuesta-un-implante-dental-en-2022 | Bolivia: UNVERIFIED. Requiere recoger cotizaciones propias (ver Post 9). |
 | Placidway lista clínicas bolivianas con precios US$ (limpieza profunda desde $99, empaste desde $50) | https://www.placidway.com/search-medical-centers/Deep-Cleaning+Dentistry/Bolivia/1 | Plataforma de turismo médico; no verificado. |
 
-Pendientes que Outperform debe cerrar antes de publicar (no se encontraron en la búsqueda): número de odontólogos y clínicas por ciudad (SEDES, Colegio de Odontólogos, INE), reglas de publicidad médica del Colegio Médico y del Colegio de Odontólogos, tasa real de inasistencia en Bolivia, volumen de búsquedas.
+Pendientes que Mezzita debe cerrar antes de publicar (no se encontraron en la búsqueda): número de odontólogos y clínicas por ciudad (SEDES, Colegio de Odontólogos, INE), reglas de publicidad médica del Colegio Médico y del Colegio de Odontólogos, tasa real de inasistencia en Bolivia, volumen de búsquedas.
 
 ## (a) Brechas de posicionamiento
 
@@ -46,7 +46,7 @@ Pendientes que Outperform debe cerrar antes de publicar (no se encontraron en la
 | precio implante dental Bolivia | Doctoralia.co (Q&A), 2x3.cl (Chile), iprofesional (Argentina), sitios de España | Ninguno es de Bolivia. Un post con rangos regionales + metodología gana. |
 | turismo dental Bolivia | borgenproject.org, voco.dental, Placidway, ONG | Sin competidor comercial. Tema de nicho, riesgo de bajo volumen. |
 | SIAT factura consultorio médico | yo-facturo.com, banqup.com, boliviaimpuestos.com, siatinfo.impuestos.gob.bo | Genérico o técnico; falta guía para el profesional de salud en lenguaje simple. Riesgo: la fuente oficial es difícil de superar en autoridad, por eso apuntar a long-tail ("qué factura emite un dentista"). |
-| dentista Santa Cruz (local) | webs de clínicas (odonto-center.com, odontoking.com, dentistree.com.bo, clinicadentalcortez.com.bo, clinicaodontomedic.com, dentalvidbo.com, centrodentalsuarez.com, cro.com.bo) y directorio doctorpolis.com.bo | Es competencia de Google Maps, no de blog; son los prospectos de Outperform. Se usan como ejemplos de lo que falta (cita real, pago, recordatorio). |
+| dentista Santa Cruz (local) | webs de clínicas (odonto-center.com, odontoking.com, dentistree.com.bo, clinicadentalcortez.com.bo, clinicaodontomedic.com, dentalvidbo.com, centrodentalsuarez.com, cro.com.bo) y directorio doctorpolis.com.bo | Es competencia de Google Maps, no de blog; son los prospectos de Mezzita. Se usan como ejemplos de lo que falta (cita real, pago, recordatorio). |
 | Google Maps para dentistas | dentaltown.com, localfalcon.com, marketmymarket.com, webtonic.io, redefineweb.com | EE. UU., en inglés; en español casi nada para Bolivia. |
 
 Advertencia: los volúmenes de búsqueda en Bolivia son UNVERIFIED (no hay acceso a Ahrefs/Search Console aquí). Validar con Search Console tras publicar las 3 primeras piezas.

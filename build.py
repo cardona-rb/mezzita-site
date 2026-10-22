@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Arma el sitio de Outperform.
+"""Arma el sitio de Mezzita.
 
 Cada archivo en src/ empieza con un comentario JSON de metadatos y contiene solo el <main>.
 Salidas:
@@ -10,24 +10,24 @@ import json, os, re, shutil, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, ASSETS = os.path.join(ROOT, "src"), os.path.join(ROOT, "assets")
-SITE = os.environ.get("SITE_URL", "https://outperform.business").rstrip("/")
-BASE = os.environ.get("SITE_BASE", "").rstrip("/")  # p. ej. /outperform-site cuando se sirve en GitHub Pages sin dominio propio
+SITE = os.environ.get("SITE_URL", "https://mezzita.com").rstrip("/")
+BASE = os.environ.get("SITE_BASE", "").rstrip("/")  # solo para servir en un subdirectorio
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800'
          '&family=Instrument+Sans:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">')
 
-LOGO = ('<svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-width="1.5"/>'
-        '<path d="M8 15.5c3-4.5 6-4.5 9 0 1.2 1.8 2.4 1.8 3.5 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'
-        '<circle cx="18.6" cy="12.1" r="1.1" fill="currentColor"/></svg>')
+LOGO = ('<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#DA291C"/>'
+        '<circle cx="32" cy="19.5" r="6.5" fill="#FFC72C"/><rect x="11" y="29" width="42" height="7.5" rx="3.75" fill="#fff"/>'
+        '<rect x="17" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/><rect x="40.5" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/></svg>')
 
 NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Planes"),
        ("demo", "/demo/", "Demo"), ("casos", "/casos/", "Casos"), ("diagnostico", "/diagnostico/", "Radiografía gratis")]
 
 WA_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>')
 
-WA_DEFAULT = "Hola, vengo de la web de Outperform y quiero hablar con alguien del equipo."
+WA_DEFAULT = "Hola, vengo de la web de Mezzita y quiero hablar con alguien del equipo."
 
 
 def layout(meta, body):
@@ -57,11 +57,11 @@ def layout(meta, body):
 <meta property="og:type" content="{meta.get("og_type","website")}">
 <meta property="og:url" content="{canonical}">
 <meta name="theme-color" content="{theme}">
-<meta property="og:site_name" content="Outperform Partners">
+<meta property="og:site_name" content="Mezzita">
 <meta property="og:image" content="{SITE}{BASE}/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Outperform Partners: los clientes están ahí. Google Maps, página web y pedidos por WhatsApp en Bolivia.">
+<meta property="og:image:alt" content="Mezzita: los clientes están ahí. Google Maps, página web y pedidos por WhatsApp en Bolivia.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{meta["title"]}">
 <meta name="twitter:description" content="{meta["desc"]}">
@@ -78,7 +78,7 @@ def layout(meta, body):
 <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 <div id="backdrop" aria-hidden="true"><canvas></canvas></div>
 <header class="hd" id="hd"><div class="wrap hd-row">
-<a class="logo" href="/" aria-label="Outperform, inicio">{LOGO}<span>Outperform <small>Partners</small></span></a>
+<a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}<span>mezzita</span></a>
 <div class="capsule" data-nav-capsule><div class="glass-layer" aria-hidden="true"></div>
 <nav class="nav" aria-label="Principal"><span class="nav-lens" data-nav-lens aria-hidden="true"></span>{nav}</nav></div>
 <a class="btn btn-primary hd-cta" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>
@@ -90,15 +90,15 @@ def layout(meta, body):
 {body}
 </main>
 <footer class="ft"><div class="wrap">
-<div><a class="logo" href="/">{LOGO}<span>Outperform <small>Partners</small></span></a>
+<div><a class="logo" href="/">{LOGO}<span>mezzita</span></a>
 <p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
 <div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/casos/">Casos</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
-<div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-outperform.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
-<div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Outperform." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
+<div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-mezzita.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
+<div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Mezzita." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
 <div><h4>Socios</h4><p class="muted">Cobros y facturación con CUCU.</p><a class="ft-levi" href="https://levisoft.pro" target="_blank" rel="noopener"><span class="muted">Ingeniería de</span><img src="/assets/logos/levisoft-logo-light.webp" alt="Levisoft" width="1825" height="393" loading="lazy"></a></div>
-<p class="legal">© <span data-year>2026</span> Outperform Partners · NIT en trámite de publicación · Tarija, Bolivia. Los resultados dependen de cada negocio, su rubro y su ciudad. Las garantías aplican según las condiciones escritas en tu contrato.</p>
+<p class="legal">© <span data-year>2026</span> Mezzita · NIT en trámite de publicación · Tarija, Bolivia. Los resultados dependen de cada negocio, su rubro y su ciudad. Las garantías aplican según las condiciones escritas en tu contrato.</p>
 </div></footer>
-<a class="wa-float" data-wa="Hola, vengo de la web de Outperform." href="https://wa.me/59171868545" aria-label="Escribir por WhatsApp">{WA_ICON}<span>Escríbenos por WhatsApp</span></a>
+<a class="wa-float" data-wa="Hola, vengo de la web de Mezzita." href="https://wa.me/59171868545" aria-label="Escribir por WhatsApp">{WA_ICON}<span>Escríbenos por WhatsApp</span></a>
 <div class="mbar"><a class="btn" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a><span class="mbar-sub">Te responde una persona · sin compromiso</span></div>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/backdrop.js" defer></script>
@@ -244,7 +244,7 @@ def render_post(meta, body, all_posts):
         src_html = '<section class="sources"><h2>Fuentes</h2><ol>' + "".join(
             f'<li><a href="{esc(s["u"])}" target="_blank" rel="noopener nofollow">{esc(s["t"])}</a></li>' for s in sources) + "</ol></section>"
     rel_html = '<section class="related"><p class="eyebrow">Sigue leyendo</p><div class="pgrid">' + "".join(post_card(p) for p in related) + "</div></section>"
-    cta_msg = f"Hola, leí «{h1}» en el blog de Outperform y quiero saber cómo aplicarlo a mi negocio. Rubro: ___ Ciudad: ___"
+    cta_msg = f"Hola, leí «{h1}» en el blog de Mezzita y quiero saber cómo aplicarlo a mi negocio. Rubro: ___ Ciudad: ___"
     cta_html = (f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p>'
                 f'<h2>Tu carta en un QR, en 7 días hábiles.</h2>'
                 f'<p>Menú web, QR en cada mesa, pedidos a cocina por WhatsApp y cobro por QR. 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
@@ -266,8 +266,8 @@ def render_post(meta, body, all_posts):
         {"@context": "https://schema.org", "@type": "Article", "headline": h1, "description": meta["desc"],
          "datePublished": meta["date"], "dateModified": meta.get("updated", meta["date"]), "inLanguage": "es-BO",
          "mainEntityOfPage": SITE + meta["path"], "wordCount": meta.get("_words", 0),
-         "author": {"@type": "Organization", "name": "Outperform Partners", "url": SITE},
-         "publisher": {"@type": "Organization", "name": "Outperform Partners", "url": SITE,
+         "author": {"@type": "Organization", "name": "Mezzita", "url": SITE},
+         "publisher": {"@type": "Organization", "name": "Mezzita", "url": SITE,
                        "logo": {"@type": "ImageObject", "url": SITE + "/assets/favicon.svg"}},
          "about": label, "keywords": ", ".join(meta.get("tags", []))},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -285,7 +285,7 @@ def render_post(meta, body, all_posts):
             f'<p class="meta"><a href="/blog/">Blog</a> · <a href="/blog/{r}/">{esc(label)}</a> · {fecha(meta["date"])} · {meta["read"]} min de lectura</p>'
             f'<h1>{esc(h1)}</h1><p class="lede" style="margin-bottom:1.6rem">{esc(meta.get("lede") or meta["desc"])}</p>'
             f'<div class="tags">{tags}</div>{toc_html}<div class="prose">{body}</div>{faq_html}{src_html}'
-            f'<p class="author"><span class="av-org">{LOGO}</span><span><b>Equipo Outperform Partners</b><br>Ingeniería de Levisoft, más de diez años construyendo sitios y sistemas para empresas de México, Estados Unidos y Latinoamérica. Ahora, para negocios de Bolivia.</span></p>'
+            f'<p class="author"><span class="av-org">{LOGO}</span><span><b>Equipo Mezzita</b><br>Ingeniería de Levisoft, más de diez años construyendo sitios y sistemas para empresas de México, Estados Unidos y Latinoamérica. Ahora, para negocios de Bolivia.</span></p>'
             f'{cta_html}{rel_html}</div></article>')
     return html
 
@@ -301,7 +301,7 @@ def render_blog_index(posts):
             f'<section class="sec" style="padding-top:1.5rem"><div class="wrap"><div class="pgrid">{cards}</div>'
             f'<aside class="post-cta"><p class="eyebrow">Herramienta gratis</p><h2 style="font-size:var(--step-2)">¿Cómo está tu ficha de Google hoy? Revísala en 2 minutos.</h2>'
             f'<div class="cta-row"><a class="btn btn-primary" href="/diagnostico/">Hacer mi radiografía</a></div></aside></div></section>')
-    meta = {"title": "Blog · Guías para negocios en Bolivia | Outperform", "desc": "Guías prácticas para que tu restaurante, pizzería, heladería o bar en Bolivia aparezca en Google Maps, cobre por QR y venda por WhatsApp sin comisión de apps. Para restaurantes, pizzerías, heladerías, bares y cafés.", "path": "/blog/", "nav": "blog"}
+    meta = {"title": "Blog · Guías para negocios en Bolivia | Mezzita", "desc": "Guías prácticas para que tu restaurante, pizzería, heladería o bar en Bolivia aparezca en Google Maps, cobre por QR y venda por WhatsApp sin comisión de apps. Para restaurantes, pizzerías, heladerías, bares y cafés.", "path": "/blog/", "nav": "blog"}
     return meta, body
 
 
@@ -317,7 +317,7 @@ def render_rubro_index(rubro, posts):
             f'<section class="sec" style="padding-top:1.5rem"><div class="wrap"><div class="pgrid">{"".join(post_card(p) for p in mine)}</div>'
             f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p><h2>Esto, hecho para tu negocio, en 7 días hábiles.</h2></div>'
             f'<div class="cta-row"><a class="btn btn-sun" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a><a class="link-dark" href="/planes/">Ver planes</a></div></aside></div></section>')
-    meta = {"title": f"Guías para {label.lower()} en Bolivia | Blog Outperform", "desc": f"Guías prácticas para {label.lower()} en Bolivia: Google Maps, página web, WhatsApp, cobros por QR y reseñas. Con datos locales y fuentes.", "path": f"/blog/{rubro}/", "nav": "blog",
+    meta = {"title": f"Guías para {label.lower()} en Bolivia | Blog Mezzita", "desc": f"Guías prácticas para {label.lower()} en Bolivia: Google Maps, página web, WhatsApp, cobros por QR y reseñas. Con datos locales y fuentes.", "path": f"/blog/{rubro}/", "nav": "blog",
             "head": jsonld({"@context": "https://schema.org", "@type": "CollectionPage", "name": f"Guías para {label.lower()} en Bolivia", "url": SITE + f"/blog/{rubro}/", "inLanguage": "es-BO"})}
     return meta, body
 

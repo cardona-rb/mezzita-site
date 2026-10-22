@@ -1,6 +1,6 @@
-# outperform.business
+# mezzita.com
 
-Sitio estático de Outperform Partners. Se construye con `python3 build.py` (sin dependencias) y se despliega solo al hacer push a `main`.
+Sitio estático de Mezzita. Se construye con `python3 build.py` (sin dependencias) y se despliega solo al hacer push a `main`.
 
 - `src/*.html`: páginas (comentario JSON de metadatos + contenido del `<main>`).
 - `src/blog/<rubro>/<slug>.html`: posts del blog (ver `research/BRIEF_REDACCION.md`).

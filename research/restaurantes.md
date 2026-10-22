@@ -1,6 +1,6 @@
 # Investigación SEO: Restaurantes, bares, cafeterías y pizzerías en Bolivia
 
-Fecha de investigación: 2026-10-19. Autor: subagente SEO para Outperform Partners.
+Fecha de investigación: 2026-10-19. Autor: subagente SEO para Mezzita.
 Método: WebSearch (varias consultas en español) y análisis de lo que aparece. WebFetch falló por DNS en el entorno (ENOTFOUND), así que los datos vienen de resúmenes de búsqueda; todo dato marcado VERIFICAR debe confirmarse en la fuente antes de publicar. No se inventó ninguna cifra.
 
 Leyenda: [FUENTE] = respaldado por una fuente con URL. [UNVERIFIED] = anecdótico, de vendedor competidor o contradictorio.

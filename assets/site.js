@@ -1,4 +1,4 @@
-/* Outperform · comportamiento compartido.
+/* Mezzita · comportamiento compartido.
    Movimiento con una sola regla: rápido, con salida suave, y solo donde ayuda a entender. */
 (function(){
   'use strict';

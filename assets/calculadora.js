@@ -67,7 +67,7 @@
     var net = total - (MENSUAL + com - back);
     $('c-net').textContent = (net < 0 ? '−' : '') + fmt(Math.abs(net));
     $('c-net').style.color = net < 0 ? 'var(--sun)' : '#fff';
-    var msg = 'Hola, usé la calculadora de Outperform para mi ' + key + '. Hoy pierdo unos ' + fmt(total) + ' al mes. Con ' + v.pedidos + ' pedidos por día y ticket de ' + fmt(v.ticket) + ', el sistema me costaría ' + fmt(MENSUAL + com) + ' y me devolverían ' + fmt(back) + ' al mes. Quiero verlo con mis números. Ciudad: ___ Mesas: ___';
+    var msg = 'Hola, usé la calculadora de Mezzita para mi ' + key + '. Hoy pierdo unos ' + fmt(total) + ' al mes. Con ' + v.pedidos + ' pedidos por día y ticket de ' + fmt(v.ticket) + ', el sistema me costaría ' + fmt(MENSUAL + com) + ' y me devolverían ' + fmt(back) + ' al mes. Quiero verlo con mis números. Ciudad: ___ Mesas: ___';
     $('c-wa').setAttribute('data-wa', msg);
     $('c-wa').href = window.OP ? window.OP.waHref(msg) : 'https://wa.me/59171868545?text=' + encodeURIComponent(msg);
   }
