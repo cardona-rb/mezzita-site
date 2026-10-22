@@ -6,10 +6,13 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "../..");
 const A = (f) => path.join(ROOT, "assets", f);
-const MARK = fs.readFileSync(A("favicon.svg"), "utf8");
+const FAV = fs.readFileSync(A("favicon.svg"), "utf8");
+const LOGO = fs.readFileSync(A("logo.svg"), "utf8");
+const MARK = fs.readFileSync(A("logo-mark.svg"), "utf8");
 const CSS = fs.readFileSync(path.join(__dirname, "brand.css"), "utf8");
 const page = (body, extra = "") => `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>${CSS}${extra}</style></head><body>${body}</body></html>`;
-const brand = (size) => `<div class="brand" style="font-size:${size}px">${MARK}<span>mezzita</span></div>`;
+// size: altura de la x del texto anterior; el logo completo mide ~1.9 veces eso de alto
+const brand = (size) => `<div class="brand" style="height:${Math.round(size * 1.9)}px">${LOGO.replace("<svg ", '<svg style="height:100%;width:auto" ')}</div>`;
 
 const QR = (() => {
   // patrón fijo tipo QR con los tres marcadores de esquina
@@ -28,7 +31,7 @@ const QR = (() => {
 const OG = page(`
 <div class="grid-bg" style="width:1200px;height:630px;padding:64px 72px;display:grid;grid-template-columns:1fr 330px;gap:56px;align-items:center;position:relative">
   <div>
-    ${brand(34)}
+    ${brand(44)}
     <h1 class="d" style="font-size:76px;margin-top:44px">Tu carta en un <span class="hl">QR.</span><br>Tu cliente pide y paga solo.</h1>
     <p style="font-size:25px;line-height:1.35;color:var(--ink-2);margin-top:26px;max-width:640px">Menú web propio para pizzerías, heladerías, restaurantes, bares y franquicias de Bolivia. Pide en la mesa, delivery o recojo, y paga en el navegador.</p>
   </div>
@@ -53,7 +56,7 @@ const LI_PERFIL = page(`
     ${brand(36)}
     <h1 class="d" style="font-size:78px">Tu restaurante vende <span class="hl">solo.</span></h1>
     <p style="font-size:24px;color:var(--ink-2);max-width:640px;line-height:1.3">El cliente pide y paga desde su celular, en tu propio menú web. Sin app de delivery que se quede con el 25 %.</p>
-    <p class="mono" style="font-size:14px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase">mezzita.com · del equipo detrás de Levisoft · en línea en 7 días hábiles</p>
+    <p class="mono" style="font-size:14px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase">mezzita.com · del equipo detrás de Levisoft</p>
   </div>
   <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:18px">${chips(22)}</div>
 </div>`);
@@ -178,7 +181,10 @@ function ico(png) {
     await p.close();
     return buf;
   };
-  const icon = (pad) => page(`<div style="width:100vw;height:100vh;display:grid;place-items:center;background:${pad ? "#DA291C" : "transparent"}">${MARK.replace("<svg ", '<svg style="width:100%;height:100%" ')}</div>`, "html,body{background:transparent}");
+  // PWA y favicon: cuadro crema redondeado (favicon.svg). Apple: cuadro completo, iOS redondea las esquinas.
+  const icon = (full) => page(`<div style="width:100vw;height:100vh;display:grid;place-items:center;background:${full ? "#FFFBEF" : "transparent"}">${full
+    ? `<div style="width:80%">${MARK.replace("<svg ", '<svg style="width:100%;height:auto;display:block" ')}</div>`
+    : FAV.replace("<svg ", '<svg style="width:100%;height:100%" ')}</div>`, "html,body{background:transparent}");
   await shot(icon(false), 512, 512, A("icon-512.png"), { transparent: true });
   await shot(icon(false), 192, 192, A("icon-192.png"), { transparent: true });
   await shot(icon(true), 180, 180, A("apple-touch-icon.png"));

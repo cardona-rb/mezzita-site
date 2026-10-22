@@ -18,9 +18,8 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800'
          '&family=Instrument+Sans:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">')
 
-LOGO = ('<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#DA291C"/>'
-        '<circle cx="32" cy="19.5" r="6.5" fill="#FFC72C"/><rect x="11" y="29" width="42" height="7.5" rx="3.75" fill="#fff"/>'
-        '<rect x="17" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/><rect x="40.5" y="33" width="6.5" height="18" rx="3.25" fill="#fff"/></svg>')
+LOGO = '<img src="/assets/logo.svg" alt="Mezzita" width="1478" height="462">'
+MARK = '<img src="/assets/logo-mark.svg" alt="" width="518" height="417">'
 
 NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Planes"),
        ("demo", "/demo/", "Demo"), ("experiencia", "/experiencia/", "Experiencia"), ("diagnostico", "/diagnostico/", "Radiografía gratis")]
@@ -78,7 +77,7 @@ def layout(meta, body):
 <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 <div id="backdrop" aria-hidden="true"><canvas></canvas></div>
 <header class="hd" id="hd"><div class="wrap hd-row">
-<a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}<span>mezzita</span></a>
+<a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}</a>
 <div class="capsule" data-nav-capsule><div class="glass-layer" aria-hidden="true"></div>
 <nav class="nav" aria-label="Principal"><span class="nav-lens" data-nav-lens aria-hidden="true"></span>{nav}</nav></div>
 <a class="btn btn-primary hd-cta" data-wa="{WA_DEFAULT}" href="https://wa.me/59171868545">Hablar por WhatsApp</a>
@@ -90,7 +89,7 @@ def layout(meta, body):
 {body}
 </main>
 <footer class="ft"><div class="wrap">
-<div><a class="logo" href="/">{LOGO}<span>mezzita</span></a>
+<div><a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}</a>
 <p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
 <div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/experiencia/">Experiencia</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
 <div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-mezzita.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
@@ -268,7 +267,7 @@ def render_post(meta, body, all_posts):
          "mainEntityOfPage": SITE + meta["path"], "wordCount": meta.get("_words", 0),
          "author": {"@type": "Organization", "name": "Mezzita", "url": SITE},
          "publisher": {"@type": "Organization", "name": "Mezzita", "url": SITE,
-                       "logo": {"@type": "ImageObject", "url": SITE + "/assets/favicon.svg"}},
+                       "logo": {"@type": "ImageObject", "url": SITE + "/assets/icon-512.png"}},
          "about": label, "keywords": ", ".join(meta.get("tags", []))},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Blog", "item": SITE + "/blog/"},
@@ -285,7 +284,7 @@ def render_post(meta, body, all_posts):
             f'<p class="meta"><a href="/blog/">Blog</a> · <a href="/blog/{r}/">{esc(label)}</a> · {fecha(meta["date"])} · {meta["read"]} min de lectura</p>'
             f'<h1>{esc(h1)}</h1><p class="lede" style="margin-bottom:1.6rem">{esc(meta.get("lede") or meta["desc"])}</p>'
             f'<div class="tags">{tags}</div>{toc_html}<div class="prose">{body}</div>{faq_html}{src_html}'
-            f'<p class="author"><span class="av-org">{LOGO}</span><span><b>Equipo Mezzita</b><br>Ingeniería de Levisoft, más de diez años construyendo sitios y sistemas para empresas de México, Estados Unidos y Latinoamérica. Ahora, para negocios de Bolivia.</span></p>'
+            f'<p class="author"><span class="av-org">{MARK}</span><span><b>Equipo Mezzita</b><br>Ingeniería de Levisoft, más de diez años construyendo sitios y sistemas para empresas de México, Estados Unidos y Latinoamérica. Ahora, para negocios de Bolivia.</span></p>'
             f'{cta_html}{rel_html}</div></article>')
     return html
 

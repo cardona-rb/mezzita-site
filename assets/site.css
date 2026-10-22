@@ -103,7 +103,9 @@ p{margin:0}
 .hd-row{position:relative;display:flex;align-items:center;gap:1.2rem;height:var(--hd-h);transition:height var(--t-slow) var(--ease)}
 .hd.is-condensed .hd-row{height:64px}
 .logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font:700 1.25rem/1 var(--f-display);letter-spacing:-.035em;flex:none;font-variation-settings:"opsz" 24}
-.logo svg{width:28px;height:28px;flex:none}
+.logo img{height:44px;width:auto;flex:none}
+.ft .logo img{height:52px}
+@media (max-width:560px){.hd .logo img{height:40px}}
 .logo small{font:500 .62rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 .capsule{position:relative;margin-inline:auto;padding:5px 7px;border-radius:999px}
 .glass-layer{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;background:var(--g-fill);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);border:1px solid var(--g-edge);box-shadow:var(--g-shadow);transition:background var(--t-slow) ease}
@@ -849,7 +851,7 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 .faq-block p{margin-top:.6rem;color:var(--ink-2);line-height:1.6}
 .sources{margin-top:2.2rem;font-size:.9rem;color:var(--ink-3)}.sources h2{font-size:1rem;margin-bottom:.5rem}.sources ol{padding-left:1.2rem;display:grid;gap:.3rem}.sources a{color:var(--ink-2);word-break:break-all}
 .author{display:flex;gap:1rem;align-items:flex-start;margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line-2);font-size:.92rem;color:var(--ink-2)}
-.author .av-org{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}.author .av-org svg{width:1.4rem;height:1.4rem}
+.author .av-org{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;background:#FFFBEF;border:1px solid var(--line-2);display:grid;place-items:center}.author .av-org img{width:1.8rem;height:auto}
 .post-cta.night-card{background:var(--night);color:var(--on-night);border:0;border-radius:22px;padding:clamp(1.4rem,3vw,2.2rem);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center}
 .post-cta.night-card h2{color:#fff;font-size:var(--step-2);margin:.3rem 0 .5rem}.post-cta.night-card p{color:var(--on-night-2)}.post-cta.night-card .eyebrow{color:var(--sun)}
 @media (max-width:720px){.post-cta.night-card{grid-template-columns:1fr}}
