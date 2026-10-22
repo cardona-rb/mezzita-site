@@ -21,7 +21,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
 LOGO = '<img src="/assets/logo.svg" alt="Mezzita" width="1478" height="462">'
 MARK = '<img src="/assets/logo-mark.svg" alt="" width="518" height="417">'
 
-NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Planes"),
+NAV = [("servicios", "/servicios/", "Servicios"), ("planes", "/planes/", "Precios"),
        ("demo", "/demo/", "Demo"), ("experiencia", "/experiencia/", "Experiencia"), ("diagnostico", "/diagnostico/", "Radiografía gratis")]
 
 WA_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>')
@@ -122,7 +122,7 @@ def layout(meta, body):
 <footer class="ft"><div class="wrap">
 <div><a class="logo" href="/" aria-label="Mezzita, inicio">{LOGO}</a>
 <p style="margin-top:.8rem;max-width:22rem">Pedidos en mesa y delivery, cobrados por QR, para restaurantes, pizzerías, bares, cafés y heladerías de Bolivia. Del equipo detrás de Levisoft.</p></div>
-<div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Planes y precios</a><a href="/demo/">Demo de pedidos</a><a href="/experiencia/">Experiencia</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
+<div><h4>Sitio</h4><a href="/servicios/">Servicios</a><a href="/planes/">Precios</a><a href="/demo/">Demo de pedidos</a><a href="/experiencia/">Experiencia</a><a href="/diagnostico/">Radiografía de tu ficha</a><a href="/calculadora/">Calculadora de pérdida</a><a href="/empezar/">Qué necesitas entregar</a><a href="/blog/">Blog</a></div>
 <div><h4>Legal</h4><a href="/terminos/">Términos del servicio</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/garantias/">Garantías</a><a href="/assets/docs/contrato-modelo-mezzita.pdf" target="_blank" rel="noopener">Contrato modelo (PDF)</a></div>
 <div><h4>Hablemos</h4><a data-wa="Hola, quiero hablar con alguien del equipo de Mezzita." href="https://wa.me/59171868545">WhatsApp +591 71868545</a><p class="muted" style="margin-top:.4rem">Tarija, Santa Cruz, La Paz, Cochabamba, Sucre, Potosí, Oruro, Beni y Pando.</p></div>
 <div><h4>Socios</h4><p class="muted">Cobros y facturación con CUCU.</p><a class="ft-levi" href="https://levisoft.pro" target="_blank" rel="noopener"><span class="muted">Ingeniería de</span><img src="/assets/logos/levisoft-logo-light.webp" alt="Levisoft" width="1825" height="393" loading="lazy"></a></div>
@@ -346,7 +346,7 @@ def render_rubro_index(rubro, posts):
             f'<nav class="rubro-tabs" aria-label="Rubros">{tabs}</nav></div></section>'
             f'<section class="sec" style="padding-top:1.5rem"><div class="wrap"><div class="pgrid">{"".join(post_card(p) for p in mine)}</div>'
             f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p><h2>Esto, hecho para tu negocio, en 7 días hábiles.</h2></div>'
-            f'<div class="cta-row"><a class="btn btn-sun" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a><a class="link-dark" href="/planes/">Ver planes</a></div></aside></div></section>')
+            f'<div class="cta-row"><a class="btn btn-sun" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a><a class="link-dark" href="/planes/">Ver precios</a></div></aside></div></section>')
     meta = {"title": f"Guías para {label.lower()} en Bolivia | Blog Mezzita", "desc": f"Guías prácticas para {label.lower()} en Bolivia: Google Maps, página web, WhatsApp, cobros por QR y reseñas. Con datos locales y fuentes.", "path": f"/blog/{rubro}/", "nav": "blog",
             "head": jsonld({"@context": "https://schema.org", "@type": "CollectionPage", "name": f"Guías para {label.lower()} en Bolivia", "url": SITE + f"/blog/{rubro}/", "inLanguage": "es-BO"})}
     return meta, body
