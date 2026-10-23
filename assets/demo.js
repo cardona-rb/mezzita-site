@@ -9,8 +9,8 @@
             franq:['/assets/demo/franq-hero.webp','/assets/demo/franq-1.webp','/assets/demo/franq-2.webp','/assets/demo/franq-3.webp']};
   var MESA = [{n:"Mesa 12 · pago con QR ahora",c:0,mesa:true},{n:"Mesa 12 · pago en efectivo en caja",c:0,mesa:true,cash:true}];
   /* Oferta v2: comisión solo si el pago pasa por nuestro sistema y se verifica solo; sobre la comida, nunca sobre el envío.
-     del: delivery y recojo. mesa: cobro verificado en mesa (Esencial no lo tiene: la mesa paga con el QR del local, 0 %). */
-  var PLANS = {esencial:{n:"Esencial",del:0.06,mesa:0},salon:{n:"Salón",del:0.05,mesa:0.045},cadena:{n:"Cadena",del:0.04,mesa:0.035}};
+     del: delivery y recojo. mesa: cobro verificado en mesa (Arranca no lo tiene: la mesa paga con el QR del local, 0 %). */
+  var PLANS = {esencial:{n:"Arranca",del:0.06,mesa:0},salon:{n:"Crece",del:0.05,mesa:0.045},cadena:{n:"Escala",del:0.04,mesa:0.035}};
   var plan = "esencial";
   function pct(x){ return (Math.round(x * 1000) / 10).toLocaleString("es-BO") + " %"; }
   var RUBROS = {

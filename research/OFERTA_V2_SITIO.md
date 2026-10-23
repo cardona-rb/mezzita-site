@@ -19,7 +19,7 @@ Reemplaza la oferta anterior: un plan de 400 Bs/mes con 5 % sobre QR, devolució
 
 ## Planes
 
-| | Esencial | Salón | Cadena |
+| | Arranca | Crece | Escala |
 |---|---|---|---|
 | Mensualidad | 400 Bs | 600 Bs | 900 Bs |
 | Comisión en delivery y recojo (cobro verificado) | 6 % | 5 % | 4 % |
@@ -32,7 +32,7 @@ Reemplaza la oferta anterior: un plan de 400 Bs/mes con 5 % sobre QR, devolució
 - La comisión ya incluye la del procesador de pagos: un solo número.
 - Se calcula sobre la comida, nunca sobre el costo de envío.
 
-### Esencial (400 Bs/mes)
+### Arranca (400 Bs/mes)
 - Menú web propio con fotos, variantes y notas.
 - Pedidos en el local por número o nombre, sin QR por mesa.
   - El cliente elige pagar en efectivo o con el QR fijo del local (el QR de tu banco).
@@ -51,8 +51,8 @@ Reemplaza la oferta anterior: un plan de 400 Bs/mes con 5 % sobre QR, devolució
 - Reporte mensual de una página.
 - Soporte por WhatsApp con una persona.
 
-### Salón (600 Bs/mes)
-Todo lo de Esencial, más:
+### Crece (600 Bs/mes)
+Todo lo de Arranca, más:
 - QR por mesa: el sistema sabe de qué mesa viene cada pedido.
 - Panel con control de mesas.
 - Cobro verificado en mesa, opcional, al 4,5 %. Si la mesa paga con tu QR o en efectivo, 0 %. Lo que gana el dueño con el cobro verificado: no hay capturas falsas y la mesa se cierra sola.
@@ -60,8 +60,8 @@ Todo lo de Esencial, más:
 - 300 Bs de saldo inicial de promociones.
 - 4 cambios de carta al mes hechos por nosotros.
 
-### Cadena (900 Bs/mes)
-Todo lo de Salón, más:
+### Escala (900 Bs/mes)
+Todo lo de Crece, más:
 - Hasta 3 sucursales con menú central y caja consolidada. Cada sucursal extra paga el 50 % de la instalación.
 - Reporte avanzado: platos más vendidos, horas pico, clientes que repiten y clientes que dejaron de venir.
 - Factura electrónica del SIN mediante un proveedor certificado, que se cobra aparte, al costo y según volumen.
@@ -91,7 +91,7 @@ Todo lo de Salón, más:
   - Si cancelas el contrato de 12 meses antes de cumplirlo, pierdes el crédito.
   - El dominio queda a tu nombre si pagas su renovación.
 
-## Sucursales en Esencial y Salón
+## Sucursales en Arranca y Crece
 Cada sucursal adicional paga el 50 % de la instalación y su propia mensualidad.
 
 ## No incluido (decirlo claro)
@@ -100,7 +100,7 @@ Cada sucursal adicional paga el 50 % de la instalación y su propia mensualidad.
   - Te damos el QR de reseñas y el enlace de tu menú para que lo pongas tú (con un video corto de cómo hacerlo).
 - **Impresora térmica:** no la usamos; el panel funciona en tu celular, tablet o computadora.
 - **Repartidores:** usas los tuyos. El cliente paga el envío al repartidor según tu zona.
-- **Factura electrónica en Esencial y Salón:** se cotiza aparte. En Cadena se cobra al costo.
+- **Factura electrónica en Arranca y Crece:** se cotiza aparte. En Escala se cobra al costo.
 - **Impresión de QR y acrílicos:** te damos el PDF, y un acrílico cuesta 10 a 25 Bs en una imprenta.
 - **Conectores a POS o contabilidad:** se cotizan aparte. CSV y API propia incluidos.
 - **Fotos de estudio con IA para 15 platos:** 585 Bs, opcional.
@@ -117,8 +117,8 @@ Cada sucursal adicional paga el 50 % de la instalación y su propia mensualidad.
 - Desde 2024, el botón «Pedir» de Google lleva al sitio propio del restaurante.
 
 ## Arquetipos
-- **Restaurante pequeño:** Esencial.
-- **Dark kitchen:** Esencial, o Cadena si vende más de unos 30.000 Bs al mes en delivery. El argumento: pasar a los clientes que repiten al canal propio.
-- **Plaza o patio de comidas:** Esencial. El pedido va por nombre y el aviso de «listo» por WhatsApp reemplaza el localizador.
-- **Franquicia:** Cadena.
-- **Restaurante grande:** Salón o Cadena.
+- **Restaurante pequeño:** Arranca.
+- **Dark kitchen:** Arranca, o Escala si vende más de unos 30.000 Bs al mes en delivery. El argumento: pasar a los clientes que repiten al canal propio.
+- **Plaza o patio de comidas:** Arranca. El pedido va por nombre y el aviso de «listo» por WhatsApp reemplaza el localizador.
+- **Franquicia:** Escala.
+- **Restaurante grande:** Crece o Escala.

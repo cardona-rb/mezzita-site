@@ -4,9 +4,9 @@
   /* Planes v2. del: comisión en delivery y recojo con cobro verificado. mesa: cobro verificado en mesa (opcional; null = no aplica).
      Cobro con tu QR o en efectivo: 0 %. La comisión es sobre la comida, nunca sobre el envío. */
   var PLANS = {
-    esencial: {n: 'Esencial', mes: 400, del: 0.06, mesa: null, perSuc: true},
-    salon: {n: 'Salón', mes: 600, del: 0.05, mesa: 0.045, perSuc: true},
-    cadena: {n: 'Cadena', mes: 900, del: 0.04, mesa: 0.035, perSuc: false}
+    esencial: {n: 'Arranca', mes: 400, del: 0.06, mesa: null, perSuc: true},
+    salon: {n: 'Crece', mes: 600, del: 0.05, mesa: 0.045, perSuc: true},
+    cadena: {n: 'Escala', mes: 900, del: 0.04, mesa: 0.035, perSuc: false}
   };
   var SETUP = 2900, MAX_SUC_CADENA = 3;
   /* Costo de un plan. v: {ped, ticket, com, mesa, suc}. Devuelve null si el plan no sirve para esos números. */
@@ -45,11 +45,11 @@
       fields: F('ped', 'ticket', 'com', 'mesa'), d: {ped: 300, ticket: 85}},
     heladeria: {intro: 'Cuenta los pedidos para llevar y de delivery: conos, vasos, tortas y combos.', note: 'Si no haces delivery por app, deja la comisión de la app en 0 y mira solo lo que nos pagarías.',
       fields: F('ped', 'ticket', 'com', 'mesa'), d: {ped: 150, ticket: 45}},
-    restaurante: {intro: 'Piensa en los almuerzos para llevar y las cenas de delivery de un mes normal.', note: 'Si quieres cobro verificado en mesa (sin capturas falsas y con la mesa que se cierra sola), pon esas ventas en el último control: necesita Salón o Cadena.',
+    restaurante: {intro: 'Piensa en los almuerzos para llevar y las cenas de delivery de un mes normal.', note: 'Si quieres cobro verificado en mesa (sin capturas falsas y con la mesa que se cierra sola), pon esas ventas en el último control: necesita Crece o Escala.',
       fields: F('ped', 'ticket', 'com', 'mesa'), d: {ped: 200, ticket: 60}},
     bar: {intro: 'Un bar vende sobre todo en mesa. Cuenta solo lo que sale para llevar o por delivery.', note: 'En mesa, si cobras con tu QR o en efectivo, la comisión es 0 %. El cobro verificado en mesa es opcional.',
       fields: F('ped', 'ticket', 'com', 'mesa'), d: {ped: 40, ticket: 70}},
-    franquicia: {intro: 'Pon el total de todas tus sucursales y cuántas son.', note: 'Cadena cubre hasta 3 sucursales con una sola mensualidad. En Esencial y Salón cada sucursal paga su propia mensualidad. En todos los planes, cada sucursal extra paga el 50 % de la instalación.',
+    franquicia: {intro: 'Pon el total de todas tus sucursales y cuántas son.', note: 'Escala cubre hasta 3 sucursales con una sola mensualidad. En Arranca y Crece cada sucursal paga su propia mensualidad. En todos los planes, cada sucursal extra paga el 50 % de la instalación.',
       fields: F('ped', 'ticket', 'com', 'mesa', 'suc'), d: {ped: 900, ticket: 55, suc: 3}}
   };
   var key = 'pizzeria', plan = 'auto', vals = {};
@@ -81,7 +81,7 @@
     $('c-total').textContent = fmt(r.app); $('c-year').textContent = fmt(r.app * 12);
     if(!p){
       var P = PLANS[plan];
-      $('c-break').innerHTML = '<div><span>' + P.n + ' no sirve para estos números</span><b class="num">-</b><small>' + (P.mesa === null ? 'El cobro verificado en mesa es de Salón y Cadena. En Esencial, la mesa paga con tu QR o en efectivo, al 0 %.' : 'Cadena cubre hasta 3 sucursales.') + '</small></div>';
+      $('c-break').innerHTML = '<div><span>' + P.n + ' no sirve para estos números</span><b class="num">-</b><small>' + (P.mesa === null ? 'El cobro verificado en mesa es de Crece y Escala. En Arranca, la mesa paga con tu QR o en efectivo, al 0 %.' : 'Escala cubre hasta 3 sucursales.') + '</small></div>';
       ['c-cost', 'c-net', 'c-months'].forEach(function(id){ $(id).textContent = '-'; });
       $('c-plan').textContent = P.n; $('c-plan-d').textContent = 'elige otro plan o «El que más me conviene»'; $('c-cost-d').textContent = ''; $('c-net').style.color = '#fff';
       return;

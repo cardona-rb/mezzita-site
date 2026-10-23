@@ -43,11 +43,11 @@ SERVICE = {"@context": "https://schema.org", "@type": "Service", "name": "Pedido
            "provider": {"@id": SITE + "/#org"}, "areaServed": {"@type": "Country", "name": "Bolivia"},
            "audience": {"@type": "BusinessAudience", "audienceType": "Pizzerías, heladerías, restaurantes, bares, cafés y franquicias"},
            "offers": [
-               {"@type": "Offer", "name": "Plan Esencial", "price": "400", "priceCurrency": "BOB",
+               {"@type": "Offer", "name": "Plan Arranca", "price": "400", "priceCurrency": "BOB",
                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "400", "priceCurrency": "BOB", "unitCode": "MON"}},
-               {"@type": "Offer", "name": "Plan Salón", "price": "600", "priceCurrency": "BOB",
+               {"@type": "Offer", "name": "Plan Crece", "price": "600", "priceCurrency": "BOB",
                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "600", "priceCurrency": "BOB", "unitCode": "MON"}},
-               {"@type": "Offer", "name": "Plan Cadena", "price": "900", "priceCurrency": "BOB",
+               {"@type": "Offer", "name": "Plan Escala", "price": "900", "priceCurrency": "BOB",
                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "900", "priceCurrency": "BOB", "unitCode": "MON"}},
                {"@type": "Offer", "name": "Instalación, precio de lanzamiento", "price": "2900", "priceCurrency": "BOB", "priceValidUntil": "2026-11-30"}]}
 
@@ -447,9 +447,9 @@ def llms_txt(pages):
     out = ["# Mezzita", "",
            "> Mezzita instala en negocios de comida de Bolivia un menú web propio donde el cliente pide y paga desde su celular: QR por mesa, delivery y recojo, cobro por QR bancario en el navegador y Panel de pedidos y caja. Es el equipo detrás de Levisoft, con diez años construyendo sitios y sistemas.", "",
            "## Producto y precio", "",
-           "- Producto: Pedidos con QR, para pizzerías, heladerías, restaurantes, bares, cafés y franquicias en Bolivia. Tres planes al mes: Esencial 400 Bs, Salón 600 Bs (QR por mesa y reservas) y Cadena 900 Bs (hasta 3 sucursales, reporte avanzado, factura electrónica al costo, gerente de cuenta).",
+           "- Producto: Pedidos con QR, para pizzerías, heladerías, restaurantes, bares, cafés y franquicias en Bolivia. Tres planes al mes: Arranca 400 Bs, Crece 600 Bs (QR por mesa y reservas) y Escala 900 Bs (hasta 3 sucursales, reporte avanzado, factura electrónica al costo, gerente de cuenta).",
            "- Instalación: 2.900 Bs hasta el 30 de noviembre de 2026; desde el 1 de diciembre de 2026, 3.500 Bs. Precios con IVA incluido.",
-           "- Comisión: solo cuando el pago pasa por el sistema y se verifica solo. 0 % sobre lo cobrado en el local con el QR del propio negocio o en efectivo. Delivery y recojo: 6 % (Esencial), 5 % (Salón), 4 % (Cadena). Mesa con cobro verificado, opcional: 4,5 % (Salón), 3,5 % (Cadena). Incluye la comisión del procesador y no se aplica sobre el costo de envío.",
+           "- Comisión: solo cuando el pago pasa por el sistema y se verifica solo. 0 % sobre lo cobrado en el local con el QR del propio negocio o en efectivo. Delivery y recojo: 6 % (Arranca), 5 % (Crece), 4 % (Escala). Mesa con cobro verificado, opcional: 4,5 % (Crece), 3,5 % (Escala). Incluye la comisión del procesador y no se aplica sobre el costo de envío.",
            "- WhatsApp: avisos de estado del pedido incluidos; saldo inicial de promociones de 250 o 300 Bs (vence a los 90 días) y recargas a 1,5 Bs por mensaje, solo a clientes que dieron permiso.",
            "- Permanencia: mes a mes con 30 días de aviso, o contrato de 12 meses con dominio .com e Instalación de vuelta (desde el mes 13, hasta 200 Bs por mes de descuento hasta cubrir la instalación).",
            "- Garantía: menú, QR y panel activos en 7 días hábiles o el primer mes es gratis.",
