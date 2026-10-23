@@ -43,10 +43,13 @@ SERVICE = {"@context": "https://schema.org", "@type": "Service", "name": "Pedido
            "provider": {"@id": SITE + "/#org"}, "areaServed": {"@type": "Country", "name": "Bolivia"},
            "audience": {"@type": "BusinessAudience", "audienceType": "Pizzerías, heladerías, restaurantes, bares, cafés y franquicias"},
            "offers": [
-               {"@type": "Offer", "name": "Mensualidad", "price": "400", "priceCurrency": "BOB",
+               {"@type": "Offer", "name": "Plan Esencial", "price": "400", "priceCurrency": "BOB",
                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "400", "priceCurrency": "BOB", "unitCode": "MON"}},
-               {"@type": "Offer", "name": "Instalación", "price": "2900", "priceCurrency": "BOB"},
-               {"@type": "Offer", "name": "Instalación de lanzamiento, primeros 50 locales", "price": "2000", "priceCurrency": "BOB"}]}
+               {"@type": "Offer", "name": "Plan Salón", "price": "600", "priceCurrency": "BOB",
+                "priceSpecification": {"@type": "UnitPriceSpecification", "price": "600", "priceCurrency": "BOB", "unitCode": "MON"}},
+               {"@type": "Offer", "name": "Plan Cadena", "price": "900", "priceCurrency": "BOB",
+                "priceSpecification": {"@type": "UnitPriceSpecification", "price": "900", "priceCurrency": "BOB", "unitCode": "MON"}},
+               {"@type": "Offer", "name": "Instalación, precio de lanzamiento", "price": "2900", "priceCurrency": "BOB", "priceValidUntil": "2026-11-30"}]}
 
 
 def site_ld(meta):
@@ -278,7 +281,7 @@ def render_post(meta, body, all_posts):
     cta_msg = f"Hola, leí «{h1}» en el blog de Mezzita y quiero saber cómo aplicarlo a mi negocio. Rubro: ___ Ciudad: ___"
     cta_html = (f'<aside class="post-cta night-card"><div><p class="eyebrow">{esc(cta_label)}</p>'
                 f'<h2>Tu carta en un QR, en 7 días hábiles.</h2>'
-                f'<p>Menú web, QR en cada mesa, pedidos a cocina por WhatsApp y cobro por QR. 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
+                f'<p>Menú web propio donde tu cliente pide desde su celular, en el local, para llevar o a domicilio. Desde 400 Bs al mes, 0 % sobre lo que cobras en tu local con tu QR o en efectivo. Si no estás en línea en 7 días hábiles, tu primer mes es gratis.</p></div>'
                 f'<div class="cta-row"><a class="btn btn-sun" data-wa="{esc(cta_msg)}" href="https://wa.me/59162506518">Hablar por WhatsApp</a>'
                 f'<a class="link-dark" href="{cta_href}">{"Probar la demo" if demo_key else "Revisar mi ficha gratis"}</a></div></aside>')
     toc = re.findall(r"<h2(?: id=\"([^\"]*)\")?>(.*?)</h2>", body)
@@ -444,13 +447,13 @@ def llms_txt(pages):
     out = ["# Mezzita", "",
            "> Mezzita instala en negocios de comida de Bolivia un menú web propio donde el cliente pide y paga desde su celular: QR por mesa, delivery y recojo, cobro por QR bancario en el navegador y Panel de pedidos y caja. Es el equipo detrás de Levisoft, con diez años construyendo sitios y sistemas.", "",
            "## Producto y precio", "",
-           "- Producto único: Pedidos con QR, para pizzerías, heladerías, restaurantes, bares, cafés y franquicias en Bolivia.",
-           "- Instalación: 2.900 Bs. Precio de lanzamiento: 2.000 Bs para los primeros 50 locales.",
-           "- Mensualidad: 400 Bs. Plan con avisos y promociones por WhatsApp (solo a clientes que dieron permiso): 600 Bs.",
-           "- Comisión: 5 % solo sobre lo cobrado por QR a través del sistema; 0 % sobre lo que cobra el mesero en efectivo o con el QR del local.",
-           "- Devolución: el 50 % de la comisión se descuenta de la factura siguiente hasta recuperar la instalación (12 meses; desde el mes 13, el 100 %).",
-           "- Opción solo delivery y recojo: 0 Bs al mes y 8 % por pedido cobrado por QR.",
-           "- Garantía: menú, QR, panel y cobro activos en 7 días hábiles o el primer mes es gratis.",
+           "- Producto: Pedidos con QR, para pizzerías, heladerías, restaurantes, bares, cafés y franquicias en Bolivia. Tres planes al mes: Esencial 400 Bs, Salón 600 Bs (QR por mesa y reservas) y Cadena 900 Bs (hasta 3 sucursales, reporte avanzado, factura electrónica al costo, gerente de cuenta).",
+           "- Instalación: 2.900 Bs hasta el 30 de noviembre de 2026; desde el 1 de diciembre de 2026, 3.500 Bs. Precios con IVA incluido.",
+           "- Comisión: solo cuando el pago pasa por el sistema y se verifica solo. 0 % sobre lo cobrado en el local con el QR del propio negocio o en efectivo. Delivery y recojo: 6 % (Esencial), 5 % (Salón), 4 % (Cadena). Mesa con cobro verificado, opcional: 4,5 % (Salón), 3,5 % (Cadena). Incluye la comisión del procesador y no se aplica sobre el costo de envío.",
+           "- WhatsApp: avisos de estado del pedido incluidos; saldo inicial de promociones de 250 o 300 Bs (vence a los 90 días) y recargas a 1,5 Bs por mensaje, solo a clientes que dieron permiso.",
+           "- Permanencia: mes a mes con 30 días de aviso, o contrato de 12 meses con dominio .com e Instalación de vuelta (desde el mes 13, hasta 200 Bs por mes de descuento hasta cubrir la instalación).",
+           "- Garantía: menú, QR y panel activos en 7 días hábiles o el primer mes es gratis.",
+           "- No incluye: gestión de la ficha de Google Maps del negocio, repartidores ni impresora térmica.",
            "- Contacto: WhatsApp +591 62506518 y hola@mezzita.com.", "",
            "## Páginas", ""] + [line(m) for m in main] + ["", "## Guías para negocios de comida en Bolivia", ""] + [line(m) for m in posts]
     return "\n".join(out) + "\n"

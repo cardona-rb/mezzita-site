@@ -499,7 +499,7 @@ p{margin:0}
 .flip-tag{position:absolute;top:.6rem;left:.6rem;z-index:3;font:500 .64rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:.35rem .5rem;border-radius:6px;background:var(--ink);color:var(--paper);transition:background .3s ease}
 .listing[data-state="before"] .flip-tag{background:var(--alert)}
 .listing[data-state="before"] .flip-tag::after{content:"Hoy"}
-.listing[data-state="after"] .flip-tag::after{content:"En 7 días hábiles"}
+.listing[data-state="after"] .flip-tag::after{content:"Con Mezzita"}
 
 /* ---------- tres puertas: viñetas ---------- */
 .door .ico{width:3rem;height:3rem;color:var(--sun)}
@@ -1553,3 +1553,9 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
   .pf-item .cap{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){.exp-fan .frame{transition:none}}
+/* Precios v2: tabla de comisión dentro de cada plan */
+.tier .com{margin:.2rem 0;display:grid;gap:.35rem;border-top:1px dashed var(--line-2);border-bottom:1px dashed var(--line-2);padding:.6rem 0}
+.tier .com div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.tier .com dt{font-size:.84rem;color:var(--ink-2)}
+.tier .com dd{margin:0;font:800 1.15rem/1 var(--f-display);letter-spacing:-.02em;white-space:nowrap}
+.tier .com div:first-child dd{color:var(--paid)}

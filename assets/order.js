@@ -34,7 +34,7 @@
   Order.prototype.cats = function(){ var s = []; this.R.CAT.forEach(function(i){ if(s.indexOf(i.c) < 0) s.push(i.c); }); return s; };
   Order.prototype.lines = function(){ var c = this.cart; return Object.keys(c).map(function(k){ var l = c[k]; return {q: l.q, n: l.i.n + (l.v ? ' (' + l.v + ')' : ''), t: (l.i.po || l.i.p) * l.q}; }); };
   Order.prototype.deliv = function(){ return this.R.delivery[this.canal] || this.R.delivery[0]; };
-  Order.prototype.total = function(){ var t = 0; this.lines().forEach(function(l){ t += l.t; }); return t + (this.deliv().c || 0); };
+  Order.prototype.total = function(){ var t = 0; this.lines().forEach(function(l){ t += l.t; }); return t; };  // el envío lo cobra el repartidor del local, no entra al QR
   Order.prototype.count = function(){ var n = 0; this.lines().forEach(function(l){ n += l.q; }); return n; };
   Order.prototype.state = function(){ return {lines: this.lines(), total: this.total(), deliv: this.deliv(), id: this.id, view: this.view, wa: this.wa}; };
   Order.prototype.add = function(sku, v){
@@ -91,7 +91,7 @@
         '<label class="ws-field"><span>Nota para cocina</span><input type="text" placeholder="Sin cebolla, bien cocida…"></label>' +
         '<label class="ws-field"><span>¿Dónde y cómo?</span><select data-canal>' + R.delivery.map(function(x, i){ return '<option value="' + i + '"' + (i === self.canal ? ' selected' : '') + '>' + esc(x.n) + (x.c ? ' (+' + x.c + ' Bs)' : '') + '</option>'; }).join('') + '</select></label>' +
         (!mesa ? '<label class="ws-field"><span>' + (d.n.indexOf('Delivery') === 0 || d.n.indexOf('Envío') === 0 ? 'Dirección' : 'Tu nombre') + '</span><input type="text" placeholder="' + (d.n.indexOf('Delivery') === 0 ? 'Calle, número, referencia' : 'Para llamarte cuando esté listo') + '"></label>' : '') +
-        (d.c ? '<div class="ws-tot"><span>Envío</span><b>' + fmt(d.c) + '</b></div>' : '') +
+        (d.c ? '<div class="ws-tot"><span>Envío · lo pagas al repartidor</span><b>' + fmt(d.c) + '</b></div>' : '') +
         '<div class="ws-tot big"><span>Total</span><b>' + fmt(this.total()) + '</b></div>' +
         '<button type="button" class="ws-pay" data-a="pay">' + (cash ? 'Enviar a cocina · pago en caja' : 'Pagar ' + fmt(this.total()) + ' con QR') + '</button>' +
         (mesa ? '<small class="ws-fine">' + (cash ? 'Pagas al final con el mesero, en efectivo o con QR del local.' : 'QR bancario. Entra pagado a cocina. Sin capturas.') + '</small>' : '<small class="ws-fine">Pago con QR bancario de cualquier banco. Confirmación inmediata.</small>') + '</div>';

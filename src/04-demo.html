@@ -46,20 +46,21 @@
           <div><b class="num" id="o-zero">0</b><span>capturas revisadas</span></div>
         </div>
         <div class="o-com" id="o-com">
-          <div class="o-com-row"><span>Comisión Mezzita <b>5 % solo sobre lo pagado por QR</b></span><b class="num" id="o-ours">0 Bs</b></div>
-          <div class="o-com-row"><span>De eso te devolvemos el 50 % hasta recuperar tu instalación</span><b class="num" id="o-back">0 Bs</b></div>
-          <div class="o-com-row"><span>Cobrado en efectivo · <b>0 % de comisión</b></span><b class="num" id="o-cash">0 Bs</b></div>
-          <div class="o-com-row alt"><label for="o-pct">Si estos pedidos hubieran entrado por una app con comisión del</label><span class="o-pct-wrap"><input id="o-pct" type="number" inputmode="numeric" min="0" max="60" value="25"><b>%</b></span><span>la app se habría quedado con <b class="num" id="o-saved">0 Bs</b></span></div>
+          <div class="o-com-row"><span>Delivery y recojo · <b id="o-del-pct">6 % sobre la comida, con cobro verificado</b></span><b class="num" id="o-ours">0 Bs</b></div>
+          <div class="o-com-row"><span>Mesa con QR · <b id="o-mesa-pct">0 %, pagan con el QR de tu local</b></span><b class="num" id="o-mesa">0 Bs</b></div>
+          <div class="o-com-row"><span>Cobrado con tu QR o en efectivo · <b>0 % de comisión</b></span><b class="num" id="o-cash">0 Bs</b></div>
+          <div class="o-com-row alt"><label for="o-pct">Si esos pedidos de delivery y recojo hubieran entrado por una app con comisión del</label><span class="o-pct-wrap"><input id="o-pct" type="number" inputmode="numeric" min="0" max="60" value="25"><b>%</b></span><span>(una estimación: revisa tu liquidación), la app se habría quedado con <b class="num" id="o-saved">0 Bs</b></span></div>
         </div>
         <div class="owner-live" id="o-live"><p class="o-empty">Cuando tu cliente pague, el pedido aparece aquí con su mesa o su dirección. Sin preguntar, sin revisar comprobantes.</p></div>
         <div class="owner-controls">
+          <div class="field"><label for="d-plan">Tu plan (cambia la comisión de cada pedido)</label><select id="d-plan"><option value="esencial">Esencial · 400 Bs al mes · 6 % en delivery y recojo</option><option value="salon">Salón · 600 Bs al mes · 5 % en delivery, 4,5 % en mesa con cobro verificado</option><option value="cadena">Cadena · 900 Bs al mes · 4 % en delivery, 3,5 % en mesa con cobro verificado</option></select></div>
           <div class="field"><label for="d-deliv" id="d-deliv-label">¿Dónde está tu cliente y cómo paga? (también lo elige él en su celular)</label><select id="d-deliv"></select></div>
           <div class="cta-row">
             <button type="button" class="btn btn-sun" id="d-pay">Cobrar con QR</button>
             <a class="btn btn-ghost-dark" id="d-send" href="https://wa.me/59162506518" target="_blank" rel="noopener">Mandarnos este pedido de prueba</a>
             <button type="button" class="link-dark" id="d-reset">Empezar de nuevo</button>
           </div>
-          <p class="friction" style="color:var(--on-night-2)">Es una demo: no se cobra nada. En tu local el pago entra de verdad por QR bancario con CUCU; lo que el mesero cobra en efectivo o con tu propio QR no lleva comisión ni devolución. Los avisos por WhatsApp al cliente van en el plan Con avisos.</p>
+          <p class="friction" style="color:var(--on-night-2)">Es una demo: no se cobra nada. En tu local, delivery y recojo se pagan con cobro por QR verificado antes de entrar a cocina. Cobramos comisión solo cuando el pago pasa por nuestro sistema y se verifica solo; si cobras con tu QR o en efectivo, 0 %. Los avisos de estado por WhatsApp vienen incluidos en todos los planes.</p>
         </div>
       </div>
     </div>
@@ -73,14 +74,14 @@
     <div id="flowdemo"></div>
     <div class="money" id="f-money"></div>
     <div style="margin:2rem 0 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12)"><div class="sec-head" style="margin-bottom:1rem"><p class="eyebrow">Paso a paso, con decisiones</p><h3 style="font-size:var(--step-2)">Quién hace qué en cada paso, y dónde entra el dinero.</h3></div>{{include:flows}}</div>
-    <div class="cta-row" style="margin-top:1.4rem"><a class="btn btn-sun" id="f-calc" href="/calculadora/?rubro=pizzeria">Calcula cuánto cuesta y cuánto te devuelve</a><a class="link-dark" href="/empezar/">Qué necesitas entregar</a></div>
+    <div class="cta-row" style="margin-top:1.4rem"><a class="btn btn-sun" id="f-calc" href="/calculadora/?rubro=pizzeria">Calcula cuánto pagarías y cuánto se queda la app</a><a class="link-dark" href="/empezar/">Qué necesitas entregar</a></div>
   </div>
 </section>
 
 <section class="sec night"><div class="wrap split">
-  <div class="sec-head" style="margin:0"><p class="eyebrow">¿Te gustó?</p><h2>Esto, con tu carta, tu dominio y tus mesas, en 7 días hábiles.</h2></div>
+  <div class="sec-head" style="margin:0"><p class="eyebrow">¿Te gustó?</p><h2>Esto, con tu carta y tus fotos, en 7 días hábiles.</h2></div>
   <div style="display:grid;gap:1rem">
-    <p class="lede">Nos mandas tu carta y tus fotos. Te devolvemos tu menú web, el QR de cada mesa listo para imprimir y tu Panel de pedidos y caja activo. Instalación de 2.900 Bs (2.000 Bs para los primeros 50 locales), 400 Bs al mes y 5 % solo sobre lo que cobras por QR. Nada sobre el efectivo.</p>
+    <p class="lede">Nos mandas tu carta y tus fotos. Te entregamos tu menú web, tus QR listos para imprimir y tu Panel de pedidos y caja activo. Instalación de 2.900 Bs hasta el 30 de noviembre, desde 400 Bs al mes y comisión solo cuando el pago pasa por nuestro sistema y se verifica solo: 6 % en delivery y recojo con Esencial. Con tu QR o en efectivo, 0 %.</p>
     <div class="cta-row"><a class="btn btn-primary btn-lg btn-pulse" data-wa="Hola, probé la demo y quiero mi menú web con QR en las mesas. Mi local: ___ Ciudad: ___ Mesas: ___" href="https://wa.me/59162506518">Quiero mi menú web con QR</a><a class="link" href="/planes/">Ver la oferta completa</a></div>
 <p class="cta-sub"><span class="ok">✓</span>Te responde una persona · Sin compromiso · Pagas con QR</p>
   </div>
