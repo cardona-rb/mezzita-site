@@ -1559,3 +1559,9 @@ main>.night{border-radius:clamp(1.4rem,3vw,2.6rem);margin-inline:max(8px,env(saf
 .tier .com dt{font-size:.84rem;color:var(--ink-2)}
 .tier .com dd{margin:0;font:800 1.15rem/1 var(--f-display);letter-spacing:-.02em;white-space:nowrap}
 .tier .com div:first-child dd{color:var(--paid)}
+/* Precios v2: «Ideal para» con los arquetipos de cada plan */
+.tier .ideal{display:grid;gap:.4rem}
+.tier .ideal span{font:500 .68rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tier .ideal ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
+.tier .ideal li{background:var(--paper);border:1px solid var(--line-2);border-radius:999px;padding:.25rem .65rem;font-size:.8rem;color:var(--ink)}
+.tier.main .ideal li{background:var(--sun);border-color:var(--ink)}
